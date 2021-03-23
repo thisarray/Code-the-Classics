@@ -1046,14 +1046,14 @@ function reset() {
   // Is space currently being held down?
   space_down = false;
 
+  music.play("theme");
+  music.set_volume(0.3);
+
   // Set the initial game state
   state = State.MENU;
 
   // Create a new Game object, without any players
   game = new Game();
-
-  music.play("theme");
-  music.set_volume(0.3);
 }
 
 

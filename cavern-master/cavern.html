@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cavern</title>
+  <script src="../../jsgame0.js"></script>
+  <style type="text/css" media="screen">
+body {
+  background-color: white;
+  color: black;
+}
+.hidden {
+  display: none;
+}
+#original {
+  margin-left: 1em;
+}
+  </style>
+</head>
+
+<body>
+<section id="imageLoader" class="hidden">
+  <img class="hidden" src="images/bg0.png" alt="bg0" data-name="bg0">
+  <img class="hidden" src="images/bg1.png" alt="bg1" data-name="bg1">
+  <img class="hidden" src="images/bg2.png" alt="bg2" data-name="bg2">
+  <img class="hidden" src="images/bg3.png" alt="bg3" data-name="bg3">
+  <img class="hidden" src="images/blank.png" alt="blank" data-name="blank">
+  <img class="hidden" src="images/block0.png" alt="block0" data-name="block0">
+  <img class="hidden" src="images/block1.png" alt="block1" data-name="block1">
+  <img class="hidden" src="images/block2.png" alt="block2" data-name="block2">
+  <img class="hidden" src="images/block3.png" alt="block3" data-name="block3">
+  <img class="hidden" src="images/blow0.png" alt="blow0" data-name="blow0">
+  <img class="hidden" src="images/blow1.png" alt="blow1" data-name="blow1">
+  <img class="hidden" src="images/bolt00.png" alt="bolt00" data-name="bolt00">
+  <img class="hidden" src="images/bolt01.png" alt="bolt01" data-name="bolt01">
+  <img class="hidden" src="images/bolt10.png" alt="bolt10" data-name="bolt10">
+  <img class="hidden" src="images/bolt11.png" alt="bolt11" data-name="bolt11">
+  <img class="hidden" src="images/fall0.png" alt="fall0" data-name="fall0">
+  <img class="hidden" src="images/fall1.png" alt="fall1" data-name="fall1">
+  <img class="hidden" src="images/font032.png" alt="font032" data-name="font032">
+  <img class="hidden" src="images/font048.png" alt="font048" data-name="font048">
+  <img class="hidden" src="images/font049.png" alt="font049" data-name="font049">
+  <img class="hidden" src="images/font050.png" alt="font050" data-name="font050">
+  <img class="hidden" src="images/font051.png" alt="font051" data-name="font051">
+  <img class="hidden" src="images/font052.png" alt="font052" data-name="font052">
+  <img class="hidden" src="images/font053.png" alt="font053" data-name="font053">
+  <img class="hidden" src="images/font054.png" alt="font054" data-name="font054">
+  <img class="hidden" src="images/font055.png" alt="font055" data-name="font055">
+  <img class="hidden" src="images/font056.png" alt="font056" data-name="font056">
+  <img class="hidden" src="images/font057.png" alt="font057" data-name="font057">
+  <img class="hidden" src="images/font065.png" alt="font065" data-name="font065">
+  <img class="hidden" src="images/font066.png" alt="font066" data-name="font066">
+  <img class="hidden" src="images/font067.png" alt="font067" data-name="font067">
+  <img class="hidden" src="images/font068.png" alt="font068" data-name="font068">
+  <img class="hidden" src="images/font069.png" alt="font069" data-name="font069">
+  <img class="hidden" src="images/font070.png" alt="font070" data-name="font070">
+  <img class="hidden" src="images/font071.png" alt="font071" data-name="font071">
+  <img class="hidden" src="images/font072.png" alt="font072" data-name="font072">
+  <img class="hidden" src="images/font073.png" alt="font073" data-name="font073">
+  <img class="hidden" src="images/font074.png" alt="font074" data-name="font074">
+  <img class="hidden" src="images/font075.png" alt="font075" data-name="font075">
+  <img class="hidden" src="images/font076.png" alt="font076" data-name="font076">
+  <img class="hidden" src="images/font077.png" alt="font077" data-name="font077">
+  <img class="hidden" src="images/font078.png" alt="font078" data-name="font078">
+  <img class="hidden" src="images/font079.png" alt="font079" data-name="font079">
+  <img class="hidden" src="images/font080.png" alt="font080" data-name="font080">
+  <img class="hidden" src="images/font081.png" alt="font081" data-name="font081">
+  <img class="hidden" src="images/font082.png" alt="font082" data-name="font082">
+  <img class="hidden" src="images/font083.png" alt="font083" data-name="font083">
+  <img class="hidden" src="images/font084.png" alt="font084" data-name="font084">
+  <img class="hidden" src="images/font085.png" alt="font085" data-name="font085">
+  <img class="hidden" src="images/font086.png" alt="font086" data-name="font086">
+  <img class="hidden" src="images/font087.png" alt="font087" data-name="font087">
+  <img class="hidden" src="images/font088.png" alt="font088" data-name="font088">
+  <img class="hidden" src="images/font089.png" alt="font089" data-name="font089">
+  <img class="hidden" src="images/font090.png" alt="font090" data-name="font090">
+  <img class="hidden" src="images/fruit00.png" alt="fruit00" data-name="fruit00">
+  <img class="hidden" src="images/fruit01.png" alt="fruit01" data-name="fruit01">
+  <img class="hidden" src="images/fruit02.png" alt="fruit02" data-name="fruit02">
+  <img class="hidden" src="images/fruit10.png" alt="fruit10" data-name="fruit10">
+  <img class="hidden" src="images/fruit11.png" alt="fruit11" data-name="fruit11">
+  <img class="hidden" src="images/fruit12.png" alt="fruit12" data-name="fruit12">
+  <img class="hidden" src="images/fruit20.png" alt="fruit20" data-name="fruit20">
+  <img class="hidden" src="images/fruit21.png" alt="fruit21" data-name="fruit21">
+  <img class="hidden" src="images/fruit22.png" alt="fruit22" data-name="fruit22">
+  <img class="hidden" src="images/fruit30.png" alt="fruit30" data-name="fruit30">
+  <img class="hidden" src="images/fruit31.png" alt="fruit31" data-name="fruit31">
+  <img class="hidden" src="images/fruit32.png" alt="fruit32" data-name="fruit32">
+  <img class="hidden" src="images/fruit40.png" alt="fruit40" data-name="fruit40">
+  <img class="hidden" src="images/fruit41.png" alt="fruit41" data-name="fruit41">
+  <img class="hidden" src="images/fruit42.png" alt="fruit42" data-name="fruit42">
+  <img class="hidden" src="images/health.png" alt="health" data-name="health">
+  <img class="hidden" src="images/jump0.png" alt="jump0" data-name="jump0">
+  <img class="hidden" src="images/jump1.png" alt="jump1" data-name="jump1">
+  <img class="hidden" src="images/life.png" alt="life" data-name="life">
+  <img class="hidden" src="images/orb0.png" alt="orb0" data-name="orb0">
+  <img class="hidden" src="images/orb1.png" alt="orb1" data-name="orb1">
+  <img class="hidden" src="images/orb2.png" alt="orb2" data-name="orb2">
+  <img class="hidden" src="images/orb3.png" alt="orb3" data-name="orb3">
+  <img class="hidden" src="images/orb4.png" alt="orb4" data-name="orb4">
+  <img class="hidden" src="images/orb5.png" alt="orb5" data-name="orb5">
+  <img class="hidden" src="images/orb6.png" alt="orb6" data-name="orb6">
+  <img class="hidden" src="images/over.png" alt="over" data-name="over">
+  <img class="hidden" src="images/plus.png" alt="plus" data-name="plus">
+  <img class="hidden" src="images/pop00.png" alt="pop00" data-name="pop00">
+  <img class="hidden" src="images/pop01.png" alt="pop01" data-name="pop01">
+  <img class="hidden" src="images/pop02.png" alt="pop02" data-name="pop02">
+  <img class="hidden" src="images/pop03.png" alt="pop03" data-name="pop03">
+  <img class="hidden" src="images/pop04.png" alt="pop04" data-name="pop04">
+  <img class="hidden" src="images/pop05.png" alt="pop05" data-name="pop05">
+  <img class="hidden" src="images/pop06.png" alt="pop06" data-name="pop06">
+  <img class="hidden" src="images/pop10.png" alt="pop10" data-name="pop10">
+  <img class="hidden" src="images/pop11.png" alt="pop11" data-name="pop11">
+  <img class="hidden" src="images/pop12.png" alt="pop12" data-name="pop12">
+  <img class="hidden" src="images/pop13.png" alt="pop13" data-name="pop13">
+  <img class="hidden" src="images/pop14.png" alt="pop14" data-name="pop14">
+  <img class="hidden" src="images/pop15.png" alt="pop15" data-name="pop15">
+  <img class="hidden" src="images/pop16.png" alt="pop16" data-name="pop16">
+  <img class="hidden" src="images/recoil0.png" alt="recoil0" data-name="recoil0">
+  <img class="hidden" src="images/recoil1.png" alt="recoil1" data-name="recoil1">
+  <img class="hidden" src="images/robot000.png" alt="robot000" data-name="robot000">
+  <img class="hidden" src="images/robot001.png" alt="robot001" data-name="robot001">
+  <img class="hidden" src="images/robot002.png" alt="robot002" data-name="robot002">
+  <img class="hidden" src="images/robot003.png" alt="robot003" data-name="robot003">
+  <img class="hidden" src="images/robot004.png" alt="robot004" data-name="robot004">
+  <img class="hidden" src="images/robot005.png" alt="robot005" data-name="robot005">
+  <img class="hidden" src="images/robot006.png" alt="robot006" data-name="robot006">
+  <img class="hidden" src="images/robot007.png" alt="robot007" data-name="robot007">
+  <img class="hidden" src="images/robot010.png" alt="robot010" data-name="robot010">
+  <img class="hidden" src="images/robot011.png" alt="robot011" data-name="robot011">
+  <img class="hidden" src="images/robot012.png" alt="robot012" data-name="robot012">
+  <img class="hidden" src="images/robot013.png" alt="robot013" data-name="robot013">
+  <img class="hidden" src="images/robot014.png" alt="robot014" data-name="robot014">
+  <img class="hidden" src="images/robot015.png" alt="robot015" data-name="robot015">
+  <img class="hidden" src="images/robot016.png" alt="robot016" data-name="robot016">
+  <img class="hidden" src="images/robot017.png" alt="robot017" data-name="robot017">
+  <img class="hidden" src="images/robot100.png" alt="robot100" data-name="robot100">
+  <img class="hidden" src="images/robot101.png" alt="robot101" data-name="robot101">
+  <img class="hidden" src="images/robot102.png" alt="robot102" data-name="robot102">
+  <img class="hidden" src="images/robot103.png" alt="robot103" data-name="robot103">
+  <img class="hidden" src="images/robot104.png" alt="robot104" data-name="robot104">
+  <img class="hidden" src="images/robot105.png" alt="robot105" data-name="robot105">
+  <img class="hidden" src="images/robot106.png" alt="robot106" data-name="robot106">
+  <img class="hidden" src="images/robot107.png" alt="robot107" data-name="robot107">
+  <img class="hidden" src="images/robot110.png" alt="robot110" data-name="robot110">
+  <img class="hidden" src="images/robot111.png" alt="robot111" data-name="robot111">
+  <img class="hidden" src="images/robot112.png" alt="robot112" data-name="robot112">
+  <img class="hidden" src="images/robot113.png" alt="robot113" data-name="robot113">
+  <img class="hidden" src="images/robot114.png" alt="robot114" data-name="robot114">
+  <img class="hidden" src="images/robot115.png" alt="robot115" data-name="robot115">
+  <img class="hidden" src="images/robot116.png" alt="robot116" data-name="robot116">
+  <img class="hidden" src="images/robot117.png" alt="robot117" data-name="robot117">
+  <img class="hidden" src="images/run00.png" alt="run00" data-name="run00">
+  <img class="hidden" src="images/run01.png" alt="run01" data-name="run01">
+  <img class="hidden" src="images/run02.png" alt="run02" data-name="run02">
+  <img class="hidden" src="images/run03.png" alt="run03" data-name="run03">
+  <img class="hidden" src="images/run10.png" alt="run10" data-name="run10">
+  <img class="hidden" src="images/run11.png" alt="run11" data-name="run11">
+  <img class="hidden" src="images/run12.png" alt="run12" data-name="run12">
+  <img class="hidden" src="images/run13.png" alt="run13" data-name="run13">
+  <img class="hidden" src="images/space0.png" alt="space0" data-name="space0">
+  <img class="hidden" src="images/space1.png" alt="space1" data-name="space1">
+  <img class="hidden" src="images/space2.png" alt="space2" data-name="space2">
+  <img class="hidden" src="images/space3.png" alt="space3" data-name="space3">
+  <img class="hidden" src="images/space4.png" alt="space4" data-name="space4">
+  <img class="hidden" src="images/space5.png" alt="space5" data-name="space5">
+  <img class="hidden" src="images/space6.png" alt="space6" data-name="space6">
+  <img class="hidden" src="images/space7.png" alt="space7" data-name="space7">
+  <img class="hidden" src="images/space8.png" alt="space8" data-name="space8">
+  <img class="hidden" src="images/space9.png" alt="space9" data-name="space9">
+  <img class="hidden" src="images/stand0.png" alt="stand0" data-name="stand0">
+  <img class="hidden" src="images/stand1.png" alt="stand1" data-name="stand1">
+  <img class="hidden" src="images/still.png" alt="still" data-name="still">
+  <img class="hidden" src="images/title.png" alt="title" data-name="title">
+  <img class="hidden" src="images/trap00.png" alt="trap00" data-name="trap00">
+  <img class="hidden" src="images/trap01.png" alt="trap01" data-name="trap01">
+  <img class="hidden" src="images/trap02.png" alt="trap02" data-name="trap02">
+  <img class="hidden" src="images/trap03.png" alt="trap03" data-name="trap03">
+  <img class="hidden" src="images/trap04.png" alt="trap04" data-name="trap04">
+  <img class="hidden" src="images/trap05.png" alt="trap05" data-name="trap05">
+  <img class="hidden" src="images/trap06.png" alt="trap06" data-name="trap06">
+  <img class="hidden" src="images/trap07.png" alt="trap07" data-name="trap07">
+  <img class="hidden" src="images/trap10.png" alt="trap10" data-name="trap10">
+  <img class="hidden" src="images/trap11.png" alt="trap11" data-name="trap11">
+  <img class="hidden" src="images/trap12.png" alt="trap12" data-name="trap12">
+  <img class="hidden" src="images/trap13.png" alt="trap13" data-name="trap13">
+  <img class="hidden" src="images/trap14.png" alt="trap14" data-name="trap14">
+  <img class="hidden" src="images/trap15.png" alt="trap15" data-name="trap15">
+  <img class="hidden" src="images/trap16.png" alt="trap16" data-name="trap16">
+  <img class="hidden" src="images/trap17.png" alt="trap17" data-name="trap17">
+</section>
+<section id="soundLoader" class="hidden">
+  <audio class="hidden" controls preload="auto" src="sounds/appear0.ogg" data-name="appear0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/blow0.ogg" data-name="blow0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/blow1.ogg" data-name="blow1">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/blow2.ogg" data-name="blow2">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/blow3.ogg" data-name="blow3">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/bonus0.ogg" data-name="bonus0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/die0.ogg" data-name="die0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/jump0.ogg" data-name="jump0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/land0.ogg" data-name="land0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/land1.ogg" data-name="land1">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/land2.ogg" data-name="land2">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/land3.ogg" data-name="land3">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/laser0.ogg" data-name="laser0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/laser1.ogg" data-name="laser1">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/laser2.ogg" data-name="laser2">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/laser3.ogg" data-name="laser3">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/level0.ogg" data-name="level0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/life0.ogg" data-name="life0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/ouch0.ogg" data-name="ouch0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/ouch1.ogg" data-name="ouch1">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/ouch2.ogg" data-name="ouch2">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/ouch3.ogg" data-name="ouch3">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/over0.ogg" data-name="over0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/pop0.ogg" data-name="pop0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/pop1.ogg" data-name="pop1">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/pop2.ogg" data-name="pop2">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/pop3.ogg" data-name="pop3">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/score0.ogg" data-name="score0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/trap0.ogg" data-name="trap0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/trap1.ogg" data-name="trap1">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/trap2.ogg" data-name="trap2">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/trap3.ogg" data-name="trap3">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/vanish0.ogg" data-name="vanish0">Your browser does not support the audio element.</audio>
+</section>
+<section id="musicLoader" class="hidden">
+  <audio class="hidden" controls preload="auto" src="music/theme.ogg" data-name="theme">Your browser does not support the audio element.</audio>
+</section>
+
+<main>
+<h1>Cavern</h1>
+
+<canvas id="screen">
+The game screen appears here if your browser supports the Canvas API.
+</canvas>
+<section id="controls">
+  <button type="button" id="reset">Reset</button>
+  <button type="button" id="pause">Pause</button>
+</section>
+
+<h2>Attribution</h2>
+
+<p><a href="https://wireframe.raspberrypi.org/books/code-the-classics1">Code the Classics – Volume 1</a>.</p>
+
+<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported</a>.</p>
+
+<h2>Original Python code</h2>
+
+<pre id="original"><code>
+from random import choice, randint, random, shuffle
+from enum import Enum
+import pygame, pgzero, pgzrun, sys
+
+# Check Python version number. sys.version_info gives version as a tuple, e.g. if (3,7,2,&#x27;final&#x27;,0) for version 3.7.2.
+# Unlike many languages, Python can compare two tuples in the same way that you can compare numbers.
+if sys.version_info &lt; (3,5):
+    print(&quot;This game requires at least version 3.5 of Python. Please download it from www.python.org&quot;)
+    sys.exit()
+
+# Check Pygame Zero version. This is a bit trickier because Pygame Zero only lets us get its version number as a string.
+# So we have to split the string into a list, using &#x27;.&#x27; as the character to split on. We convert each element of the
+# version number into an integer - but only if the string contains numbers and nothing else, because it&#x27;s possible for
+# a component of the version to contain letters as well as numbers (e.g. &#x27;2.0.dev0&#x27;)
+# We&#x27;re using a Python feature called list comprehension - this is explained in the Bubble Bobble/Cavern chapter.
+pgzero_version = [int(s) if s.isnumeric() else s for s in pgzero.__version__.split(&#x27;.&#x27;)]
+if pgzero_version &lt; [1,2]:
+    print(&quot;This game requires at least version 1.2 of Pygame Zero. You have version {0}. Please upgrade using the command &#x27;pip3 install --upgrade pgzero&#x27;&quot;.format(pgzero.__version__))
+    sys.exit()
+
+# Set up constants
+WIDTH = 800
+HEIGHT = 480
+TITLE = &quot;Cavern&quot;
+
+NUM_ROWS = 18
+NUM_COLUMNS = 28
+
+LEVEL_X_OFFSET = 50
+GRID_BLOCK_SIZE = 25
+
+ANCHOR_CENTRE = (&quot;center&quot;, &quot;center&quot;)
+ANCHOR_CENTRE_BOTTOM = (&quot;center&quot;, &quot;bottom&quot;)
+
+LEVELS = [ [&quot;XXXXX     XXXXXXXX     XXXXX&quot;,
+            &quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,
+            &quot;   XXXXXXX        XXXXXXX   &quot;,
+            &quot;&quot;,&quot;&quot;,&quot;&quot;,
+            &quot;   XXXXXXXXXXXXXXXXXXXXXX   &quot;,
+            &quot;&quot;,&quot;&quot;,&quot;&quot;,
+            &quot;XXXXXXXXX          XXXXXXXXX&quot;,
+            &quot;&quot;,&quot;&quot;,&quot;&quot;],
+
+           [&quot;XXXX    XXXXXXXXXXXX    XXXX&quot;,
+            &quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,
+            &quot;    XXXXXXXXXXXXXXXXXXXX    &quot;,
+            &quot;&quot;,&quot;&quot;,&quot;&quot;,
+            &quot;XXXXXX                XXXXXX&quot;,
+            &quot;      X              X      &quot;,
+            &quot;       X            X       &quot;,
+            &quot;        X          X        &quot;,
+            &quot;         X        X         &quot;,
+            &quot;&quot;,&quot;&quot;,&quot;&quot;],
+
+           [&quot;XXXX    XXXX    XXXX    XXXX&quot;,
+            &quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,
+            &quot;  XXXXXXXX        XXXXXXXX  &quot;,
+            &quot;&quot;,&quot;&quot;,&quot;&quot;,
+            &quot;XXXX      XXXXXXXX      XXXX&quot;,
+            &quot;&quot;,&quot;&quot;,&quot;&quot;,
+            &quot;    XXXXXX        XXXXXX    &quot;,
+            &quot;&quot;,&quot;&quot;,&quot;&quot;]]
+
+def block(x,y):
+    # Is there a level grid block at these coordinates?
+    grid_x = (x - LEVEL_X_OFFSET) // GRID_BLOCK_SIZE
+    grid_y = y // GRID_BLOCK_SIZE
+    if grid_y &gt; 0 and grid_y &lt; NUM_ROWS:
+        row = game.grid[grid_y]
+        return grid_x &gt;= 0 and grid_x &lt; NUM_COLUMNS and len(row) &gt; 0 and row[grid_x] != &quot; &quot;
+    else:
+        return False
+
+def sign(x):
+    # Returns -1 or 1 depending on whether number is positive or negative
+    return -1 if x &lt; 0 else 1
+
+class CollideActor(Actor):
+    def __init__(self, pos, anchor=ANCHOR_CENTRE):
+        super().__init__(&quot;blank&quot;, pos, anchor)
+
+    def move(self, dx, dy, speed):
+        new_x, new_y = int(self.x), int(self.y)
+
+        # Movement is done 1 pixel at a time, which ensures we don&#x27;t get embedded into a wall we&#x27;re moving towards
+        for i in range(speed):
+            new_x, new_y = new_x + dx, new_y + dy
+
+            if new_x &lt; 70 or new_x &gt; 730:
+                # Collided with edge of level
+                return True
+
+            # Normally you don&#x27;t need brackets surrounding the condition for an if statement (unlike many other
+            # languages), but in the case where the condition is split into multiple lines, using brackets removes
+            # the need to use the \ symbol at the end of each line.
+            # The code below checks to see if we&#x27;re position we&#x27;re trying to move into overlaps with a block. We only
+            # need to check the direction we&#x27;re actually moving in. So first, we check to see if we&#x27;re moving down
+            # (dy &gt; 0). If that&#x27;s the case, we then check to see if the proposed new y coordinate is a multiple of
+            # GRID_BLOCK_SIZE. If it is, that means we&#x27;re directly on top of a place where a block might be. If that&#x27;s
+            # also true, we then check to see if there is actually a block at the given position. If there&#x27;s a block
+            # there, we return True and don&#x27;t update the object to the new position.
+            # For movement to the right, it&#x27;s the same except we check to ensure that the new x coordinate is a multiple
+            # of GRID_BLOCK_SIZE. For moving left, we check to see if the new x coordinate is the last (right-most)
+            # pixel of a grid block.
+            # Note that we don&#x27;t check for collisions when the player is moving up.
+            if ((dy &gt; 0 and new_y % GRID_BLOCK_SIZE == 0 or
+                 dx &gt; 0 and new_x % GRID_BLOCK_SIZE == 0 or
+                 dx &lt; 0 and new_x % GRID_BLOCK_SIZE == GRID_BLOCK_SIZE-1)
+                and block(new_x, new_y)):
+                    return True
+
+            # We only update the object&#x27;s position if there wasn&#x27;t a block there.
+            self.pos = new_x, new_y
+
+        # Didn&#x27;t collide with block or edge of level
+        return False
+
+class Orb(CollideActor):
+    MAX_TIMER = 250
+
+    def __init__(self, pos, dir_x):
+        super().__init__(pos)
+
+        # Orbs are initially blown horizontally, then start floating upwards
+        self.direction_x = dir_x
+        self.floating = False
+        self.trapped_enemy_type = None      # Number representing which type of enemy is trapped in this bubble
+        self.timer = -1
+        self.blown_frames = 6  # Number of frames during which we will be pushed horizontally
+
+    def hit_test(self, bolt):
+        # Check for collision with a bolt
+        collided = self.collidepoint(bolt.pos)
+        if collided:
+            self.timer = Orb.MAX_TIMER - 1
+        return collided
+
+    def update(self):
+        self.timer += 1
+
+        if self.floating:
+            # Float upwards
+            self.move(0, -1, randint(1, 2))
+        else:
+            # Move horizontally
+            if self.move(self.direction_x, 0, 4):
+                # If we hit a block, start floating
+                self.floating = True
+
+        if self.timer == self.blown_frames:
+            self.floating = True
+        elif self.timer &gt;= Orb.MAX_TIMER or self.y &lt;= -40:
+            # Pop if our lifetime has run out or if we have gone off the top of the screen
+            game.pops.append(Pop(self.pos, 1))
+            if self.trapped_enemy_type != None:
+                # trapped_enemy_type is either zero or one. A value of one means there&#x27;s a chance of creating a
+                # powerup such as an extra life or extra health
+                game.fruits.append(Fruit(self.pos, self.trapped_enemy_type))
+            game.play_sound(&quot;pop&quot;, 4)
+
+        if self.timer &lt; 9:
+            # Orb grows to full size over the course of 9 frames - the animation frame updating every 3 frames
+            self.image = &quot;orb&quot; + str(self.timer // 3)
+        else:
+            if self.trapped_enemy_type != None:
+                self.image = &quot;trap&quot; + str(self.trapped_enemy_type) + str((self.timer // 4) % 8)
+            else:
+                self.image = &quot;orb&quot; + str(3 + (((self.timer - 9) // 8) % 4))
+
+class Bolt(CollideActor):
+    SPEED = 7
+
+    def __init__(self, pos, dir_x):
+        super().__init__(pos)
+
+        self.direction_x = dir_x
+        self.active = True
+
+    def update(self):
+        # Move horizontally and check to see if we&#x27;ve collided with a block
+        if self.move(self.direction_x, 0, Bolt.SPEED):
+            # Collided
+            self.active = False
+        else:
+            # We didn&#x27;t collide with a block - check to see if we collided with an orb or the player
+            for obj in game.orbs + [game.player]:
+                if obj and obj.hit_test(self):
+                    self.active = False
+                    break
+
+        direction_idx = &quot;1&quot; if self.direction_x &gt; 0 else &quot;0&quot;
+        anim_frame = str((game.timer // 4) % 2)
+        self.image = &quot;bolt&quot; + direction_idx + anim_frame
+
+class Pop(Actor):
+    def __init__(self, pos, type):
+        super().__init__(&quot;blank&quot;, pos)
+
+        self.type = type
+        self.timer = -1
+
+    def update(self):
+        self.timer += 1
+        self.image = &quot;pop&quot; + str(self.type) + str(self.timer // 2)
+
+class GravityActor(CollideActor):
+    MAX_FALL_SPEED = 10
+
+    def __init__(self, pos):
+        super().__init__(pos, ANCHOR_CENTRE_BOTTOM)
+
+        self.vel_y = 0
+        self.landed = False
+
+    def update(self, detect=True):
+        # Apply gravity, without going over the maximum fall speed
+        self.vel_y = min(self.vel_y + 1, GravityActor.MAX_FALL_SPEED)
+
+        # The detect parameter indicates whether we should check for collisions with blocks as we fall. Normally we
+        # want this to be the case - hence why this parameter is optional, and is True by default. If the player is
+        # in the process of losing a life, however, we want them to just fall out of the level, so False is passed
+        # in this case.
+        if detect:
+            # Move vertically in the appropriate direction, at the appropriate speed
+            if self.move(0, sign(self.vel_y), abs(self.vel_y)):
+                # If move returned True, we must have landed on a block.
+                # Note that move doesn&#x27;t apply any collision detection when the player is moving up - only down
+                self.vel_y = 0
+                self.landed = True
+
+            if self.top &gt;= HEIGHT:
+                # Fallen off bottom - reappear at top
+                self.y = 1
+        else:
+            # Collision detection disabled - just update the Y coordinate without any further checks
+            self.y += self.vel_y
+
+# Class for pickups including fruit, extra health and extra life
+class Fruit(GravityActor):
+    APPLE = 0
+    RASPBERRY = 1
+    LEMON = 2
+    EXTRA_HEALTH = 3
+    EXTRA_LIFE = 4
+
+    def __init__(self, pos, trapped_enemy_type=0):
+        super().__init__(pos)
+
+        # Choose which type of fruit we&#x27;re going to be.
+        if trapped_enemy_type == Robot.TYPE_NORMAL:
+            self.type = choice([Fruit.APPLE, Fruit.RASPBERRY, Fruit.LEMON])
+        else:
+            # If trapped_enemy_type is 1, it means this fruit came from bursting an orb containing the more dangerous type
+            # of enemy. In this case there is a chance of getting an extra help or extra life power up
+            # We create a list containing the possible types of fruit, in proportions based on the probability we want
+            # each type of fruit to be chosen
+            types = 10 * [Fruit.APPLE, Fruit.RASPBERRY, Fruit.LEMON]    # Each of these appear in the list 10 times
+            types += 9 * [Fruit.EXTRA_HEALTH]                           # This appears 9 times
+            types += [Fruit.EXTRA_LIFE]                                 # This only appears once
+            self.type = choice(types)                                   # Randomly choose one from the list
+
+        self.time_to_live = 500 # Counts down to zero
+
+    def update(self):
+        super().update()
+
+        # Does the player exist, and are they colliding with us?
+        if game.player and game.player.collidepoint(self.center):
+            if self.type == Fruit.EXTRA_HEALTH:
+                game.player.health = min(3, game.player.health + 1)
+                game.play_sound(&quot;bonus&quot;)
+            elif self.type == Fruit.EXTRA_LIFE:
+                game.player.lives += 1
+                game.play_sound(&quot;bonus&quot;)
+            else:
+                game.player.score += (self.type + 1) * 100
+                game.play_sound(&quot;score&quot;)
+
+            self.time_to_live = 0   # Disappear
+        else:
+            self.time_to_live -= 1
+
+        if self.time_to_live &lt;= 0:
+            # Create &#x27;pop&#x27; animation
+            game.pops.append(Pop((self.x, self.y - 27), 0))
+
+        anim_frame = str([0, 1, 2, 1][(game.timer // 6) % 4])
+        self.image = &quot;fruit&quot; + str(self.type) + anim_frame
+
+class Player(GravityActor):
+    def __init__(self):
+        # Call constructor of parent class. Initial pos is 0,0 but reset is always called straight afterwards which
+        # will set the actual starting position.
+        super().__init__((0, 0))
+
+        self.lives = 2
+        self.score = 0
+
+    def reset(self):
+        self.pos = (WIDTH / 2, 100)
+        self.vel_y = 0
+        self.direction_x = 1            # -1 = left, 1 = right
+        self.fire_timer = 0
+        self.hurt_timer = 100   # Invulnerable for this many frames
+        self.health = 3
+        self.blowing_orb = None
+
+    def hit_test(self, other):
+        # Check for collision between player and bolt - called from Bolt.update. Also check hurt_timer - after being hurt,
+        # there is a period during which the player cannot be hurt again
+        if self.collidepoint(other.pos) and self.hurt_timer &lt; 0:
+            # Player loses 1 health, is knocked in the direction the bolt had been moving, and can&#x27;t be hurt again
+            # for a while
+            self.hurt_timer = 200
+            self.health -= 1
+            self.vel_y = -12
+            self.landed = False
+            self.direction_x = other.direction_x
+            if self.health &gt; 0:
+                game.play_sound(&quot;ouch&quot;, 4)
+            else:
+                game.play_sound(&quot;die&quot;)
+            return True
+        else:
+            return False
+
+    def update(self):
+        # Call GravityActor.update - parameter is whether we want to perform collision detection as we fall. If health
+        # is zero, we want the player to just fall out of the level
+        super().update(self.health &gt; 0)
+
+        self.fire_timer -= 1
+        self.hurt_timer -= 1
+
+        if self.landed:
+            # Hurt timer starts at 200, but drops to 100 once the player has landed
+            self.hurt_timer = min(self.hurt_timer, 100)
+
+        if self.hurt_timer &gt; 100:
+            # We&#x27;ve just been hurt. Either carry out the sideways motion from being knocked by a bolt, or if health is
+            # zero, we&#x27;re dropping out of the level, so check for our sprite reaching a certain Y coordinate before
+            # reducing our lives count and responding the player. We check for the Y coordinate being the screen height
+            # plus 50%, rather than simply the screen height, because the former effectively gives us a short delay
+            # before the player respawns.
+            if self.health &gt; 0:
+                self.move(self.direction_x, 0, 4)
+            else:
+                if self.top &gt;= HEIGHT*1.5:
+                    self.lives -= 1
+                    self.reset()
+        else:
+            # We&#x27;re not hurt
+            # Get keyboard input. dx represents the direction the player is facing
+            dx = 0
+            if keyboard.left:
+                dx = -1
+            elif keyboard.right:
+                dx = 1
+
+            if dx != 0:
+                self.direction_x = dx
+
+                # If we haven&#x27;t just fired an orb, carry out horizontal movement
+                if self.fire_timer &lt; 10:
+                    self.move(dx, 0, 4)
+
+            # Do we need to create a new orb? Space must have been pressed and released, the minimum time between
+            # orbs must have passed, and there is a limit of 5 orbs.
+            if space_pressed() and self.fire_timer &lt;= 0 and len(game.orbs) &lt; 5:
+                # x position will be 38 pixels in front of the player position, while ensuring it is within the
+                # bounds of the level
+                x = min(730, max(70, self.x + self.direction_x * 38))
+                y = self.y - 35
+                self.blowing_orb = Orb((x,y), self.direction_x)
+                game.orbs.append(self.blowing_orb)
+                game.play_sound(&quot;blow&quot;, 4)
+                self.fire_timer = 20
+
+            if keyboard.up and self.vel_y == 0 and self.landed:
+                # Jump
+                self.vel_y = -16
+                self.landed = False
+                game.play_sound(&quot;jump&quot;)
+
+        # Holding down space causes the current orb (if there is one) to be blown further
+        if keyboard.space:
+            if self.blowing_orb:
+                # Increase blown distance up to a maximum of 120
+                self.blowing_orb.blown_frames += 4
+                if self.blowing_orb.blown_frames &gt;= 120:
+                    # Can&#x27;t be blown any further
+                    self.blowing_orb = None
+        else:
+            # If we let go of space, we relinquish control over the current orb - it can&#x27;t be blown any further
+            self.blowing_orb = None
+
+        # Set sprite image. If we&#x27;re currently hurt, the sprite will flash on and off on alternate frames.
+        self.image = &quot;blank&quot;
+        if self.hurt_timer &lt;= 0 or self.hurt_timer % 2 == 1:
+            dir_index = &quot;1&quot; if self.direction_x &gt; 0 else &quot;0&quot;
+            if self.hurt_timer &gt; 100:
+                if self.health &gt; 0:
+                    self.image = &quot;recoil&quot; + dir_index
+                else:
+                    self.image = &quot;fall&quot; + str((game.timer // 4) % 2)
+            elif self.fire_timer &gt; 0:
+                self.image = &quot;blow&quot; + dir_index
+            elif dx == 0:
+                self.image = &quot;still&quot;
+            else:
+                self.image = &quot;run&quot; + dir_index + str((game.timer // 8) % 4)
+
+class Robot(GravityActor):
+    TYPE_NORMAL = 0
+    TYPE_AGGRESSIVE = 1
+
+    def __init__(self, pos, type):
+        super().__init__(pos)
+
+        self.type = type
+
+        self.speed = randint(1, 3)
+        self.direction_x = 1
+        self.alive = True
+
+        self.change_dir_timer = 0
+        self.fire_timer = 100
+
+    def update(self):
+        super().update()
+
+        self.change_dir_timer -= 1
+        self.fire_timer += 1
+
+        # Move in current direction - turn around if we hit a wall
+        if self.move(self.direction_x, 0, self.speed):
+            self.change_dir_timer = 0
+
+        if self.change_dir_timer &lt;= 0:
+            # Randomly choose a direction to move in
+            # If there&#x27;s a player, there&#x27;s a two thirds chance that we&#x27;ll move towards them
+            directions = [-1, 1]
+            if game.player:
+                directions.append(sign(game.player.x - self.x))
+            self.direction_x = choice(directions)
+            self.change_dir_timer = randint(100, 250)
+
+        # The more powerful type of robot can deliberately shoot at orbs - turning to face them if necessary
+        if self.type == Robot.TYPE_AGGRESSIVE and self.fire_timer &gt;= 24:
+            # Go through all orbs to see if any can be shot at
+            for orb in game.orbs:
+                # The orb must be at our height, and within 200 pixels on the x axis
+                if orb.y &gt;= self.top and orb.y &lt; self.bottom and abs(orb.x - self.x) &lt; 200:
+                    self.direction_x = sign(orb.x - self.x)
+                    self.fire_timer = 0
+                    break
+
+        # Check to see if we can fire at player
+        if self.fire_timer &gt;= 12:
+            # Random chance of firing each frame. Likelihood increases 10 times if player is at the same height as us
+            fire_probability = game.fire_probability()
+            if game.player and self.top &lt; game.player.bottom and self.bottom &gt; game.player.top:
+                fire_probability *= 10
+            if random() &lt; fire_probability:
+                self.fire_timer = 0
+                game.play_sound(&quot;laser&quot;, 4)
+
+        elif self.fire_timer == 8:
+            #  Once the fire timer has been set to 0, it will count up - frame 8 of the animation is when the actual bolt is fired
+            game.bolts.append(Bolt((self.x + self.direction_x * 20, self.y - 38), self.direction_x))
+
+        # Am I colliding with an orb? If so, become trapped by it
+        for orb in game.orbs:
+            if orb.trapped_enemy_type == None and self.collidepoint(orb.center):
+                self.alive = False
+                orb.floating = True
+                orb.trapped_enemy_type = self.type
+                game.play_sound(&quot;trap&quot;, 4)
+                break
+
+        # Choose and set sprite image
+        direction_idx = &quot;1&quot; if self.direction_x &gt; 0 else &quot;0&quot;
+        image = &quot;robot&quot; + str(self.type) + direction_idx
+        if self.fire_timer &lt; 12:
+            image += str(5 + (self.fire_timer // 4))
+        else:
+            image += str(1 + ((game.timer // 4) % 4))
+        self.image = image
+
+
+class Game:
+    def __init__(self, player=None):
+        self.player = player
+        self.level_colour = -1
+        self.level = -1
+
+        self.next_level()
+
+    def fire_probability(self):
+        # Likelihood per frame of each robot firing a bolt - they fire more often on higher levels
+        return 0.001 + (0.0001 * min(100, self.level))
+
+    def max_enemies(self):
+        # Maximum number of enemies on-screen at once – increases as you progress through the levels
+        return min((self.level + 6) // 2, 8)
+
+    def next_level(self):
+        self.level_colour = (self.level_colour + 1) % 4
+        self.level += 1
+
+        # Set up grid
+        self.grid = LEVELS[self.level % len(LEVELS)]
+
+        # The last row is a copy of the first row
+        # Note that we don&#x27;t do &#x27;self.grid.append(self.grid[0])&#x27;. That would alter the original data in the LEVELS list
+        # Instead, what this line does is create a brand new list, which is distinct from the list in LEVELS, and
+        # consists of the level data plus the first row of the level. It&#x27;s also interesting to note that you can&#x27;t
+        # do &#x27;self.grid += [self.grid[0]]&#x27;, because that&#x27;s equivalent to using append.
+        # As an alternative, we could have copied the list on the line below &#x27;# Set up grid&#x27;, by writing
+        # &#x27;self.grid = list(LEVELS...&#x27;, then used append or += on the line below.
+        self.grid = self.grid + [self.grid[0]]
+
+        self.timer = -1
+
+        if self.player:
+            self.player.reset()
+
+        self.fruits = []
+        self.bolts = []
+        self.enemies = []
+        self.pops = []
+        self.orbs = []
+
+        # At the start of each level we create a list of pending enemies - enemies to be created as the level plays out.
+        # When this list is empty, we have no more enemies left to create, and the level will end once we have destroyed
+        # all enemies currently on-screen. Each element of the list will be either 0 or 1, where 0 corresponds to
+        # a standard enemy, and 1 is a more powerful enemy.
+        # First we work out how many total enemies and how many of each type to create
+        num_enemies = 10 + self.level
+        num_strong_enemies = 1 + int(self.level / 1.5)
+        num_weak_enemies = num_enemies - num_strong_enemies
+
+        # Then we create the list of pending enemies, using Python&#x27;s ability to create a list by multiplying a list
+        # by a number, and by adding two lists together. The resulting list will consist of a series of copies of
+        # the number 1 (the number depending on the value of num_strong_enemies), followed by a series of copies of
+        # the number zero, based on num_weak_enemies.
+        self.pending_enemies = num_strong_enemies * [Robot.TYPE_AGGRESSIVE] + num_weak_enemies * [Robot.TYPE_NORMAL]
+
+        # Finally we shuffle the list so that the order is randomised (using Python&#x27;s random.shuffle function)
+        shuffle(self.pending_enemies)
+
+        self.play_sound(&quot;level&quot;, 1)
+
+    def get_robot_spawn_x(self):
+        # Find a spawn location for a robot, by checking the top row of the grid for empty spots
+        # Start by choosing a random grid column
+        r = randint(0, NUM_COLUMNS-1)
+
+        for i in range(NUM_COLUMNS):
+            # Keep looking at successive columns (wrapping round if we go off the right-hand side) until
+            # we find one where the top grid column is unoccupied
+            grid_x = (r+i) % NUM_COLUMNS
+            if self.grid[0][grid_x] == &#x27; &#x27;:
+                return GRID_BLOCK_SIZE * grid_x + LEVEL_X_OFFSET + 12
+
+        # If we failed to find an opening in the top grid row (shouldn&#x27;t ever happen), just spawn the enemy
+        # in the centre of the screen
+        return WIDTH/2
+
+    def update(self):
+        self.timer += 1
+
+        # Update all objects
+        for obj in self.fruits + self.bolts + self.enemies + self.pops + [self.player] + self.orbs:
+            if obj:
+                obj.update()
+
+        # Use list comprehensions to remove objects which are no longer wanted from the lists. For example, we recreate
+        # self.fruits such that it contains all existing fruits except those whose time_to_live counter has reached zero
+        self.fruits = [f for f in self.fruits if f.time_to_live &gt; 0]
+        self.bolts = [b for b in self.bolts if b.active]
+        self.enemies = [e for e in self.enemies if e.alive]
+        self.pops = [p for p in self.pops if p.timer &lt; 12]
+        self.orbs = [o for o in self.orbs if o.timer &lt; 250 and o.y &gt; -40]
+
+        # Every 100 frames, create a random fruit (unless there are no remaining enemies on this level)
+        if self.timer % 100 == 0 and len(self.pending_enemies + self.enemies) &gt; 0:
+            # Create fruit at random position
+            self.fruits.append(Fruit((randint(70, 730), randint(75, 400))))
+
+        # Every 81 frames, if there is at least 1 pending enemy, and the number of active enemies is below the current
+        # level&#x27;s maximum enemies, create a robot
+        if self.timer % 81 == 0 and len(self.pending_enemies) &gt; 0 and len(self.enemies) &lt; self.max_enemies():
+            # Retrieve and remove the last element from the pending enemies list
+            robot_type = self.pending_enemies.pop()
+            pos = (self.get_robot_spawn_x(), -30)
+            self.enemies.append(Robot(pos, robot_type))
+
+        # End level if there are no enemies remaining to be created, no existing enemies, no fruit, no popping orbs,
+        # and no orbs containing trapped enemies. (We don&#x27;t want to include orbs which don&#x27;t contain trapped enemies,
+        # as the level would never end if the player kept firing new orbs)
+        if len(self.pending_enemies + self.fruits + self.enemies + self.pops) == 0:
+            if len([orb for orb in self.orbs if orb.trapped_enemy_type != None]) == 0:
+                self.next_level()
+
+    def draw(self):
+        # Draw appropriate background for this level
+        screen.blit(&quot;bg%d&quot; % self.level_colour, (0, 0))
+
+        block_sprite = &quot;block&quot; + str(self.level % 4)
+
+        # Display blocks
+        for row_y in range(NUM_ROWS):
+            row = self.grid[row_y]
+            if len(row) &gt; 0:
+                # Initial offset - large blocks at edge of level are 50 pixels wide
+                x = LEVEL_X_OFFSET
+                for block in row:
+                    if block != &#x27; &#x27;:
+                        screen.blit(block_sprite, (x, row_y * GRID_BLOCK_SIZE))
+                    x += GRID_BLOCK_SIZE
+
+        # Draw all objects
+        all_objs = self.fruits + self.bolts + self.enemies + self.pops + self.orbs
+        all_objs.append(self.player)
+        for obj in all_objs:
+            if obj:
+                obj.draw()
+
+    def play_sound(self, name, count=1):
+        # Some sounds have multiple varieties. If count &gt; 1, we&#x27;ll randomly choose one from those
+        # We don&#x27;t play any sounds if there is no player (e.g. if we&#x27;re on the menu)
+        if self.player:
+            try:
+                # Pygame Zero allows you to write things like &#x27;sounds.explosion.play()&#x27;
+                # This automatically loads and plays a file named &#x27;explosion.wav&#x27; (or .ogg) from the sounds folder (if
+                # such a file exists)
+                # But what if you have files named &#x27;explosion0.ogg&#x27; to &#x27;explosion5.ogg&#x27; and want to randomly choose
+                # one of them to play? You can generate a string such as &#x27;explosion3&#x27;, but to use such a string
+                # to access an attribute of Pygame Zero&#x27;s sounds object, we must use Python&#x27;s built-in function getattr
+                sound = getattr(sounds, name + str(randint(0, count - 1)))
+                sound.play()
+            except Exception as e:
+                # If no such sound file exists, print the name
+                print(e)
+
+# Widths of the letters A to Z in the font images
+CHAR_WIDTH = [27, 26, 25, 26, 25, 25, 26, 25, 12, 26, 26, 25, 33, 25, 26,
+              25, 27, 26, 26, 25, 26, 26, 38, 25, 25, 25]
+
+def char_width(char):
+    # Return width of given character. For characters other than the letters A to Z (i.e. space, and the digits 0 to 9),
+    # the width of the letter A is returned. ord gives the ASCII/Unicode code for the given character.
+    index = max(0, ord(char) - 65)
+    return CHAR_WIDTH[index]
+
+def draw_text(text, y, x=None):
+    if x == None:
+        # If no X pos specified, draw text in centre of the screen - must first work out total width of text
+        x = (WIDTH - sum([char_width(c) for c in text])) // 2
+
+    for char in text:
+        screen.blit(&quot;font0&quot;+str(ord(char)), (x, y))
+        x += char_width(char)
+
+IMAGE_WIDTH = {&quot;life&quot;:44, &quot;plus&quot;:40, &quot;health&quot;:40}
+
+def draw_status():
+    # Display score, right-justified at edge of screen
+    number_width = CHAR_WIDTH[0]
+    s = str(game.player.score)
+    draw_text(s, 451, WIDTH - 2 - (number_width * len(s)))
+
+    # Display level number
+    draw_text(&quot;LEVEL &quot; + str(game.level + 1), 451)
+
+    # Display lives and health
+    # We only display a maximum of two lives - if there are more than two, a plus symbol is displayed
+    lives_health = [&quot;life&quot;] * min(2, game.player.lives)
+    if game.player.lives &gt; 2:
+        lives_health.append(&quot;plus&quot;)
+    if game.player.lives &gt;= 0:
+        lives_health += [&quot;health&quot;] * game.player.health
+
+    x = 0
+    for image in lives_health:
+        screen.blit(image, (x, 450))
+        x += IMAGE_WIDTH[image]
+
+# Is the space bar currently being pressed down?
+space_down = False
+
+# Has the space bar just been pressed? i.e. gone from not being pressed, to being pressed
+def space_pressed():
+    global space_down
+    if keyboard.space:
+        if space_down:
+            # Space was down previous frame, and is still down
+            return False
+        else:
+            # Space wasn&#x27;t down previous frame, but now is
+            space_down = True
+            return True
+    else:
+        space_down = False
+        return False
+
+# Pygame Zero calls the update and draw functions each frame
+
+class State(Enum):
+    MENU = 1
+    PLAY = 2
+    GAME_OVER = 3
+
+
+def update():
+    global state, game
+
+    if state == State.MENU:
+        if space_pressed():
+            # Switch to play state, and create a new Game object, passing it a new Player object to use
+            state = State.PLAY
+            game = Game(Player())
+        else:
+            game.update()
+
+    elif state == State.PLAY:
+        if game.player.lives &lt; 0:
+            game.play_sound(&quot;over&quot;)
+            state = State.GAME_OVER
+        else:
+            game.update()
+
+    elif state == State.GAME_OVER:
+        if space_pressed():
+            # Switch to menu state, and create a new game object without a player
+            state = State.MENU
+            game = Game()
+
+def draw():
+    game.draw()
+
+    if state == State.MENU:
+        # Draw title screen
+        screen.blit(&quot;title&quot;, (0, 0))
+
+        # Draw &quot;Press SPACE&quot; animation, which has 10 frames numbered 0 to 9
+        # The first part gives us a number between 0 and 159, based on the game timer
+        # Dividing by 4 means we go to a new animation frame every 4 frames
+        # We enclose this calculation in the min function, with the other argument being 9, which results in the
+        # animation staying on frame 9 for three quarters of the time. Adding 40 to the game timer is done to alter
+        # which stage the animation is at when the game first starts
+        anim_frame = min(((game.timer + 40) % 160) // 4, 9)
+        screen.blit(&quot;space&quot; + str(anim_frame), (130, 280))
+
+    elif state == State.PLAY:
+        draw_status()
+
+    elif state == State.GAME_OVER:
+        draw_status()
+        # Display &quot;Game Over&quot; image
+        screen.blit(&quot;over&quot;, (0, 0))
+
+# Set up sound system and start music
+try:
+    pygame.mixer.quit()
+    pygame.mixer.init(44100, -16, 2, 1024)
+
+    music.play(&quot;theme&quot;)
+    music.set_volume(0.3)
+except:
+    # If an error occurs, just ignore it
+    pass
+
+
+
+# Set the initial game state
+state = State.MENU
+
+# Create a new Game object, without a Player object
+game = Game()
+
+pgzrun.go()
+</code></pre>
+</main>
+
+<script>
+// Set up constants
+WIDTH = 800;
+HEIGHT = 480;
+TITLE = "Cavern";
+
+const NUM_ROWS = 18;
+const NUM_COLUMNS = 28;
+
+const LEVEL_X_OFFSET = 50;
+const GRID_BLOCK_SIZE = 25;
+
+const LEVELS = [ ["XXXXX     XXXXXXXX     XXXXX",
+                  "","","","",
+                  "   XXXXXXX        XXXXXXX   ",
+                  "","","",
+                  "   XXXXXXXXXXXXXXXXXXXXXX   ",
+                  "","","",
+                  "XXXXXXXXX          XXXXXXXXX",
+                  "","",""],
+
+                 ["XXXX    XXXXXXXXXXXX    XXXX",
+                  "","","","",
+                  "    XXXXXXXXXXXXXXXXXXXX    ",
+                  "","","",
+                  "XXXXXX                XXXXXX",
+                  "      X              X      ",
+                  "       X            X       ",
+                  "        X          X        ",
+                  "         X        X         ",
+                  "","",""],
+
+                 ["XXXX    XXXX    XXXX    XXXX",
+                  "","","","",
+                  "  XXXXXXXX        XXXXXXXX  ",
+                  "","","",
+                  "XXXX      XXXXXXXX      XXXX",
+                  "","","",
+                  "    XXXXXX        XXXXXX    ",
+                  "","",""]];
+
+/*
+ * Return a random integer N such that min <= N < max.
+ */
+function getRandomInteger(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor((Math.random() * (max - min)) + min);
+}
+
+/*
+ * Shuffle Array x in place.
+ */
+function shuffle(x) {
+  let j, temp;
+  for (let i = x.length - 1; i > 0; i--) {
+    // pick an element in x[:i+1] with which to exchange x[i]
+    j = getRandomInteger(0, i + 1);
+    temp = x[i];
+    x[i] = x[j];
+    x[j] = temp;
+  }
+}
+
+/*
+ * Is there a level grid block at these coordinates?
+ */
+function block(x, y) {
+  let grid_x = Math.floor((x - LEVEL_X_OFFSET) / GRID_BLOCK_SIZE),
+      grid_y = Math.floor(y / GRID_BLOCK_SIZE),
+      row;
+  if ((grid_y > 0) && (grid_y < NUM_ROWS)) {
+    row = game.grid[grid_y];
+    return ((grid_x >= 0) && (grid_x < NUM_COLUMNS) && (row.length > 0) && (row.substring(grid_x, grid_x + 1) !== " "));
+  }
+  else {
+    return false;
+  }
+}
+
+/*
+ * Returns -1 or 1 depending on whether number is positive or negative
+ */
+function sign(x) {
+  return (x < 0) ? -1: 1;
+}
+
+class CollideActor extends Actor {
+  constructor(pos, anchor = "center") {
+    super("blank");
+    this.anchor = anchor;
+    this.pos = pos;
+  }
+
+  move(dx, dy, speed) {
+    let new_x = Math.trunc(this.posx),
+        new_y = Math.trunc(this.posy);
+
+    // Movement is done 1 pixel at a time, which ensures we don't get embedded into a wall we're moving towards
+    for (let i = 0; i < speed; i++) {
+      new_x = new_x + dx;
+      new_y = new_y + dy;
+
+      if ((new_x < 70) || (new_x > 730)) {
+        // Collided with edge of level
+        return true;
+      }
+
+      // Normally you don't need brackets surrounding the condition for an if statement (unlike many other
+      // languages), but in the case where the condition is split into multiple lines, using brackets removes
+      // the need to use the \ symbol at the end of each line.
+      // The code below checks to see if we're position we're trying to move into overlaps with a block. We only
+      // need to check the direction we're actually moving in. So first, we check to see if we're moving down
+      // (dy > 0). If that's the case, we then check to see if the proposed new y coordinate is a multiple of
+      // GRID_BLOCK_SIZE. If it is, that means we're directly on top of a place where a block might be. If that's
+      // also true, we then check to see if there is actually a block at the given position. If there's a block
+      // there, we return True and don't update the object to the new position.
+      // For movement to the right, it's the same except we check to ensure that the new x coordinate is a multiple
+      // of GRID_BLOCK_SIZE. For moving left, we check to see if the new x coordinate is the last (right-most)
+      // pixel of a grid block.
+      // Note that we don't check for collisions when the player is moving up.
+      if ((((dy > 0) && ((new_y % GRID_BLOCK_SIZE) === 0)) ||
+           ((dx > 0) && ((new_x % GRID_BLOCK_SIZE) === 0)) ||
+           ((dx < 0) && ((new_x % GRID_BLOCK_SIZE) === (GRID_BLOCK_SIZE - 1)))) &&
+          block(new_x, new_y)) {
+        return true;
+      }
+
+      // We only update the object's position if there wasn't a block there.
+      this.pos = [new_x, new_y];
+    }
+
+    // Didn't collide with block or edge of level
+    return false;
+  }
+}
+
+class Orb extends CollideActor {
+  static MAX_TIMER = 250;
+
+  constructor(pos, dir_x) {
+    super(pos);
+
+    // Orbs are initially blown horizontally, then start floating upwards
+    this.direction_x = dir_x;
+    this.floating = false;
+    this.trapped_enemy_type = null;      // Number representing which type of enemy is trapped in this bubble
+    this.timer = -1;
+    this.blown_frames = 6;  // Number of frames during which we will be pushed horizontally
+  }
+
+  hit_test(bolt) {
+    // Check for collision with a bolt
+    let collided = this.collidepoint(bolt.pos);
+    if (collided) {
+      this.timer = Orb.MAX_TIMER - 1;
+    }
+    return collided;
+  }
+
+  update() {
+    this.timer += 1;
+
+    if (this.floating) {
+      // Float upwards
+      this.move(0, -1, getRandomInteger(1, 3));
+    }
+    else {
+      // Move horizontally
+      if (this.move(this.direction_x, 0, 4)) {
+        // If we hit a block, start floating
+        this.floating = true;
+      }
+    }
+
+    if (this.timer === this.blown_frames) {
+      this.floating = true;
+    }
+    else if ((this.timer >= Orb.MAX_TIMER) || (this.posy <= -40)) {
+      // Pop if our lifetime has run out or if we have gone off the top of the screen
+      game.pops.push(new Pop(this.pos, 1));
+      if (this.trapped_enemy_type != null) {
+        // trapped_enemy_type is either zero or one. A value of one means there's a chance of creating a
+        // powerup such as an extra life or extra health
+        game.fruits.push(new Fruit(this.pos, this.trapped_enemy_type));
+      }
+      game.play_sound("pop", 4);
+    }
+
+    if (this.timer < 9) {
+      // Orb grows to full size over the course of 9 frames - the animation frame updating every 3 frames
+      this.name = "orb" + Math.floor(this.timer / 3);
+    }
+    else {
+      if (this.trapped_enemy_type != null) {
+        this.name = `trap${ this.trapped_enemy_type }${ Math.floor(this.timer / 4) % 8 }`;
+      }
+      else {
+        this.name = "orb" + (3 + (Math.floor((this.timer - 9) / 8) % 4));
+      }
+    }
+  }
+}
+
+class Bolt extends CollideActor {
+  static SPEED = 7;
+
+  constructor(pos, dir_x) {
+    super(pos);
+
+    this.direction_x = dir_x;
+    this.active = true;
+  }
+
+  update() {
+    // Move horizontally and check to see if we've collided with a block
+    if (this.move(this.direction_x, 0, Bolt.SPEED)) {
+      // Collided
+      this.active = false;
+    }
+    else {
+      // We didn't collide with a block - check to see if we collided with an orb or the player
+      let gameObjects = game.orbs.slice();
+      gameObjects.push(game.player);
+      for (let obj of gameObjects) {
+        if ((obj != null) && obj.hit_test(this)) {
+          this.active = false;
+          break;
+        }
+      }
+    }
+
+    let direction_idx = (this.direction_x > 0) ? "1" : "0",
+        anim_frame = (Math.floor(game.timer / 4) % 2).toFixed(0);
+    this.name = "bolt" + direction_idx + anim_frame;
+  }
+}
+
+class Pop extends Actor {
+  constructor(pos, type) {
+    super("blank");
+    this.pos = pos;
+
+    this.type = type;
+    this.timer = -1;
+  }
+
+  update() {
+    this.timer += 1;
+    this.name = `pop${ this.type }${ Math.floor(this.timer / 2) }`;
+  }
+}
+
+class GravityActor extends CollideActor {
+  static MAX_FALL_SPEED = 10;
+
+  constructor(pos) {
+    super(pos, "midbottom");
+
+    this.vel_y = 0;
+    this.landed = false;
+  }
+
+  update(detect = true) {
+    // Apply gravity, without going over the maximum fall speed
+    this.vel_y = Math.min(this.vel_y + 1, GravityActor.MAX_FALL_SPEED);
+
+    // The detect parameter indicates whether we should check for collisions with blocks as we fall. Normally we
+    // want this to be the case - hence why this parameter is optional, and is True by default. If the player is
+    // in the process of losing a life, however, we want them to just fall out of the level, so False is passed
+    // in this case.
+    if (detect) {
+      // Move vertically in the appropriate direction, at the appropriate speed
+      if (this.move(0, sign(this.vel_y), Math.abs(this.vel_y))) {
+        // If move returned True, we must have landed on a block.
+        // Note that move doesn't apply any collision detection when the player is moving up - only down
+        this.vel_y = 0;
+        this.landed = true;
+      }
+
+      if (this.top >= HEIGHT) {
+        // Fallen off bottom - reappear at top
+        this.posy = 1;
+      }
+    }
+    else {
+      // Collision detection disabled - just update the Y coordinate without any further checks
+      this.posy += this.vel_y;
+    }
+  }
+}
+
+// Class for pickups including fruit, extra health and extra life
+class Fruit extends GravityActor {
+  static APPLE = 0;
+  static RASPBERRY = 1;
+  static LEMON = 2;
+  static EXTRA_HEALTH = 3;
+  static EXTRA_LIFE = 4;
+
+  constructor(pos, trapped_enemy_type = Robot.TYPE_NORMAL) {
+    super(pos);
+
+    // Choose which type of fruit we're going to be.
+    if (trapped_enemy_type === Robot.TYPE_NORMAL) {
+      this.type = [Fruit.APPLE, Fruit.RASPBERRY, Fruit.LEMON][getRandomInteger(0, 3)];
+    }
+    else {
+      // If trapped_enemy_type is 1, it means this fruit came from bursting an orb containing the more dangerous type
+      // of enemy. In this case there is a chance of getting an extra help or extra life power up
+      // We create a list containing the possible types of fruit, in proportions based on the probability we want
+      // each type of fruit to be chosen
+      let types = [];
+      for (let i = 0; i < 10; i++) {
+        types.push(Fruit.APPLE, Fruit.RASPBERRY, Fruit.LEMON);    // Each of these appear in the list 10 times
+      }
+      for (let i = 0; i < 9; i++) {
+        types.push(Fruit.EXTRA_HEALTH);                           // This appears 9 times
+      }
+      types.push(Fruit.EXTRA_LIFE);                               // This only appears once
+      this.type = types[getRandomInteger(0, types.length)];       // Randomly choose one from the list
+    }
+
+    this.time_to_live = 500; // Counts down to zero
+  }
+
+  update() {
+    super.update();
+
+    // Does the player exist, and are they colliding with us?
+    if ((game.player != null) && game.player.collidepoint(this.center)) {
+      if (this.type === Fruit.EXTRA_HEALTH) {
+        game.player.health = Math.min(3, game.player.health + 1);
+        game.play_sound("bonus");
+      }
+      else if (this.type === Fruit.EXTRA_LIFE) {
+        game.player.lives += 1;
+        game.play_sound("bonus");
+      }
+      else {
+        game.player.score += (this.type + 1) * 100;
+        game.play_sound("score");
+      }
+
+      this.time_to_live = 0;   // Disappear
+    }
+    else {
+      this.time_to_live -= 1;
+    }
+
+    if (this.time_to_live <= 0) {
+      // Create 'pop' animation
+      game.pops.push(new Pop([this.posx, this.posy - 27], 0));
+    }
+
+    let anim_frame = Math.floor(game.timer / 6) % 4;
+    if (anim_frame === 3) {
+      anim_frame = 1;
+    }
+    this.name = `fruit${ this.type }${ anim_frame }`;
+  }
+}
+
+class Player extends GravityActor {
+  constructor() {
+    // Call constructor of parent class. Initial pos is 0,0 but reset is always called straight afterwards which
+    // will set the actual starting position.
+    super([0, 0]);
+
+    this.lives = 2;
+    this.score = 0;
+  }
+
+  reset() {
+    this.pos = [WIDTH / 2, 100];
+    this.vel_y = 0;
+    this.direction_x = 1;            // -1 = left, 1 = right
+    this.fire_timer = 0;
+    this.hurt_timer = 100;   // Invulnerable for this many frames
+    this.health = 3;
+    this.blowing_orb = null;
+  }
+
+  hit_test(other) {
+    // Check for collision between player and bolt - called from Bolt.update. Also check hurt_timer - after being hurt,
+    // there is a period during which the player cannot be hurt again
+    if (this.collidepoint(other.pos) && (this.hurt_timer < 0)) {
+      // Player loses 1 health, is knocked in the direction the bolt had been moving, and can't be hurt again
+      // for a while
+      this.hurt_timer = 200;
+      this.health -= 1;
+      this.vel_y = -12;
+      this.landed = false;
+      this.direction_x = other.direction_x;
+      if (this.health > 0) {
+        game.play_sound("ouch", 4);
+      }
+      else {
+        game.play_sound("die");
+      }
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  update() {
+    // Call GravityActor.update - parameter is whether we want to perform collision detection as we fall. If health
+    // is zero, we want the player to just fall out of the level
+    super.update(this.health > 0);
+
+    this.fire_timer -= 1;
+    this.hurt_timer -= 1;
+
+    if (this.landed) {
+      // Hurt timer starts at 200, but drops to 100 once the player has landed
+      this.hurt_timer = Math.min(this.hurt_timer, 100);
+    }
+
+    let dx = 0;
+    if (this.hurt_timer > 100) {
+      // We've just been hurt. Either carry out the sideways motion from being knocked by a bolt, or if health is
+      // zero, we're dropping out of the level, so check for our sprite reaching a certain Y coordinate before
+      // reducing our lives count and responding the player. We check for the Y coordinate being the screen height
+      // plus 50%, rather than simply the screen height, because the former effectively gives us a short delay
+      // before the player respawns.
+      if (this.health > 0) {
+        this.move(this.direction_x, 0, 4);
+      }
+      else {
+        if (this.top >= (HEIGHT * 1.5)) {
+          this.lives -= 1;
+          this.reset();
+        }
+      }
+    }
+    else {
+      // We're not hurt
+      // Get keyboard input. dx represents the direction the player is facing
+      if (keyboard[keys.LEFT]) {
+        dx = -1;
+      }
+      else if (keyboard[keys.RIGHT]) {
+        dx = 1;
+      }
+
+      if (dx !== 0) {
+        this.direction_x = dx;
+
+        // If we haven't just fired an orb, carry out horizontal movement
+        if (this.fire_timer < 10) {
+          this.move(dx, 0, 4);
+        }
+      }
+
+      // Do we need to create a new orb? Space must have been pressed and released, the minimum time between
+      // orbs must have passed, and there is a limit of 5 orbs.
+      if (space_pressed() && (this.fire_timer <= 0) && (game.orbs.length < 5)) {
+        // x position will be 38 pixels in front of the player position, while ensuring it is within the
+        // bounds of the level
+        let x = Math.min(730, Math.max(70, this.posx + this.direction_x * 38)),
+            y = this.posy - 35;
+        this.blowing_orb = new Orb([x, y], this.direction_x);
+        game.orbs.push(this.blowing_orb);
+        game.play_sound("blow", 4);
+        this.fire_timer = 20;
+      }
+
+      if (keyboard[keys.UP] && (this.vel_y === 0) && this.landed) {
+        // Jump
+        this.vel_y = -16;
+        this.landed = false;
+        game.play_sound("jump");
+      }
+    }
+
+    // Holding down space causes the current orb (if there is one) to be blown further
+    if (keyboard[keys.SPACE]) {
+      if (this.blowing_orb != null) {
+        // Increase blown distance up to a maximum of 120
+        this.blowing_orb.blown_frames += 4;
+        if (this.blowing_orb.blown_frames >= 120) {
+          // Can't be blown any further
+          this.blowing_orb = null;
+        }
+      }
+    }
+    else {
+      // If we let go of space, we relinquish control over the current orb - it can't be blown any further
+      this.blowing_orb = null;
+    }
+
+    // Set sprite image. If we're currently hurt, the sprite will flash on and off on alternate frames.
+    this.name = "blank";
+    if ((this.hurt_timer <= 0) || ((this.hurt_timer % 2) === 1)) {
+      let dir_index = (this.direction_x > 0) ? "1" : "0";
+      if (this.hurt_timer > 100) {
+        if (this.health > 0) {
+          this.name = "recoil" + dir_index;
+        }
+        else {
+          this.name = "fall" + (Math.floor(game.timer / 4) % 2);
+        }
+      }
+      else if (this.fire_timer > 0) {
+        this.name = "blow" + dir_index;
+      }
+      else if (dx === 0) {
+        this.name = "still";
+      }
+      else {
+        this.name = `run${ dir_index }${ Math.floor(game.timer / 8) % 4 }`;
+      }
+    }
+  }
+}
+
+class Robot extends GravityActor {
+  static TYPE_NORMAL = 0;
+  static TYPE_AGGRESSIVE = 1;
+
+  constructor(pos, type) {
+    super(pos);
+
+    this.type = type;
+
+    this.speed = getRandomInteger(1, 4);
+    this.direction_x = 1;
+    this.alive = true;
+
+    this.change_dir_timer = 0;
+    this.fire_timer = 100;
+  }
+
+  update() {
+    super.update();
+
+    this.change_dir_timer -= 1;
+    this.fire_timer += 1;
+
+    // Move in current direction - turn around if we hit a wall
+    if (this.move(this.direction_x, 0, this.speed)) {
+      this.change_dir_timer = 0;
+    }
+
+    if (this.change_dir_timer <= 0) {
+      // Randomly choose a direction to move in
+      // If there's a player, there's a two thirds chance that we'll move towards them
+      let directions = [-1, 1];
+      if (game.player != null) {
+        directions.push(sign(game.player.posx - this.posx));
+      }
+      this.direction_x = directions[getRandomInteger(0, directions.length)];
+      this.change_dir_timer = getRandomInteger(100, 251);
+    }
+
+    // The more powerful type of robot can deliberately shoot at orbs - turning to face them if necessary
+    if ((this.type === Robot.TYPE_AGGRESSIVE) && (this.fire_timer >= 24)) {
+      // Go through all orbs to see if any can be shot at
+      for (let orb of game.orbs) {
+        // The orb must be at our height, and within 200 pixels on the x axis
+        if ((orb.posy >= this.top) && (orb.posy < this.bottom) && (Math.abs(orb.posx - this.posx) < 200)) {
+          this.direction_x = sign(orb.posx - this.posx);
+          this.fire_timer = 0;
+          break;
+        }
+      }
+    }
+
+    // Check to see if we can fire at player
+    if (this.fire_timer >= 12) {
+      // Random chance of firing each frame. Likelihood increases 10 times if player is at the same height as us
+      let fire_probability = game.fire_probability();
+      if ((game.player != null) && (this.top < game.player.bottom) && (this.bottom > game.player.top)) {
+        fire_probability *= 10;
+      }
+      if (Math.random() < fire_probability) {
+        this.fire_timer = 0;
+        game.play_sound("laser", 4);
+      }
+    }
+
+    else if (this.fire_timer === 8) {
+      //  Once the fire timer has been set to 0, it will count up - frame 8 of the animation is when the actual bolt is fired
+      game.bolts.push(new Bolt([this.posx + (this.direction_x * 20), this.posy - 38], this.direction_x));
+    }
+
+    // Am I colliding with an orb? If so, become trapped by it
+    for (let orb of game.orbs) {
+      if ((orb.trapped_enemy_type == null) && this.collidepoint(orb.center)) {
+        this.alive = false;
+        orb.floating = true;
+        orb.trapped_enemy_type = this.type;
+        game.play_sound("trap", 4);
+        break;
+      }
+    }
+
+    // Choose and set sprite image
+    let direction_idx = (this.direction_x > 0) ? "1" : "0",
+        image = `robot${ this.type }${ direction_idx }`;
+    if (this.fire_timer < 12) {
+      image += 5 + Math.floor(this.fire_timer / 4);
+    }
+    else {
+      image += 1 + (Math.floor(game.timer / 4) % 4);
+    }
+    this.name = image;
+  }
+}
+
+class Game {
+  constructor(player) {
+    this.player = player;
+    this.level_colour = -1;
+    this.level = -1;
+
+    this.next_level();
+  }
+
+  fire_probability() {
+    // Likelihood per frame of each robot firing a bolt - they fire more often on higher levels
+    return 0.001 + (0.0001 * Math.min(100, this.level));
+  }
+
+  max_enemies() {
+    // Maximum number of enemies on-screen at once – increases as you progress through the levels
+    return Math.min(Math.floor((this.level + 6) / 2), 8);
+  }
+
+  next_level() {
+    this.level_colour = (this.level_colour + 1) % 4;
+    this.level += 1;
+
+    // Set up grid
+    this.grid = LEVELS[this.level%LEVELS.length];
+
+    // The last row is a copy of the first row
+    // Note that we don't do 'self.grid.append(self.grid[0])'. That would alter the original data in the LEVELS list
+    // Instead, what this line does is create a brand new list, which is distinct from the list in LEVELS, and
+    // consists of the level data plus the first row of the level. It's also interesting to note that you can't
+    // do 'self.grid += [self.grid[0]]', because that's equivalent to using append.
+    // As an alternative, we could have copied the list on the line below '# Set up grid', by writing
+    // 'self.grid = list(LEVELS...', then used append or += on the line below.
+    this.grid = this.grid.slice();
+    this.grid.push(this.grid[0]);
+
+    this.timer = -1;
+
+    if (this.player != null) {
+      this.player.reset();
+    }
+
+    this.fruits = [];
+    this.bolts = [];
+    this.enemies = [];
+    this.pops = [];
+    this.orbs = [];
+
+    // At the start of each level we create a list of pending enemies - enemies to be created as the level plays out.
+    // When this list is empty, we have no more enemies left to create, and the level will end once we have destroyed
+    // all enemies currently on-screen. Each element of the list will be either 0 or 1, where 0 corresponds to
+    // a standard enemy, and 1 is a more powerful enemy.
+    // First we work out how many total enemies and how many of each type to create
+    let num_enemies = 10 + this.level,
+        num_strong_enemies = 1 + Math.trunc(this.level / 1.5),
+        num_weak_enemies = num_enemies - num_strong_enemies;
+
+    // Then we create the list of pending enemies, using Python's ability to create a list by multiplying a list
+    // by a number, and by adding two lists together. The resulting list will consist of a series of copies of
+    // the number 1 (the number depending on the value of num_strong_enemies), followed by a series of copies of
+    // the number zero, based on num_weak_enemies.
+    this.pending_enemies = [];
+    for (let i = 0; i < num_strong_enemies; i++) {
+      this.pending_enemies.push(Robot.TYPE_AGGRESSIVE);
+    }
+    for (let i = 0; i < num_weak_enemies; i++) {
+      this.pending_enemies.push(Robot.TYPE_NORMAL);
+    }
+
+    // Finally we shuffle the list so that the order is randomised (using Python's random.shuffle function)
+    shuffle(this.pending_enemies);
+
+    this.play_sound("level", 1);
+  }
+
+  get_robot_spawn_x() {
+    // Find a spawn location for a robot, by checking the top row of the grid for empty spots
+    // Start by choosing a random grid column
+    let r = getRandomInteger(0, NUM_COLUMNS);
+
+    for (let i = 0; i < NUM_COLUMNS; i++) {
+      // Keep looking at successive columns (wrapping round if we go off the right-hand side) until
+      // we find one where the top grid column is unoccupied
+      let grid_x = (r + i) % NUM_COLUMNS;
+      if (this.grid[0].substring(grid_x, grid_x + 1) === ' ') {
+        return (GRID_BLOCK_SIZE * grid_x) + LEVEL_X_OFFSET + 12;
+      }
+    }
+
+    // If we failed to find an opening in the top grid row (shouldn't ever happen), just spawn the enemy
+    // in the centre of the screen
+    return WIDTH / 2;
+  }
+
+  update() {
+    this.timer += 1;
+
+    // Update all objects
+    for (let obj_list of [this.fruits, this.bolts, this.enemies, this.pops, [this.player], this.orbs]) {
+      for (let obj of obj_list) {
+        if (obj != null) {
+          obj.update();
+        }
+      }
+    }
+
+    // Use list comprehensions to remove objects which are no longer wanted from the lists. For example, we recreate
+    // self.fruits such that it contains all existing fruits except those whose time_to_live counter has reached zero
+    this.fruits = this.fruits.filter(f => f.time_to_live > 0);
+    this.bolts = this.bolts.filter(b => b.active);
+    this.enemies = this.enemies.filter(e => e.alive);
+    this.pops = this.pops.filter(p => p.timer < 12);
+    this.orbs = this.orbs.filter(o => ((o.timer < 250) && (o.posy > -40)));
+
+    // Every 100 frames, create a random fruit (unless there are no remaining enemies on this level)
+    if (((this.timer % 100) === 0) && ((this.pending_enemies.length + this.enemies.length) > 0)) {
+      // Create fruit at random position
+      this.fruits.push(new Fruit([getRandomInteger(70, 731), getRandomInteger(75, 401)]));
+    }
+
+    // Every 81 frames, if there is at least 1 pending enemy, and the number of active enemies is below the current
+    // level's maximum enemies, create a robot
+    if (((this.timer % 81) === 0) && (this.pending_enemies.length > 0) && (this.enemies.length < this.max_enemies())) {
+      // Retrieve and remove the last element from the pending enemies list
+      this.enemies.push(new Robot([this.get_robot_spawn_x(), -30], this.pending_enemies.pop()));
+    }
+
+    // End level if there are no enemies remaining to be created, no existing enemies, no fruit, no popping orbs,
+    // and no orbs containing trapped enemies. (We don't want to include orbs which don't contain trapped enemies,
+    // as the level would never end if the player kept firing new orbs)
+    if ((this.pending_enemies.length + this.fruits.length + this.enemies.length + this.pops.length) === 0) {
+      if (this.orbs.filter(o => o.trapped_enemy_type != null).length === 0) {
+        this.next_level();
+      }
+    }
+  }
+
+  draw() {
+    // Draw appropriate background for this level
+    screen.blit(`bg${ this.level_colour }`, [0, 0]);
+
+    let block_sprite = "block" + (this.level % 4);
+
+    // Display blocks
+    for (let row_y = 0; row_y < NUM_ROWS; row_y++) {
+      let row = this.grid[row_y];
+      if (row.length > 0) {
+        // Initial offset - large blocks at edge of level are 50 pixels wide
+        let x = LEVEL_X_OFFSET;
+        for (let block of Array.from(row)) {
+          if (block !== ' ') {
+            screen.blit(block_sprite, [x, row_y * GRID_BLOCK_SIZE]);
+          }
+          x += GRID_BLOCK_SIZE;
+        }
+      }
+    }
+
+    // Draw all objects
+    for (let obj_list of [this.fruits, this.bolts, this.enemies, this.pops, this.orbs, [this.player]]) {
+      for (let obj of obj_list) {
+        if (obj != null) {
+          obj.draw();
+        }
+      }
+    }
+  }
+
+  play_sound(name, count = 1) {
+    // Some sounds have multiple varieties. If count > 1, we'll randomly choose one from those
+    // We don't play any sounds if there is no player (e.g. if we're on the menu)
+    if (this.player != null) {
+      // Pygame Zero allows you to write things like 'sounds.explosion.play()'
+      // This automatically loads and plays a file named 'explosion.wav' (or .ogg) from the sounds folder (if
+      // such a file exists)
+      // But what if you have files named 'explosion0.ogg' to 'explosion5.ogg' and want to randomly choose
+      // one of them to play? You can generate a string such as 'explosion3', but to use such a string
+      // to access an attribute of Pygame Zero's sounds object, we must use Python's built-in function getattr
+      sounds[name+getRandomInteger(0, count)].play();
+    }
+  }
+}
+
+// Widths of the letters A to Z in the font images
+const CHAR_WIDTH = [27, 26, 25, 26, 25, 25, 26, 25, 12, 26, 26, 25, 33, 25, 26,
+                    25, 27, 26, 26, 25, 26, 26, 38, 25, 25, 25];
+
+/*
+ * Return width of given character. For characters other than the letters A to Z (i.e. space, and the digits 0 to 9),
+ * the width of the letter A is returned. ord gives the ASCII/Unicode code for the given character.
+ */
+function char_width(char) {
+  let index = Math.max(0, char.charCodeAt(0) - 65);
+  return CHAR_WIDTH[index];
+}
+
+function draw_text(text, y, x) {
+  let characters = Array.from(text);
+  if (x == null) {
+    // If no X pos specified, draw text in centre of the screen - must first work out total width of text
+    let textWidth = 0;
+    for (let c of characters) {
+      textWidth += char_width(c);
+    }
+    x = Math.floor((WIDTH - textWidth) / 2);
+  }
+
+  for (let char of characters) {
+    screen.blit("font0" + char.charCodeAt(0), [x, y]);
+    x += char_width(char);
+  }
+}
+
+const IMAGE_WIDTH = new Map([["life", 44], ["plus", 40], ["health", 40]]);
+
+function draw_status() {
+  // Display score, right-justified at edge of screen
+  let number_width = CHAR_WIDTH[0],
+      s = game.player.score.toFixed(0),
+      lives_health = [],
+      x = 0;
+  draw_text(s, 451, WIDTH - 2 - (number_width * s.length));
+
+  // Display level number
+  draw_text(`LEVEL ${game.level + 1}`, 451);
+
+  // Display lives and health
+  // We only display a maximum of two lives - if there are more than two, a plus symbol is displayed
+  for (let i = 0; i < Math.min(2, game.player.lives); i++) {
+    lives_health.push("life");
+  }
+  if (game.player.lives > 2) {
+    lives_health.push("plus");
+  }
+  if (game.player.lives >= 0) {
+    for (let i = 0; i < game.player.health; i++) {
+      lives_health.push("health");
+    }
+  }
+  for (let image of lives_health) {
+    screen.blit(image, [x, 450]);
+    x += IMAGE_WIDTH.get(image);
+  }
+}
+
+var space_down, state, game;
+
+// Has the space bar just been pressed? i.e. gone from not being pressed, to being pressed
+function space_pressed() {
+  if (keyboard[keys.SPACE]) {
+    if (space_down) {
+      // Space was down previous frame, and is still down
+      return false;
+    }
+    else {
+      // Space wasn't down previous frame, but now is
+      space_down = true;
+      return true;
+    }
+  }
+  else {
+    space_down = false;
+    return false;
+  }
+}
+
+// Pygame Zero calls the update and draw functions each frame
+
+const State = Object.freeze({
+  MENU: 1,
+  PLAY: 2,
+  GAME_OVER: 3
+});
+
+function reset() {
+  // Is the space bar currently being pressed down?
+  space_down = false;
+
+  music.play("theme");
+  music.set_volume(0.3);
+
+  // Set the initial game state
+  state = State.MENU;
+
+  // Create a new Game object, without a Player object
+  game = new Game();
+}
+
+function update() {
+  if (state === State.MENU) {
+    if (space_pressed()) {
+      // Switch to play state, and create a new Game object, passing it a new Player object to use
+      state = State.PLAY;
+      game = new Game(new Player());
+    }
+    else {
+      game.update();
+    }
+  }
+
+  else if (state === State.PLAY) {
+    if (game.player.lives < 0) {
+      game.play_sound("over");
+      state = State.GAME_OVER;
+    }
+    else {
+      game.update();
+    }
+  }
+
+  else if (state === State.GAME_OVER) {
+    if (space_pressed()) {
+      // Switch to menu state, and create a new game object without a player
+      state = State.MENU;
+      game = new Game();
+    }
+  }
+}
+
+function draw() {
+  game.draw();
+
+  if (state === State.MENU) {
+    // Draw title screen
+    screen.blit("title", [0, 0]);
+
+    // Draw "Press SPACE" animation, which has 10 frames numbered 0 to 9
+    // The first part gives us a number between 0 and 159, based on the game timer
+    // Dividing by 4 means we go to a new animation frame every 4 frames
+    // We enclose this calculation in the min function, with the other argument being 9, which results in the
+    // animation staying on frame 9 for three quarters of the time. Adding 40 to the game timer is done to alter
+    // which stage the animation is at when the game first starts
+    let anim_frame = Math.min(Math.floor(((game.timer + 40) % 160) / 4), 9);
+    screen.blit("space" + anim_frame, [130, 280]);
+  }
+
+  else if (state === State.PLAY) {
+    draw_status();
+  }
+
+  else if (state === State.GAME_OVER) {
+    draw_status();
+    // Display "Game Over" image
+    screen.blit("over", [0, 0]);
+  }
+}
+
+window.addEventListener('load', (event) => {
+  images.LOAD('#imageLoader img');
+  sounds.LOAD('#soundLoader audio');
+  music.LOAD('#musicLoader audio');
+  reset();
+  screen.set_mode('#screen', '#reset', '#pause');
+});
+</script>
+</body>
+
+</html>
