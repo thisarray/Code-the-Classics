@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Myriapod</title>
+  <script src="../../jsgame0.js"></script>
+  <style type="text/css" media="screen">
+body {
+  background-color: white;
+  color: black;
+}
+.hidden {
+  display: none;
+}
+#original {
+  margin-left: 1em;
+}
+  </style>
+</head>
+
+<body>
+<section id="imageLoader" class="hidden">
+  <img class="hidden" src="images/bg0.png" alt="bg0" data-name="bg0">
+  <img class="hidden" src="images/bg1.png" alt="bg1" data-name="bg1">
+  <img class="hidden" src="images/bg2.png" alt="bg2" data-name="bg2">
+  <img class="hidden" src="images/blank.png" alt="blank" data-name="blank">
+  <img class="hidden" src="images/bullet.png" alt="bullet" data-name="bullet">
+  <img class="hidden" src="images/digit0.png" alt="digit0" data-name="digit0">
+  <img class="hidden" src="images/digit1.png" alt="digit1" data-name="digit1">
+  <img class="hidden" src="images/digit2.png" alt="digit2" data-name="digit2">
+  <img class="hidden" src="images/digit3.png" alt="digit3" data-name="digit3">
+  <img class="hidden" src="images/digit4.png" alt="digit4" data-name="digit4">
+  <img class="hidden" src="images/digit5.png" alt="digit5" data-name="digit5">
+  <img class="hidden" src="images/digit6.png" alt="digit6" data-name="digit6">
+  <img class="hidden" src="images/digit7.png" alt="digit7" data-name="digit7">
+  <img class="hidden" src="images/digit8.png" alt="digit8" data-name="digit8">
+  <img class="hidden" src="images/digit9.png" alt="digit9" data-name="digit9">
+  <img class="hidden" src="images/exp00.png" alt="exp00" data-name="exp00">
+  <img class="hidden" src="images/exp01.png" alt="exp01" data-name="exp01">
+  <img class="hidden" src="images/exp02.png" alt="exp02" data-name="exp02">
+  <img class="hidden" src="images/exp03.png" alt="exp03" data-name="exp03">
+  <img class="hidden" src="images/exp04.png" alt="exp04" data-name="exp04">
+  <img class="hidden" src="images/exp05.png" alt="exp05" data-name="exp05">
+  <img class="hidden" src="images/exp06.png" alt="exp06" data-name="exp06">
+  <img class="hidden" src="images/exp07.png" alt="exp07" data-name="exp07">
+  <img class="hidden" src="images/exp10.png" alt="exp10" data-name="exp10">
+  <img class="hidden" src="images/exp11.png" alt="exp11" data-name="exp11">
+  <img class="hidden" src="images/exp12.png" alt="exp12" data-name="exp12">
+  <img class="hidden" src="images/exp13.png" alt="exp13" data-name="exp13">
+  <img class="hidden" src="images/exp14.png" alt="exp14" data-name="exp14">
+  <img class="hidden" src="images/exp15.png" alt="exp15" data-name="exp15">
+  <img class="hidden" src="images/exp16.png" alt="exp16" data-name="exp16">
+  <img class="hidden" src="images/exp17.png" alt="exp17" data-name="exp17">
+  <img class="hidden" src="images/exp20.png" alt="exp20" data-name="exp20">
+  <img class="hidden" src="images/exp21.png" alt="exp21" data-name="exp21">
+  <img class="hidden" src="images/exp22.png" alt="exp22" data-name="exp22">
+  <img class="hidden" src="images/exp23.png" alt="exp23" data-name="exp23">
+  <img class="hidden" src="images/exp24.png" alt="exp24" data-name="exp24">
+  <img class="hidden" src="images/exp25.png" alt="exp25" data-name="exp25">
+  <img class="hidden" src="images/exp26.png" alt="exp26" data-name="exp26">
+  <img class="hidden" src="images/exp27.png" alt="exp27" data-name="exp27">
+  <img class="hidden" src="images/life.png" alt="life" data-name="life">
+  <img class="hidden" src="images/meanie00.png" alt="meanie00" data-name="meanie00">
+  <img class="hidden" src="images/meanie01.png" alt="meanie01" data-name="meanie01">
+  <img class="hidden" src="images/meanie02.png" alt="meanie02" data-name="meanie02">
+  <img class="hidden" src="images/meanie10.png" alt="meanie10" data-name="meanie10">
+  <img class="hidden" src="images/meanie11.png" alt="meanie11" data-name="meanie11">
+  <img class="hidden" src="images/meanie12.png" alt="meanie12" data-name="meanie12">
+  <img class="hidden" src="images/meanie20.png" alt="meanie20" data-name="meanie20">
+  <img class="hidden" src="images/meanie21.png" alt="meanie21" data-name="meanie21">
+  <img class="hidden" src="images/meanie22.png" alt="meanie22" data-name="meanie22">
+  <img class="hidden" src="images/over.png" alt="over" data-name="over">
+  <img class="hidden" src="images/player00.png" alt="player00" data-name="player00">
+  <img class="hidden" src="images/player01.png" alt="player01" data-name="player01">
+  <img class="hidden" src="images/player02.png" alt="player02" data-name="player02">
+  <img class="hidden" src="images/player10.png" alt="player10" data-name="player10">
+  <img class="hidden" src="images/player11.png" alt="player11" data-name="player11">
+  <img class="hidden" src="images/player12.png" alt="player12" data-name="player12">
+  <img class="hidden" src="images/player20.png" alt="player20" data-name="player20">
+  <img class="hidden" src="images/player21.png" alt="player21" data-name="player21">
+  <img class="hidden" src="images/player22.png" alt="player22" data-name="player22">
+  <img class="hidden" src="images/player30.png" alt="player30" data-name="player30">
+  <img class="hidden" src="images/player31.png" alt="player31" data-name="player31">
+  <img class="hidden" src="images/player32.png" alt="player32" data-name="player32">
+  <img class="hidden" src="images/rock000.png" alt="rock000" data-name="rock000">
+  <img class="hidden" src="images/rock001.png" alt="rock001" data-name="rock001">
+  <img class="hidden" src="images/rock002.png" alt="rock002" data-name="rock002">
+  <img class="hidden" src="images/rock003.png" alt="rock003" data-name="rock003">
+  <img class="hidden" src="images/rock004.png" alt="rock004" data-name="rock004">
+  <img class="hidden" src="images/rock010.png" alt="rock010" data-name="rock010">
+  <img class="hidden" src="images/rock011.png" alt="rock011" data-name="rock011">
+  <img class="hidden" src="images/rock012.png" alt="rock012" data-name="rock012">
+  <img class="hidden" src="images/rock013.png" alt="rock013" data-name="rock013">
+  <img class="hidden" src="images/rock014.png" alt="rock014" data-name="rock014">
+  <img class="hidden" src="images/rock020.png" alt="rock020" data-name="rock020">
+  <img class="hidden" src="images/rock021.png" alt="rock021" data-name="rock021">
+  <img class="hidden" src="images/rock022.png" alt="rock022" data-name="rock022">
+  <img class="hidden" src="images/rock023.png" alt="rock023" data-name="rock023">
+  <img class="hidden" src="images/rock024.png" alt="rock024" data-name="rock024">
+  <img class="hidden" src="images/rock030.png" alt="rock030" data-name="rock030">
+  <img class="hidden" src="images/rock031.png" alt="rock031" data-name="rock031">
+  <img class="hidden" src="images/rock032.png" alt="rock032" data-name="rock032">
+  <img class="hidden" src="images/rock033.png" alt="rock033" data-name="rock033">
+  <img class="hidden" src="images/rock034.png" alt="rock034" data-name="rock034">
+  <img class="hidden" src="images/rock100.png" alt="rock100" data-name="rock100">
+  <img class="hidden" src="images/rock101.png" alt="rock101" data-name="rock101">
+  <img class="hidden" src="images/rock102.png" alt="rock102" data-name="rock102">
+  <img class="hidden" src="images/rock103.png" alt="rock103" data-name="rock103">
+  <img class="hidden" src="images/rock104.png" alt="rock104" data-name="rock104">
+  <img class="hidden" src="images/rock110.png" alt="rock110" data-name="rock110">
+  <img class="hidden" src="images/rock111.png" alt="rock111" data-name="rock111">
+  <img class="hidden" src="images/rock112.png" alt="rock112" data-name="rock112">
+  <img class="hidden" src="images/rock113.png" alt="rock113" data-name="rock113">
+  <img class="hidden" src="images/rock114.png" alt="rock114" data-name="rock114">
+  <img class="hidden" src="images/rock120.png" alt="rock120" data-name="rock120">
+  <img class="hidden" src="images/rock121.png" alt="rock121" data-name="rock121">
+  <img class="hidden" src="images/rock122.png" alt="rock122" data-name="rock122">
+  <img class="hidden" src="images/rock123.png" alt="rock123" data-name="rock123">
+  <img class="hidden" src="images/rock124.png" alt="rock124" data-name="rock124">
+  <img class="hidden" src="images/rock130.png" alt="rock130" data-name="rock130">
+  <img class="hidden" src="images/rock131.png" alt="rock131" data-name="rock131">
+  <img class="hidden" src="images/rock132.png" alt="rock132" data-name="rock132">
+  <img class="hidden" src="images/rock133.png" alt="rock133" data-name="rock133">
+  <img class="hidden" src="images/rock134.png" alt="rock134" data-name="rock134">
+  <img class="hidden" src="images/rock200.png" alt="rock200" data-name="rock200">
+  <img class="hidden" src="images/rock201.png" alt="rock201" data-name="rock201">
+  <img class="hidden" src="images/rock202.png" alt="rock202" data-name="rock202">
+  <img class="hidden" src="images/rock203.png" alt="rock203" data-name="rock203">
+  <img class="hidden" src="images/rock204.png" alt="rock204" data-name="rock204">
+  <img class="hidden" src="images/rock210.png" alt="rock210" data-name="rock210">
+  <img class="hidden" src="images/rock211.png" alt="rock211" data-name="rock211">
+  <img class="hidden" src="images/rock212.png" alt="rock212" data-name="rock212">
+  <img class="hidden" src="images/rock213.png" alt="rock213" data-name="rock213">
+  <img class="hidden" src="images/rock214.png" alt="rock214" data-name="rock214">
+  <img class="hidden" src="images/rock220.png" alt="rock220" data-name="rock220">
+  <img class="hidden" src="images/rock221.png" alt="rock221" data-name="rock221">
+  <img class="hidden" src="images/rock222.png" alt="rock222" data-name="rock222">
+  <img class="hidden" src="images/rock223.png" alt="rock223" data-name="rock223">
+  <img class="hidden" src="images/rock224.png" alt="rock224" data-name="rock224">
+  <img class="hidden" src="images/rock230.png" alt="rock230" data-name="rock230">
+  <img class="hidden" src="images/rock231.png" alt="rock231" data-name="rock231">
+  <img class="hidden" src="images/rock232.png" alt="rock232" data-name="rock232">
+  <img class="hidden" src="images/rock233.png" alt="rock233" data-name="rock233">
+  <img class="hidden" src="images/rock234.png" alt="rock234" data-name="rock234">
+  <img class="hidden" src="images/seg00000.png" alt="seg00000" data-name="seg00000">
+  <img class="hidden" src="images/seg00001.png" alt="seg00001" data-name="seg00001">
+  <img class="hidden" src="images/seg00002.png" alt="seg00002" data-name="seg00002">
+  <img class="hidden" src="images/seg00003.png" alt="seg00003" data-name="seg00003">
+  <img class="hidden" src="images/seg00010.png" alt="seg00010" data-name="seg00010">
+  <img class="hidden" src="images/seg00011.png" alt="seg00011" data-name="seg00011">
+  <img class="hidden" src="images/seg00012.png" alt="seg00012" data-name="seg00012">
+  <img class="hidden" src="images/seg00013.png" alt="seg00013" data-name="seg00013">
+  <img class="hidden" src="images/seg00020.png" alt="seg00020" data-name="seg00020">
+  <img class="hidden" src="images/seg00021.png" alt="seg00021" data-name="seg00021">
+  <img class="hidden" src="images/seg00022.png" alt="seg00022" data-name="seg00022">
+  <img class="hidden" src="images/seg00023.png" alt="seg00023" data-name="seg00023">
+  <img class="hidden" src="images/seg00030.png" alt="seg00030" data-name="seg00030">
+  <img class="hidden" src="images/seg00031.png" alt="seg00031" data-name="seg00031">
+  <img class="hidden" src="images/seg00032.png" alt="seg00032" data-name="seg00032">
+  <img class="hidden" src="images/seg00033.png" alt="seg00033" data-name="seg00033">
+  <img class="hidden" src="images/seg00040.png" alt="seg00040" data-name="seg00040">
+  <img class="hidden" src="images/seg00041.png" alt="seg00041" data-name="seg00041">
+  <img class="hidden" src="images/seg00042.png" alt="seg00042" data-name="seg00042">
+  <img class="hidden" src="images/seg00043.png" alt="seg00043" data-name="seg00043">
+  <img class="hidden" src="images/seg00050.png" alt="seg00050" data-name="seg00050">
+  <img class="hidden" src="images/seg00051.png" alt="seg00051" data-name="seg00051">
+  <img class="hidden" src="images/seg00052.png" alt="seg00052" data-name="seg00052">
+  <img class="hidden" src="images/seg00053.png" alt="seg00053" data-name="seg00053">
+  <img class="hidden" src="images/seg00060.png" alt="seg00060" data-name="seg00060">
+  <img class="hidden" src="images/seg00061.png" alt="seg00061" data-name="seg00061">
+  <img class="hidden" src="images/seg00062.png" alt="seg00062" data-name="seg00062">
+  <img class="hidden" src="images/seg00063.png" alt="seg00063" data-name="seg00063">
+  <img class="hidden" src="images/seg00070.png" alt="seg00070" data-name="seg00070">
+  <img class="hidden" src="images/seg00071.png" alt="seg00071" data-name="seg00071">
+  <img class="hidden" src="images/seg00072.png" alt="seg00072" data-name="seg00072">
+  <img class="hidden" src="images/seg00073.png" alt="seg00073" data-name="seg00073">
+  <img class="hidden" src="images/seg00100.png" alt="seg00100" data-name="seg00100">
+  <img class="hidden" src="images/seg00101.png" alt="seg00101" data-name="seg00101">
+  <img class="hidden" src="images/seg00102.png" alt="seg00102" data-name="seg00102">
+  <img class="hidden" src="images/seg00103.png" alt="seg00103" data-name="seg00103">
+  <img class="hidden" src="images/seg00110.png" alt="seg00110" data-name="seg00110">
+  <img class="hidden" src="images/seg00111.png" alt="seg00111" data-name="seg00111">
+  <img class="hidden" src="images/seg00112.png" alt="seg00112" data-name="seg00112">
+  <img class="hidden" src="images/seg00113.png" alt="seg00113" data-name="seg00113">
+  <img class="hidden" src="images/seg00120.png" alt="seg00120" data-name="seg00120">
+  <img class="hidden" src="images/seg00121.png" alt="seg00121" data-name="seg00121">
+  <img class="hidden" src="images/seg00122.png" alt="seg00122" data-name="seg00122">
+  <img class="hidden" src="images/seg00123.png" alt="seg00123" data-name="seg00123">
+  <img class="hidden" src="images/seg00130.png" alt="seg00130" data-name="seg00130">
+  <img class="hidden" src="images/seg00131.png" alt="seg00131" data-name="seg00131">
+  <img class="hidden" src="images/seg00132.png" alt="seg00132" data-name="seg00132">
+  <img class="hidden" src="images/seg00133.png" alt="seg00133" data-name="seg00133">
+  <img class="hidden" src="images/seg00140.png" alt="seg00140" data-name="seg00140">
+  <img class="hidden" src="images/seg00141.png" alt="seg00141" data-name="seg00141">
+  <img class="hidden" src="images/seg00142.png" alt="seg00142" data-name="seg00142">
+  <img class="hidden" src="images/seg00143.png" alt="seg00143" data-name="seg00143">
+  <img class="hidden" src="images/seg00150.png" alt="seg00150" data-name="seg00150">
+  <img class="hidden" src="images/seg00151.png" alt="seg00151" data-name="seg00151">
+  <img class="hidden" src="images/seg00152.png" alt="seg00152" data-name="seg00152">
+  <img class="hidden" src="images/seg00153.png" alt="seg00153" data-name="seg00153">
+  <img class="hidden" src="images/seg00160.png" alt="seg00160" data-name="seg00160">
+  <img class="hidden" src="images/seg00161.png" alt="seg00161" data-name="seg00161">
+  <img class="hidden" src="images/seg00162.png" alt="seg00162" data-name="seg00162">
+  <img class="hidden" src="images/seg00163.png" alt="seg00163" data-name="seg00163">
+  <img class="hidden" src="images/seg00170.png" alt="seg00170" data-name="seg00170">
+  <img class="hidden" src="images/seg00171.png" alt="seg00171" data-name="seg00171">
+  <img class="hidden" src="images/seg00172.png" alt="seg00172" data-name="seg00172">
+  <img class="hidden" src="images/seg00173.png" alt="seg00173" data-name="seg00173">
+  <img class="hidden" src="images/seg01000.png" alt="seg01000" data-name="seg01000">
+  <img class="hidden" src="images/seg01001.png" alt="seg01001" data-name="seg01001">
+  <img class="hidden" src="images/seg01002.png" alt="seg01002" data-name="seg01002">
+  <img class="hidden" src="images/seg01003.png" alt="seg01003" data-name="seg01003">
+  <img class="hidden" src="images/seg01010.png" alt="seg01010" data-name="seg01010">
+  <img class="hidden" src="images/seg01011.png" alt="seg01011" data-name="seg01011">
+  <img class="hidden" src="images/seg01012.png" alt="seg01012" data-name="seg01012">
+  <img class="hidden" src="images/seg01013.png" alt="seg01013" data-name="seg01013">
+  <img class="hidden" src="images/seg01020.png" alt="seg01020" data-name="seg01020">
+  <img class="hidden" src="images/seg01021.png" alt="seg01021" data-name="seg01021">
+  <img class="hidden" src="images/seg01022.png" alt="seg01022" data-name="seg01022">
+  <img class="hidden" src="images/seg01023.png" alt="seg01023" data-name="seg01023">
+  <img class="hidden" src="images/seg01030.png" alt="seg01030" data-name="seg01030">
+  <img class="hidden" src="images/seg01031.png" alt="seg01031" data-name="seg01031">
+  <img class="hidden" src="images/seg01032.png" alt="seg01032" data-name="seg01032">
+  <img class="hidden" src="images/seg01033.png" alt="seg01033" data-name="seg01033">
+  <img class="hidden" src="images/seg01040.png" alt="seg01040" data-name="seg01040">
+  <img class="hidden" src="images/seg01041.png" alt="seg01041" data-name="seg01041">
+  <img class="hidden" src="images/seg01042.png" alt="seg01042" data-name="seg01042">
+  <img class="hidden" src="images/seg01043.png" alt="seg01043" data-name="seg01043">
+  <img class="hidden" src="images/seg01050.png" alt="seg01050" data-name="seg01050">
+  <img class="hidden" src="images/seg01051.png" alt="seg01051" data-name="seg01051">
+  <img class="hidden" src="images/seg01052.png" alt="seg01052" data-name="seg01052">
+  <img class="hidden" src="images/seg01053.png" alt="seg01053" data-name="seg01053">
+  <img class="hidden" src="images/seg01060.png" alt="seg01060" data-name="seg01060">
+  <img class="hidden" src="images/seg01061.png" alt="seg01061" data-name="seg01061">
+  <img class="hidden" src="images/seg01062.png" alt="seg01062" data-name="seg01062">
+  <img class="hidden" src="images/seg01063.png" alt="seg01063" data-name="seg01063">
+  <img class="hidden" src="images/seg01070.png" alt="seg01070" data-name="seg01070">
+  <img class="hidden" src="images/seg01071.png" alt="seg01071" data-name="seg01071">
+  <img class="hidden" src="images/seg01072.png" alt="seg01072" data-name="seg01072">
+  <img class="hidden" src="images/seg01073.png" alt="seg01073" data-name="seg01073">
+  <img class="hidden" src="images/seg01100.png" alt="seg01100" data-name="seg01100">
+  <img class="hidden" src="images/seg01101.png" alt="seg01101" data-name="seg01101">
+  <img class="hidden" src="images/seg01102.png" alt="seg01102" data-name="seg01102">
+  <img class="hidden" src="images/seg01103.png" alt="seg01103" data-name="seg01103">
+  <img class="hidden" src="images/seg01110.png" alt="seg01110" data-name="seg01110">
+  <img class="hidden" src="images/seg01111.png" alt="seg01111" data-name="seg01111">
+  <img class="hidden" src="images/seg01112.png" alt="seg01112" data-name="seg01112">
+  <img class="hidden" src="images/seg01113.png" alt="seg01113" data-name="seg01113">
+  <img class="hidden" src="images/seg01120.png" alt="seg01120" data-name="seg01120">
+  <img class="hidden" src="images/seg01121.png" alt="seg01121" data-name="seg01121">
+  <img class="hidden" src="images/seg01122.png" alt="seg01122" data-name="seg01122">
+  <img class="hidden" src="images/seg01123.png" alt="seg01123" data-name="seg01123">
+  <img class="hidden" src="images/seg01130.png" alt="seg01130" data-name="seg01130">
+  <img class="hidden" src="images/seg01131.png" alt="seg01131" data-name="seg01131">
+  <img class="hidden" src="images/seg01132.png" alt="seg01132" data-name="seg01132">
+  <img class="hidden" src="images/seg01133.png" alt="seg01133" data-name="seg01133">
+  <img class="hidden" src="images/seg01140.png" alt="seg01140" data-name="seg01140">
+  <img class="hidden" src="images/seg01141.png" alt="seg01141" data-name="seg01141">
+  <img class="hidden" src="images/seg01142.png" alt="seg01142" data-name="seg01142">
+  <img class="hidden" src="images/seg01143.png" alt="seg01143" data-name="seg01143">
+  <img class="hidden" src="images/seg01150.png" alt="seg01150" data-name="seg01150">
+  <img class="hidden" src="images/seg01151.png" alt="seg01151" data-name="seg01151">
+  <img class="hidden" src="images/seg01152.png" alt="seg01152" data-name="seg01152">
+  <img class="hidden" src="images/seg01153.png" alt="seg01153" data-name="seg01153">
+  <img class="hidden" src="images/seg01160.png" alt="seg01160" data-name="seg01160">
+  <img class="hidden" src="images/seg01161.png" alt="seg01161" data-name="seg01161">
+  <img class="hidden" src="images/seg01162.png" alt="seg01162" data-name="seg01162">
+  <img class="hidden" src="images/seg01163.png" alt="seg01163" data-name="seg01163">
+  <img class="hidden" src="images/seg01170.png" alt="seg01170" data-name="seg01170">
+  <img class="hidden" src="images/seg01171.png" alt="seg01171" data-name="seg01171">
+  <img class="hidden" src="images/seg01172.png" alt="seg01172" data-name="seg01172">
+  <img class="hidden" src="images/seg01173.png" alt="seg01173" data-name="seg01173">
+  <img class="hidden" src="images/seg10000.png" alt="seg10000" data-name="seg10000">
+  <img class="hidden" src="images/seg10001.png" alt="seg10001" data-name="seg10001">
+  <img class="hidden" src="images/seg10002.png" alt="seg10002" data-name="seg10002">
+  <img class="hidden" src="images/seg10003.png" alt="seg10003" data-name="seg10003">
+  <img class="hidden" src="images/seg10010.png" alt="seg10010" data-name="seg10010">
+  <img class="hidden" src="images/seg10011.png" alt="seg10011" data-name="seg10011">
+  <img class="hidden" src="images/seg10012.png" alt="seg10012" data-name="seg10012">
+  <img class="hidden" src="images/seg10013.png" alt="seg10013" data-name="seg10013">
+  <img class="hidden" src="images/seg10020.png" alt="seg10020" data-name="seg10020">
+  <img class="hidden" src="images/seg10021.png" alt="seg10021" data-name="seg10021">
+  <img class="hidden" src="images/seg10022.png" alt="seg10022" data-name="seg10022">
+  <img class="hidden" src="images/seg10023.png" alt="seg10023" data-name="seg10023">
+  <img class="hidden" src="images/seg10030.png" alt="seg10030" data-name="seg10030">
+  <img class="hidden" src="images/seg10031.png" alt="seg10031" data-name="seg10031">
+  <img class="hidden" src="images/seg10032.png" alt="seg10032" data-name="seg10032">
+  <img class="hidden" src="images/seg10033.png" alt="seg10033" data-name="seg10033">
+  <img class="hidden" src="images/seg10040.png" alt="seg10040" data-name="seg10040">
+  <img class="hidden" src="images/seg10041.png" alt="seg10041" data-name="seg10041">
+  <img class="hidden" src="images/seg10042.png" alt="seg10042" data-name="seg10042">
+  <img class="hidden" src="images/seg10043.png" alt="seg10043" data-name="seg10043">
+  <img class="hidden" src="images/seg10050.png" alt="seg10050" data-name="seg10050">
+  <img class="hidden" src="images/seg10051.png" alt="seg10051" data-name="seg10051">
+  <img class="hidden" src="images/seg10052.png" alt="seg10052" data-name="seg10052">
+  <img class="hidden" src="images/seg10053.png" alt="seg10053" data-name="seg10053">
+  <img class="hidden" src="images/seg10060.png" alt="seg10060" data-name="seg10060">
+  <img class="hidden" src="images/seg10061.png" alt="seg10061" data-name="seg10061">
+  <img class="hidden" src="images/seg10062.png" alt="seg10062" data-name="seg10062">
+  <img class="hidden" src="images/seg10063.png" alt="seg10063" data-name="seg10063">
+  <img class="hidden" src="images/seg10070.png" alt="seg10070" data-name="seg10070">
+  <img class="hidden" src="images/seg10071.png" alt="seg10071" data-name="seg10071">
+  <img class="hidden" src="images/seg10072.png" alt="seg10072" data-name="seg10072">
+  <img class="hidden" src="images/seg10073.png" alt="seg10073" data-name="seg10073">
+  <img class="hidden" src="images/seg10100.png" alt="seg10100" data-name="seg10100">
+  <img class="hidden" src="images/seg10101.png" alt="seg10101" data-name="seg10101">
+  <img class="hidden" src="images/seg10102.png" alt="seg10102" data-name="seg10102">
+  <img class="hidden" src="images/seg10103.png" alt="seg10103" data-name="seg10103">
+  <img class="hidden" src="images/seg10110.png" alt="seg10110" data-name="seg10110">
+  <img class="hidden" src="images/seg10111.png" alt="seg10111" data-name="seg10111">
+  <img class="hidden" src="images/seg10112.png" alt="seg10112" data-name="seg10112">
+  <img class="hidden" src="images/seg10113.png" alt="seg10113" data-name="seg10113">
+  <img class="hidden" src="images/seg10120.png" alt="seg10120" data-name="seg10120">
+  <img class="hidden" src="images/seg10121.png" alt="seg10121" data-name="seg10121">
+  <img class="hidden" src="images/seg10122.png" alt="seg10122" data-name="seg10122">
+  <img class="hidden" src="images/seg10123.png" alt="seg10123" data-name="seg10123">
+  <img class="hidden" src="images/seg10130.png" alt="seg10130" data-name="seg10130">
+  <img class="hidden" src="images/seg10131.png" alt="seg10131" data-name="seg10131">
+  <img class="hidden" src="images/seg10132.png" alt="seg10132" data-name="seg10132">
+  <img class="hidden" src="images/seg10133.png" alt="seg10133" data-name="seg10133">
+  <img class="hidden" src="images/seg10140.png" alt="seg10140" data-name="seg10140">
+  <img class="hidden" src="images/seg10141.png" alt="seg10141" data-name="seg10141">
+  <img class="hidden" src="images/seg10142.png" alt="seg10142" data-name="seg10142">
+  <img class="hidden" src="images/seg10143.png" alt="seg10143" data-name="seg10143">
+  <img class="hidden" src="images/seg10150.png" alt="seg10150" data-name="seg10150">
+  <img class="hidden" src="images/seg10151.png" alt="seg10151" data-name="seg10151">
+  <img class="hidden" src="images/seg10152.png" alt="seg10152" data-name="seg10152">
+  <img class="hidden" src="images/seg10153.png" alt="seg10153" data-name="seg10153">
+  <img class="hidden" src="images/seg10160.png" alt="seg10160" data-name="seg10160">
+  <img class="hidden" src="images/seg10161.png" alt="seg10161" data-name="seg10161">
+  <img class="hidden" src="images/seg10162.png" alt="seg10162" data-name="seg10162">
+  <img class="hidden" src="images/seg10163.png" alt="seg10163" data-name="seg10163">
+  <img class="hidden" src="images/seg10170.png" alt="seg10170" data-name="seg10170">
+  <img class="hidden" src="images/seg10171.png" alt="seg10171" data-name="seg10171">
+  <img class="hidden" src="images/seg10172.png" alt="seg10172" data-name="seg10172">
+  <img class="hidden" src="images/seg10173.png" alt="seg10173" data-name="seg10173">
+  <img class="hidden" src="images/space0.png" alt="space0" data-name="space0">
+  <img class="hidden" src="images/space1.png" alt="space1" data-name="space1">
+  <img class="hidden" src="images/space10.png" alt="space10" data-name="space10">
+  <img class="hidden" src="images/space11.png" alt="space11" data-name="space11">
+  <img class="hidden" src="images/space12.png" alt="space12" data-name="space12">
+  <img class="hidden" src="images/space13.png" alt="space13" data-name="space13">
+  <img class="hidden" src="images/space2.png" alt="space2" data-name="space2">
+  <img class="hidden" src="images/space3.png" alt="space3" data-name="space3">
+  <img class="hidden" src="images/space4.png" alt="space4" data-name="space4">
+  <img class="hidden" src="images/space5.png" alt="space5" data-name="space5">
+  <img class="hidden" src="images/space6.png" alt="space6" data-name="space6">
+  <img class="hidden" src="images/space7.png" alt="space7" data-name="space7">
+  <img class="hidden" src="images/space8.png" alt="space8" data-name="space8">
+  <img class="hidden" src="images/space9.png" alt="space9" data-name="space9">
+  <img class="hidden" src="images/title.png" alt="title" data-name="title">
+</section>
+<section id="soundLoader" class="hidden">
+  <audio class="hidden" controls preload="auto" src="sounds/gameover.ogg" data-name="gameover">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/hit0.ogg" data-name="hit0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/hit1.ogg" data-name="hit1">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/hit2.ogg" data-name="hit2">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/hit3.ogg" data-name="hit3">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/laser0.ogg" data-name="laser0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/level_clear.ogg" data-name="level_clear">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/meanie_explode0.ogg" data-name="meanie_explode0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/player_explode0.ogg" data-name="player_explode0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/player_move1.ogg" data-name="player_move1">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/player_move2.ogg" data-name="player_move2">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/player_move3.ogg" data-name="player_move3">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/player_move4.ogg" data-name="player_move4">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/rock_create0.ogg" data-name="rock_create0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/rock_destroy0.ogg" data-name="rock_destroy0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/segment_explode0.ogg" data-name="segment_explode0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/segment_turn0.ogg" data-name="segment_turn0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/totem_create0.ogg" data-name="totem_create0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/totem_destroy0.ogg" data-name="totem_destroy0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/wave0.ogg" data-name="wave0">Your browser does not support the audio element.</audio>
+</section>
+<section id="musicLoader" class="hidden">
+  <audio class="hidden" controls preload="auto" src="music/theme.ogg" data-name="theme">Your browser does not support the audio element.</audio>
+</section>
+
+<main>
+<h1>Myriapod</h1>
+
+<canvas id="screen">
+The game screen appears here if your browser supports the Canvas API.
+</canvas>
+<section id="controls">
+  <button type="button" id="reset">Reset</button>
+  <button type="button" id="pause">Pause</button>
+</section>
+
+<h2>Attribution</h2>
+
+<p><a href="https://wireframe.raspberrypi.org/books/code-the-classics1">Code the Classics – Volume 1</a>.</p>
+
+<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported</a>.</p>
+
+<h2>Original Python code</h2>
+
+<pre id="original"><code>
+import pgzero, pgzrun, pygame, sys
+from random import choice, randint, random
+from enum import Enum
+
+# Check Python version number. sys.version_info gives version as a tuple, e.g. if (3,7,2,&#x27;final&#x27;,0) for version 3.7.2.
+# Unlike many languages, Python can compare two tuples in the same way that you can compare numbers.
+if sys.version_info &lt; (3,5):
+    print(&quot;This game requires at least version 3.5 of Python. Please download it from www.python.org&quot;)
+    sys.exit()
+
+# Check Pygame Zero version. This is a bit trickier because Pygame Zero only lets us get its version number as a string.
+# So we have to split the string into a list, using &#x27;.&#x27; as the character to split on. We convert each element of the
+# version number into an integer - but only if the string contains numbers and nothing else, because it&#x27;s possible for
+# a component of the version to contain letters as well as numbers (e.g. &#x27;2.0.dev0&#x27;)
+# We&#x27;re using a Python feature called list comprehension - this is explained in the Bubble Bobble/Cavern chapter.
+pgzero_version = [int(s) if s.isnumeric() else s for s in pgzero.__version__.split(&#x27;.&#x27;)]
+if pgzero_version &lt; [1,2]:
+    print(&quot;This game requires at least version 1.2 of Pygame Zero. You have version {0}. Please upgrade using the command &#x27;pip3 install --upgrade pgzero&#x27;&quot;.format(pgzero.__version__))
+    sys.exit()
+
+WIDTH = 480
+HEIGHT = 800
+TITLE = &quot;Myriapod&quot;
+
+DEBUG_TEST_RANDOM_POSITIONS = False
+
+# Pygame Zero allows you to access and change sprite positions based on various
+# anchor points
+CENTRE_ANCHOR = (&quot;center&quot;, &quot;center&quot;)
+
+num_grid_rows = 25
+num_grid_cols = 14
+
+# Convert a position in pixel units to a position in grid units. In this game, a grid square is 32 pixels.
+def pos2cell(x, y):
+    return ((int(x)-16)//32, int(y)//32)
+
+# Convert grid cell position to pixel coordinates, with a given offset
+def cell2pos(cell_x, cell_y, x_offset=0, y_offset=0):
+    # If the requested offset is zero, returns the centre of the requested cell, hence the +16. In the case of the
+    # X axis, there&#x27;s a 16 pixel border at the left and right of the screen, hence +16 becomes +32.
+    return ((cell_x * 32) + 32 + x_offset, (cell_y * 32) + 16 + y_offset)
+
+class Explosion(Actor):
+    def __init__(self, pos, type):
+        super().__init__(&quot;blank&quot;, pos)
+
+        self.type = type
+        self.timer = 0
+
+    def update(self):
+        self.timer += 1
+
+        # Set sprite based on explosion type and timer - update to a new image
+        # every four frames
+        self.image = &quot;exp&quot; + str(self.type) + str(self.timer // 4)
+
+
+class Player(Actor):
+
+    INVULNERABILITY_TIME = 100
+    RESPAWN_TIME = 100
+    RELOAD_TIME = 10
+
+    def __init__(self, pos):
+        super().__init__(&quot;blank&quot;, pos)
+
+        # These determine which frame of animation the player sprite will use
+        self.direction = 0
+        self.frame = 0
+
+        self.lives = 3
+        self.alive = True
+
+        # timer is used for animation, respawning and for ensuring the player is
+        # invulnerable immediately after respawning
+        self.timer = 0
+
+        # When the player shoots, this is set to RELOAD_TIME - it then counts
+        # down - when it reaches zero the player can shoot again
+        self.fire_timer = 0
+
+    def move(self, dx, dy, speed):
+        # dx and dy will each be either 0, -1 or 1. speed is an integer indicating
+        # how many pixels we should move in the specified direction.
+        for i in range(speed):
+            # For each pixel we want to move, we must first check if it&#x27;s a valid place to move to
+            if game.allow_movement(self.x + dx, self.y + dy):
+                self.x += dx
+                self.y += dy
+
+    def update(self):
+        self.timer += 1
+
+        if self.alive:
+            # Get keyboard input. dx and dy represent the direction the player is facing on each axis
+            dx = 0
+            if keyboard.left:
+                dx = -1
+            elif keyboard.right:
+                dx = 1
+
+            dy = 0
+            if keyboard.up:
+                dy = -1
+            elif keyboard.down:
+                dy = 1
+
+            # Move in the relevant directions by the specified number of pixels. The purpose of 3 - abs(dy) is to
+            # generate vectors which look either like (3,0) (which is 3 units long) or (2, 2) (which is sqrt(8) long)
+            # so we move roughly the same distance regardless of whether we&#x27;re travelling straight along the x or y axis.
+            # or at 45 degrees. Without this, we would move noticeably faster when travelling diagonally.
+            self.move(dx, 0, 3 - abs(dy))
+            self.move(0, dy, 3 - abs(dx))
+
+            # When the player presses a key to start handing in a new direction, we don&#x27;t want the sprite to just
+            # instantly change to facing in that new direction. That would look wrong, since in the real world vehicles
+            # can&#x27;t just suddenly change direction in the blink of an eye.
+            # Instead, we want the vehicle to turn to face the new direction over several frames. If the vehicle is
+            # currently facing down, and the player presses the left arrow key, the vehicle should first turn to face
+            # diagonally down and to the left, and then turn to face left.
+
+            # Each number in the following list corresponds to a direction - 0 is up, 1 is up and to the right, and
+            # so on in clockwise order. -1 means no direction.
+            # Think of it as a grid, as follows:
+            # 7  0  1
+            # 6 -1  2
+            # 5  4  3
+            directions = [7,0,1,6,-1,2,5,4,3]
+
+            # But! If you look at the values that self.direction actually takes on during the game, you only see
+            # numbers from 0 to 3. This is because although there are eight possible directions of travel, there are
+            # only four orientations of the player vehicle. The same sprite, for example, is used if the player is
+            # travelling either left or right. This is why the direction is ultimately clamped to a range of 0 to 4.
+            # 0 = facing up or down
+            # 1 = facing top right or bottom left
+            # 2 = facing left or right
+            # 3 = facing bottom right or top left
+
+            # # It can be useful to think of the vehicle as being able to drive both forwards and backwards.
+
+            # Choose the relevant direction from the above list, based on dx and dy
+            dir = directions[dx+3*dy+4]
+
+            # Every other frame, if the player is pressing a key to move in a particular direction, update the current
+            # direction to rotate towards facing the new direction
+            if self.timer % 2 == 0 and dir &gt;= 0:
+
+                # We first calculate the difference between the desired direction and the current direction.
+                difference = (dir - self.direction)
+
+                # We use the following list to decide how much to rotate by each frame, based on difference.
+                # It&#x27;s easiest to think about this by just considering the first four direction values – 0 to 3,
+                # corresponding to facing up, to fit into the bottom right. However, because of the symmetry of the
+                # player sprites as described above, these calculations work for all possible directions.
+                # If there is no difference, no rotation is required.
+                # If the difference is 1, we rotate by 1 (clockwise)
+                # If the difference is 2, then the target direction is at right angles to the current direction,
+                # so we have a free choice as to whether to turn clockwise or anti-clockwise to align with the
+                # target direction. We choose clockwise.
+                # If the difference is three, the symmetry of the player sprites means that we can reach the desired
+                # animation frame by rotating one unit anti-clockwise.
+                rotation_table = [0, 1, 1, -1]
+
+                rotation = rotation_table[difference % 4]
+                self.direction = (self.direction + rotation) % 4
+
+
+            self.fire_timer -= 1
+
+            # Fire cannon (or allow firing animation to finish)
+            if self.fire_timer &lt; 0 and (self.frame &gt; 0 or keyboard.space):
+                if self.frame == 0:
+                    # Create a bullet
+                    game.play_sound(&quot;laser&quot;)
+                    game.bullets.append(Bullet((self.x, self.y - 8)))
+                self.frame = (self.frame + 1) % 3
+                self.fire_timer = Player.RELOAD_TIME
+
+            # Check to see if any enemy segments collide with the player, as well as the flying enemy.
+            # We create a list consisting of all enemy segments, and append another list containing only the
+            # flying enemy.
+            all_enemies = game.segments + [game.flying_enemy]
+            for enemy in all_enemies:
+                # The flying enemy might not exist, in which case its value
+                # will be None. We cannot call a method or access any attributes
+                # of a &#x27;None&#x27; object, so we must first check for that case.
+                # &quot;if object:&quot; is shorthand for &quot;if object != None&quot;.
+                if enemy and enemy.collidepoint(self.pos):
+                    # Collision has occurred, check to see whether player is invulnerable
+                    if self.timer &gt; Player.INVULNERABILITY_TIME:
+                        game.play_sound(&quot;player_explode&quot;)
+                        game.explosions.append(Explosion(self.pos, 1))
+                        self.alive = False
+                        self.timer = 0
+                        self.lives -= 1
+        else:
+            # Not alive
+            # Wait a while before respawning
+            if self.timer &gt; Player.RESPAWN_TIME:
+                # Respawn
+                self.alive = True
+                self.timer = 0
+                self.pos = (240, 768)
+                game.clear_rocks_for_respawn(*self.pos)     # Ensure there are no rocks at the player&#x27;s respawn position
+
+        # Display the player sprite if alive - BUT, if player is currently invulnerable, due to having just respawned,
+        # switch between showing and not showing the player sprite on alternate frames
+        invulnerable = self.timer &gt; Player.INVULNERABILITY_TIME
+        if self.alive and (invulnerable or self.timer % 2 == 0):
+            self.image = &quot;player&quot; + str(self.direction) + str(self.frame)
+        else:
+            self.image = &quot;blank&quot;
+
+class FlyingEnemy(Actor):
+    def __init__(self, player_x):
+        # Choose which side of the screen we start from. Don&#x27;t start right next to the player as that would be
+        # unfair - if not near player, start on a random side
+        side = 1 if player_x &lt; 160 else 0 if player_x &gt; 320 else randint(0, 1)
+
+        super().__init__(&quot;blank&quot;, (550*side-35, 688))
+
+        # Always moves in the same X direction, but randomly pauses to just fly straight up or down
+        self.moving_x = 1       # 0 if we&#x27;re currently moving only vertically, 1 if moving along x axis (as well as y axis)
+        self.dx = 1 - 2 * side  # Move left or right depending on which side of the screen we&#x27;re on
+        self.dy = choice([-1, 1])   # Start moving either up or down
+        self.type = randint(0, 2)   # 3 different colours
+
+        self.health = 1
+
+        self.timer = 0
+
+    def update(self):
+        self.timer += 1
+
+        # Move
+        self.x += self.dx * self.moving_x * (3 - abs(self.dy))
+        self.y += self.dy * (3 - abs(self.dx * self.moving_x))
+
+        if self.y &lt; 592 or self.y &gt; 784:
+            # Gone too high or low - reverse y direction
+            self.moving_x = randint(0, 1)
+            self.dy = -self.dy
+
+        anim_frame = str([0, 2, 1, 2][(self.timer // 4) % 4])
+        self.image = &quot;meanie&quot; + str(self.type) + anim_frame
+
+
+class Rock(Actor):
+    def __init__(self, x, y, totem=False):
+        # Use a custom anchor point for totem rocks, which are taller than other rocks
+        anchor = (24, 60) if totem else CENTRE_ANCHOR
+        super().__init__(&quot;blank&quot;, cell2pos(x, y), anchor=anchor)
+
+        self.type = randint(0, 3)
+
+        if totem:
+            # Totem rocks take five hits and give bonus points
+            game.play_sound(&quot;totem_create&quot;)
+            self.health = 5
+            self.show_health = 5
+        else:
+            # Non-totem rocks are initially displayed as if they have one health, and animate until they
+            # show the actualy sprite for their health level - resulting in a &#x27;growing&#x27; animation.
+            self.health = randint(3, 4)
+            self.show_health = 1
+
+        self.timer = 1
+
+    def damage(self, amount, damaged_by_bullet=False):
+        # Damage can occur by being hit by bullets, or by being destroyed by a segment, or by being cleared from the
+        # player&#x27;s respawn location. Points can be earned by hitting special &quot;totem&quot; rocks, which have 5 health, but
+        # this should only happen when they are hit by a bullet.
+        if damaged_by_bullet and self.health == 5:
+            game.play_sound(&quot;totem_destroy&quot;)
+            game.score += 100
+        else:
+            if amount &gt; self.health - 1:
+                game.play_sound(&quot;rock_destroy&quot;)
+            else:
+                game.play_sound(&quot;hit&quot;, 4)
+
+        game.explosions.append(Explosion(self.pos, 2 * (self.health == 5)))
+        self.health -= amount
+        self.show_health = self.health
+
+        self.anchor, self.pos = CENTRE_ANCHOR, self.pos
+
+        # Return False if we&#x27;ve lost all our health, otherwise True
+        return self.health &lt; 1
+
+    def update(self):
+        self.timer += 1
+
+        # Every other frame, update the growing animation
+        if self.timer % 2 == 1 and self.show_health &lt; self.health:
+            self.show_health += 1
+
+        if self.health == 5 and self.timer &gt; 200:
+            # Totem rocks turn into normal rocks if not shot within 200 frames
+            self.damage(1)
+
+        colour = str(max(game.wave, 0) % 3)
+        health = str(max(self.show_health - 1, 0))
+        self.image = &quot;rock&quot; + colour + str(self.type) + health
+
+
+class Bullet(Actor):
+    def __init__(self, pos):
+        super().__init__(&quot;bullet&quot;, pos)
+
+        self.done = False
+
+    def update(self):
+        # Move up the screen, 24 pixels per frame
+        self.y -= 24
+
+        # game.damage checks to see if there is a rock at the given position – if so, it damages
+        # the rock and returns True
+        # An asterisk before a list or tuple will unpack the contents into separate values
+        grid_cell = pos2cell(*self.pos)
+        if game.damage(*grid_cell, 1, True):
+            # Hit a rock – destroy self
+            self.done = True
+        else:
+            # Didn&#x27;t hit a rock
+            # Check each myriapod segment, and the flying enemy, to see if this bullet collides with them
+            for obj in game.segments + [game.flying_enemy]:
+                # Is this a valid object reference, and if so, does this bullet&#x27;s location overlap with the
+                # object&#x27;s rectangle? (collidepoint is a method from Pygame&#x27;s Rect class)
+                if obj and obj.collidepoint(self.pos):
+                    # Create explosion
+                    game.explosions.append(Explosion(obj.pos, 2))
+
+                    obj.health -= 1
+
+                    # Is the object an instance of the Segment class?
+                    if isinstance(obj, Segment):
+                        # Should we create a new rock in the segment&#x27;s place? Health must be zero, there must be no
+                        # rock there already, and the player sprite must not overlap with the location
+                        if obj.health == 0 and not game.grid[obj.cell_y][obj.cell_x] and game.allow_movement(game.player.x, game.player.y, obj.cell_x, obj.cell_y):
+                            # Create new rock - 20% chance of being a totem
+                            game.grid[obj.cell_y][obj.cell_x] = Rock(obj.cell_x, obj.cell_y, random() &lt; .2)
+
+                        game.play_sound(&quot;segment_explode&quot;)
+                        game.score += 10
+                    else:
+                        # If it&#x27;s not a segment, it must be the flying enemy
+                        game.play_sound(&quot;meanie_explode&quot;)
+                        game.score += 20
+
+                    self.done = True    # Destroy self
+
+                    # Don&#x27;t continue the for loop, this bullet has hit something so shouldn&#x27;t hit anything else
+                    return
+
+
+# SEGMENT MOVEMENT
+# The code below creates several constants used in the Segment class in relation to movement and directions
+
+# Each myriapod segment moves in relation to its current grid cell.
+# A segment enters a cell from a particular edge (stored in &#x27;in_edge&#x27; in the Segment class)
+# After five frames it decides which edge it&#x27;s going leave that cell through (stored in out_edge).
+# For example, it might carry straight on and leave through the opposite edge from the one it started at.
+# Or it might turn 90 degrees and leave through an edge to its left or right.
+# In this case it initially turn 45 degrees and continues along that path for 8 frames. It then turns another
+# 45 degrees, at which point they are heading directly towards the next grid cell.
+# A segment spends a total of 16 frames in each cell. Within the update method, the variable &#x27;phase&#x27; refers to
+# where it is in that cycle - 0 meaning it&#x27;s just entered a grid cell, and 15 meaning it&#x27;s about to leave it.
+
+# Let&#x27;s imagine the case where a segment enters from the left edge of a cell and then turns to leave from the
+# bottom edge. The segment will initially move along the horizontal (X) axis, and will end up moving along the
+# vertical (Y) axis. In this case we&#x27;ll call the X axis the primary axis, and the Y axis the secondary axis.
+# The lists SECONDARY_AXIS_SPEED and SECONDARY_AXIS_POSITIONS are used to determine the movement of the segment.
+# This is explained in more detail in the Segment.update method.
+
+
+# In Python, multiplying a list by a number creates a list where the contents
+# are repeated the specified number of times. So the code below is equivalent to:
+# SECONDARY_AXIS_SPEED = [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 , 1, 2, 2, 2, 2]
+# This list represents how much the segment moves along the secondary axis, in situations where it makes two 45° turns
+# as described above. For the first four frames it doesn&#x27;t move at all along the secondary axis. For the next eight
+# frames it moves at one pixel per frame, then for the last four frames it moves at two pixels per frame.
+SECONDARY_AXIS_SPEED = [0]*4 + [1]*8 + [2]*4
+
+
+# The code below creates a list of 16 elements, where each element is the sum of all the equivalent elements in the
+# SECONDARY_AXIS_SPEED list up to that point.
+# It is equivalent to writing:
+# SECONDARY_AXIS_POSITIONS = [0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14]
+# This list stores the total secondary axis movement that will have occurred at each phase in the segment&#x27;s movement
+# through the current grid cell (if the segment is turning)
+SECONDARY_AXIS_POSITIONS = [sum(SECONDARY_AXIS_SPEED[:i]) for i in range(16)]
+
+
+# Constants representing directions
+DIRECTION_UP = 0
+DIRECTION_RIGHT = 1
+DIRECTION_DOWN = 2
+DIRECTION_LEFT = 3
+
+# X and Y directions indexed into by in_edge and out_edge in Segment
+# The indices correspond to the direction numbers above, i.e. 0 = up, 1 = right, 2 = down, 3 = left
+DX = [0,1,0,-1]
+DY = [-1,0,1,0]
+
+def inverse_direction(dir):
+    if dir == DIRECTION_UP:
+        return DIRECTION_DOWN
+    elif dir == DIRECTION_RIGHT:
+        return DIRECTION_LEFT
+    elif dir == DIRECTION_DOWN:
+        return DIRECTION_UP
+    elif dir == DIRECTION_LEFT:
+        return DIRECTION_RIGHT
+
+def is_horizontal(dir):
+    return dir == DIRECTION_LEFT or dir == DIRECTION_RIGHT
+
+
+class Segment(Actor):
+    def __init__(self, cx, cy, health, fast, head):
+        super().__init__(&quot;blank&quot;)
+
+        # Grid cell positions
+        self.cell_x = cx
+        self.cell_y = cy
+
+        self.health = health
+
+        # Determines whether the &#x27;fast&#x27; version of the sprite is used. Note that the actual speed of the myriapod is
+        # determined by how much time is included in the State.update method
+        self.fast = fast
+
+        self.head = head        # Should this segment use the head sprite?
+
+        # Each myriapod segment moves in a defined pattern within its current cell, before moving to the next one.
+        # It will start at one of the edges - represented by a number, where 0=down,1=right,2=up,3=left
+        # self.in_edge stores the edge through which it entered the cell.
+        # Several frames after entering a cell, it chooses which edge to leave through - stored in out_edge
+        # The path it follows is explained in the update and rank methods
+        self.in_edge = DIRECTION_LEFT
+        self.out_edge = DIRECTION_RIGHT
+
+        self.disallow_direction = DIRECTION_UP      # Prevents segment from moving in a particular direction
+        self.previous_x_direction = 1               # Used to create winding/snaking motion
+
+    def rank(self):
+        # The rank method creates and returns a function. Don&#x27;t worry if this seems a strange concept - it is
+        # fairly advanced stuff. The returned function is passed to Python&#x27;s &#x27;min&#x27; function in the update method,
+        # as the &#x27;key&#x27; optional parameter. min then calls this function with the numbers 0 to 3, representing the four
+        # directions
+
+        def inner(proposed_out_edge):
+            # proposed_out_edge is a number between 0 and 3, representing a possible direction to move - see DIRECTION_UP etc and DX/DY above
+            # This function returns a tuple consisting of a series of factors determining which grid cell the segment should try to move into next.
+            # These are not absolute rules - rather they are used to rank the four directions in order of preference,
+            # i.e. which direction is the best (or at least, least bad) to move in. The factors are boolean (True or False)
+            # values. A value of False is preferable to a value of True.
+            # The order of the factors in the returned tuple determines their importance in deciding which way to go,
+            # with the most important factor coming first.
+            new_cell_x = self.cell_x + DX[proposed_out_edge]
+            new_cell_y = self.cell_y + DY[proposed_out_edge]
+
+            # Does this direction take us to a cell which is outside the grid?
+            # Note: when the segments start, they are all outside the grid so this would be True, except for the case of
+            # walking onto the top-left cell of the grid. But the end result of this and the following factors is that
+            # it will still be allowed to continue walking forwards onto the screen.
+            out = new_cell_x &lt; 0  or new_cell_x &gt; num_grid_cols - 1 or new_cell_y &lt; 0 or new_cell_y &gt; num_grid_rows - 1
+
+            # We don&#x27;t want it to to turn back on itself..
+            turning_back_on_self = proposed_out_edge == self.in_edge
+
+            # ..or go in a direction that&#x27;s disallowed (see comments in update method)
+            direction_disallowed = proposed_out_edge == self.disallow_direction
+
+            # Check to see if there&#x27;s a rock at the proposed new grid cell.
+            # rock will either be the Rock object at the new grid cell, or None.
+            # It will be set to None if there is no Rock object is at the new location, or if the new location is
+            # outside the grid. We also have to account for the special case where the segment is off the left-hand
+            # side of the screen on the first row, where it is initially created. We mustn&#x27;t try to access that grid
+            # cell (unlike most languages, in Python trying to access a list index with negative value won&#x27;t necessarily
+            # result in a crash, but it&#x27;s still not a good idea)
+            if out or (new_cell_y == 0 and new_cell_x &lt; 0):
+                rock = None
+            else:
+                rock = game.grid[new_cell_y][new_cell_x]
+
+            rock_present = rock != None
+
+            # Is new cell already occupied by another segment, or is another segment trying to enter my cell from
+            # the opposite direction?
+            occupied_by_segment = (new_cell_x, new_cell_y) in game.occupied or (self.cell_x, self.cell_y, proposed_out_edge) in game.occupied
+
+            # Prefer to move horizontally, unless there&#x27;s a rock in the way.
+            # If there are rocks both horizontally and vertically, prefer to move vertically
+            if rock_present:
+                horizontal_blocked = is_horizontal(proposed_out_edge)
+            else:
+                horizontal_blocked = not is_horizontal(proposed_out_edge)
+
+            # Prefer not to go in the previous horizontal direction after we move up/down
+            same_as_previous_x_direction = proposed_out_edge == self.previous_x_direction
+
+            # Finally we create and return a tuple of factors determining which cell segment should try to move into next.
+            # Most important first - e.g. we shouldn&#x27;t enter a new cell if if&#x27;s outside the grid
+            return (out, turning_back_on_self, direction_disallowed, occupied_by_segment, rock_present, horizontal_blocked, same_as_previous_x_direction)
+
+        return inner
+
+    def update(self):
+        # Segments take either 16 or 8 frames to pass through each grid cell, depending on the amount by which
+        # game.time is updated each frame. phase will be a number between 0 and 15 indicating where we&#x27;re at
+        # in that cycle.
+        phase = game.time % 16
+
+        if phase == 0:
+            # At this point, the segment is entering a new grid cell. We first update our current grid cell coordinates.
+            self.cell_x += DX[self.out_edge]
+            self.cell_y += DY[self.out_edge]
+
+            # We then need to update in_edge. If, for example, we left the previous cell via its right edge, that means
+            # we&#x27;re entering the new cell via its left edge.
+            self.in_edge = inverse_direction(self.out_edge)
+
+            # During normal gameplay, once a segment reaches the bottom of the screen, it starts moving up again.
+            # Once it reaches row 18, it starts moving down again, so that it remains a threat to the player.
+            # During the title screen, we allow segments to go all the way back up to the top of the screen.
+            if self.cell_y == (18 if game.player else 0):
+                self.disallow_direction = DIRECTION_UP
+            if self.cell_y == num_grid_rows-1:
+                self.disallow_direction = DIRECTION_DOWN
+
+        elif phase == 4:
+            # At this point we decide which new cell we&#x27;re going to go into (and therefore, which edge of the current
+            # cell we will leave via - to be stored in out_edge)
+            # range(4) generates all the numbers from 0 to 3 (corresponding to DIRECTION_UP etc)
+            # Python&#x27;s built-in &#x27;min&#x27; function usually chooses the lowest number, so would usually return 0 as the result.
+            # But if the optional &#x27;key&#x27; argument is specified, this changes how the function determines the result.
+            # The rank function (see above) returns a function (named &#x27;inner&#x27; in rank), which min calls to decide
+            # how the items should be ordered. The argument to inner represents a possible direction to move in.
+            # The &#x27;inner&#x27; function returns a tuple of boolean values - for example: (True,False,False,True,etc..)
+            # When Python compares two such tuples, it considers values of False to be less than values of True,
+            # and values that come earlier in the sequence are more significant than later values. So (False,True)
+            # would be considered less than (True,False).
+            self.out_edge = min(range(4), key = self.rank())
+
+            if is_horizontal(self.out_edge):
+                self.previous_x_direction = self.out_edge
+
+            new_cell_x = self.cell_x + DX[self.out_edge]
+            new_cell_y = self.cell_y + DY[self.out_edge]
+
+            # Destroy any rock that might be in the new cell
+            if new_cell_x &gt;= 0 and new_cell_x &lt; num_grid_cols:
+                game.damage(new_cell_x, new_cell_y, 5)
+
+            # Set new cell as occupied. It&#x27;s a case of whichever segment is processed first, gets first dibs on a cell
+            # The second line deals with the case where two segments are moving towards each other and are in
+            # neighbouring cells. It allows a segment to tell if another segment trying to enter its cell from
+            # the opposite direction
+            game.occupied.add((new_cell_x, new_cell_y))
+            game.occupied.add((new_cell_x, new_cell_y, inverse_direction(self.out_edge)))
+
+        # turn_idx tells us whether the segment is going to be making a 90 degree turn in the current cell, or moving
+        # in a straight line. 1 = anti-clockwise turn, 2 = straight ahead, 3 = clockwise turn, 0 = leaving through same
+        # edge from which we entered (unlikely to ever happen in practice)
+        turn_idx = (self.out_edge - self.in_edge) % 4
+
+        # Calculate segment offset in the cell, measured from the cell&#x27;s centre
+        # We start off assuming that the segment is starting from the top of the cell - i.e. self.in_edge being DIRECTION_UP,
+        # corresponding to zero. The primary and secondary axes, as described under &quot;SEGMENT MOVEMENT&quot; above, are Y and X.
+        # We then apply a calculation to rotate these X and Y offsets, based on the actual direction the segment is coming from.
+        # Let&#x27;s take as an example the case where the segment is moving in a straight line from top to bottom.
+        # We calculate offset_x by multiplying SECONDARY_AXIS_POSITIONS[phase] by 2-turn_idx. In this case, turn_idx
+        # will be 2.  So 2 - turn_idx will be zero. Multiplying anything by zero gives zero, so we end up with no
+        # movement on the X axis - which is what we want in this case.
+        # The starting point for the offset_y calculation is that the segment starts at an offset of -16 and must cover
+        # 32 pixels over the 16 phases - therefore we must multiply phase by 2. We then subtract the result of the
+        # previous line, in which stolen_y_movement was calculated by multiplying SECONDARY_AXIS_POSITIONS[phase] by
+        # turn_idx % 2.  mod 2 gives either zero (if turn_idx is 0 or 2), or 1 if it&#x27;s 1 or 3. In the case we&#x27;re looking
+        # at, turn_idx is 2, so stolen_y_movement is zero.
+        # The end result of all this is that in the case where the segment is moving in a straight line through a cell,
+        # it just moves at 2 pixels per frame along the primary axis. If it&#x27;s turning, it starts out moving at 2px
+        # per frame on the primary axis, but then starts moving along the secondary axis based on the values in
+        # SECONDARY_AXIS_POSITIONS. In this case we don&#x27;t want it to continue moving along the primary axis - it should
+        # initially slow to moving at 1px per phase, and then stop moving completely. Effectively, the secondary axis
+        # is stealing movement from the primary axis - hence the name &#x27;stolen_y_movement&#x27;
+        offset_x = SECONDARY_AXIS_POSITIONS[phase] * (2 - turn_idx)
+        stolen_y_movement = (turn_idx % 2) * SECONDARY_AXIS_POSITIONS[phase]
+        offset_y = -16 + (phase * 2) - stolen_y_movement
+
+        # A rotation matrix is a set of numbers which, when multiplied by a set of coordinates, result in those
+        # coordinates being rotated. Recall that the code above  makes the assumption that segment is starting from the
+        # top edge of the cell and moving down. The code below chooses the appropriate rotation matrix based on the
+        # actual edge the segment started from, and then modifies offset_x and offset_y based on this rotation matrix.
+        rotation_matrix = [[1,0,0,1],[0,-1,1,0],[-1,0,0,-1],[0,1,-1,0]][self.in_edge]
+        offset_x, offset_y = offset_x * rotation_matrix[0] + offset_y * rotation_matrix[1], offset_x * rotation_matrix[2] + offset_y * rotation_matrix[3]
+
+        # Finally, we can calculate the segment&#x27;s position on the screen. See cell2pos function above.
+        self.pos = cell2pos(self.cell_x, self.cell_y, offset_x, offset_y)
+
+        # We now need to decide which image the segment should use as its sprite.
+        # Images for segment sprites follow the format &#x27;segABCDE&#x27; where A is 0 or 1 depending on whether this is a
+        # fast-moving segment, B is 0 or 1 depending on whether we currently have 1 or 2 health, C is whether this
+        # is the head segment of a myriapod, D represents the direction we&#x27;re facing (0 = up, 1 = top right,
+        # up to 7 = top left) and E is how far we are through the walking animation (0 to 3)
+
+        # Three variables go into the calculation of the direction. turn_idx tells us if we&#x27;re making a turn in this
+        # cell - and if so, whether we&#x27;re turning clockwise or anti-clockwise. self.in_edge tells us which side of the
+        # grid cell we entered from. And we can use SECONDARY_AXIS_SPEED[phase] to find out whether we should be facing
+        # along the primary axis, secondary axis or diagonally between them.
+        # (turn_idx - 2) gives 0 if straight, -1 if turning anti-clockwise, 1 if turning clockwise
+        # Multiplying this by SECONDARY_AXIS_SPEED[phase] gives 0 if we&#x27;re not doing a turn in this cell, or if
+        # we are going to be turning but have not yet begun to turn. If we are doing a turn in this cell, and we&#x27;re
+        # at a phase where we should be showing a sprite with a new rotation, the result will be -1 or 1 if we&#x27;re
+        # currently in the first (45°) part of a turn, or -2 or 2 if we have turned 90°.
+        # The next part of the calculation multiplies in_edge by 2 and then adds the result to the result of the previous
+        # part. in_edge will be a number from 0 to 3, representing all possible directions in 90° increments.
+        # It must be multiplied by two because the direction value we&#x27;re calculating will be a number between 0 and 7,
+        # representing all possible directions in 45° increments.
+        # In the sprite filenames, the penultimate number represents the direction the sprite is facing, where a value
+        # of zero means it&#x27;s facing up. But in this code, if, for example, in_edge were zero, this means the segment is
+        # coming from the top edge of its cell, and therefore should be facing down. So we add 4 to account for this.
+        # After all this, we may have ended up with a number outside the desired range of 0 to 7. So the final step
+        # is to MOD by 8.
+        direction = ((SECONDARY_AXIS_SPEED[phase] * (turn_idx - 2)) + (self.in_edge * 2) + 4) % 8
+
+        leg_frame = phase // 4  # 16 phase cycle, 4 frames of animation
+
+        # Converting a boolean value to an integer gives 0 for False and 1 for True. We then need to convert the
+        # result to a string, as an integer can&#x27;t be appended to a string.
+        self.image = &quot;seg&quot; + str(int(self.fast)) + str(int(self.health == 2)) + str(int(self.head)) + str(direction) + str(leg_frame)
+
+class Game:
+    def __init__(self, player=None):
+        self.wave = -1
+        self.time = 0
+
+        self.player = player
+
+        # Create empty grid of 14 columns, 25 rows, each element intially just containing the value &#x27;None&#x27;
+        # Rocks will be added to the grid later
+        self.grid = [[None] * num_grid_cols for y in range(num_grid_rows)]
+
+        self.bullets = []
+        self.explosions = []
+        self.segments = []
+
+        self.flying_enemy = None
+
+        self.score = 0
+
+    def damage(self, cell_x, cell_y, amount, from_bullet=False):
+        # Find the rock at this grid cell (or None if no rock here)
+        rock = self.grid[cell_y][cell_x]
+
+        if rock != None:
+            # rock.damage returns False if the rock has lost all its health – in this case, the grid cell will be set
+            # to None, overwriting the rock object reference
+            if rock.damage(amount, from_bullet):
+                self.grid[cell_y][cell_x] = None
+
+        # Return whether or not there was a rock at this position
+        return rock != None
+
+    def allow_movement(self, x, y, ax=-1, ay=-1):
+        # ax/ay are only supplied when a segment is being destroyed, and we check to see if we should create a new
+        # rock in the segment&#x27;s place. They indicate a grid cell location where we&#x27;re planning to create the new rock,
+        # we need to ensure the new rock would not overlap with the player sprite
+
+        # Don&#x27;t go off edge of screen or above the player zone
+        if x &lt; 40 or x &gt; 440 or y &lt; 592 or y &gt; 784:
+            return False
+
+        # Get coordinates of corners of player sprite&#x27;s collision rectangle
+        x0, y0 = pos2cell(x-18, y-10)
+        x1, y1 = pos2cell(x+18, y+10)
+
+        # Check each corner against grid
+        for yi in range(y0, y1+1):
+            for xi in range(x0, x1+1):
+                if self.grid[yi][xi] or xi == ax and yi == ay:
+                    return False
+
+        return True
+
+    def clear_rocks_for_respawn(self, x, y):
+        # Destroy any rocks that might be overlapping with the player when they respawn
+        # Could be more than one rock, hence the loop
+        x0, y0 = pos2cell(x-18, y-10)
+        x1, y1 = pos2cell(x+18, y+10)
+
+        for yi in range(y0, y1+1):
+            for xi in range(x0, x1+1):
+                self.damage(xi, yi, 5)
+
+    def update(self):
+        # Increment time - used by segments. Time moves twice as fast every fourth wave.
+        self.time += (2 if self.wave % 4 == 3 else 1)
+
+        # At the start of each frame, we reset occupied to be an empty set. As each individual myriapod segment is
+        # updated, it will create entries in the occupied set to indicate that other segments should not attempt to
+        # enter its current grid cell. There are two types of entries that are created in the occupied set. One is a
+        # tuple consisting of a pair of numbers, representing grid cell coordinates. The other is a tuple consisting of
+        # three numbers – the first two being grid cell coordinates, the third representing an edge through which a
+        # segment is trying to enter a cell.
+        # It is only used for myriapod segments - not rocks. Those are stored in self.grid.
+        self.occupied = set()
+
+        # Call update method on all objects. grid is a list of lists, equivalent to a 2-dimensional array,
+        # so sum can be used to produce a single list containing all grid objects plus the contents of the other
+        # Actor lists. The player and flying enemy, which are object references rather than lists, are appended as single-item lists.
+        all_objects = sum(self.grid, self.bullets + self.segments + self.explosions + [self.player] + [self.flying_enemy])
+        for obj in all_objects:
+            if obj:
+                obj.update()
+
+        # Recreate the bullets list, which will contain all existing bullets except those which have gone off the screen or have hit something
+        self.bullets = [b for b in self.bullets if b.y &gt; 0 and not b.done]
+
+        # Recreate the explosions list, which will contain all existing explosions except those which have completed their animations
+        self.explosions = [e for e in self.explosions if not e.timer == 31]
+
+        # Recreate the segments list, which will contain all existing segments except those whose health is zero
+        self.segments = [s for s in self.segments if s.health &gt; 0]
+
+        if self.flying_enemy:
+            # Destroy flying enemy if it goes off the left or right sides of the screen, or health is zero
+            if self.flying_enemy.health &lt;= 0 or self.flying_enemy.x &lt; -35 or self.flying_enemy.x &gt; 515:
+                self.flying_enemy = None
+        elif random() &lt; .01:    # If there is no flying enemy, small chance of creating one each frame
+            self.flying_enemy = FlyingEnemy(self.player.x if self.player else 240)
+
+        if self.segments == []:
+            # No myriapod segments – start a new wave
+            # First, ensure there are enough rocks. Count the number of rocks in the grid and if there aren&#x27;t enough,
+            # create one per frame. Initially there should be 30 rocks – each wave, this goes up by one.
+            num_rocks = 0
+            for row in self.grid:
+                for element in row:
+                    if element != None:
+                        num_rocks += 1
+            if num_rocks &lt; 31+self.wave:
+                while True:
+                    x, y = randint(0, num_grid_cols-1), randint(1, num_grid_rows-3)     # Leave last 2 rows rock-free
+                    if self.grid[y][x] == None:
+                        self.grid[y][x] = Rock(x, y)
+                        break
+            else:
+                # New wave and enough rocks - create a new myriapod
+                game.play_sound(&quot;wave&quot;)
+                self.wave += 1
+                self.time = 0
+                self.segments = []
+                num_segments = 8 + self.wave // 4 * 2   # On the first four waves there are 8 segments - then 10, and so on
+                for i in range(num_segments):
+                    if DEBUG_TEST_RANDOM_POSITIONS:
+                        cell_x, cell_y = randint(1, 7), randint(1, 7)
+                    else:
+                        cell_x, cell_y = -1-i, 0
+                    # Determines whether segments take one or two hits to kill, based on the wave number.
+                    # e.g. on wave 0 all segments take one hit; on wave 1 they alternate between one and two hits
+                    health = [[1,1],[1,2],[2,2],[1,1]][self.wave % 4][i % 2]
+                    fast = self.wave % 4 == 3   # Every fourth myriapod moves faster than usual
+                    head = i == 0           # The first segment of each myriapod is the head
+                    self.segments.append(Segment(cell_x, cell_y, health, fast, head))
+
+        return self
+
+    def draw(self):
+        screen.blit(&quot;bg&quot; + str(max(self.wave, 0) % 3), (0, 0))
+
+        # Create a list of all grid locations and other objects which need to be drawn
+        # (Most grid locations will be set to None as they are unoccupied, hence the check &quot;if obj:&quot; further down)
+        all_objs = sum(self.grid, self.bullets + self.segments + self.explosions + [self.player])
+
+        # We want to draw objects in order based on their Y position. Objects further down the screen should be drawn
+        # after (and therefore in front of) objects higher up the screen. We can use Python&#x27;s built-in sort function
+        # to put the items in the desired order, before we draw them. The following function specifies the criteria
+        # used to decide how the objects are sorted.
+        def sort_key(obj):
+            # Returns a tuple consisting of two elements. The first is whether the object is an instance of the
+            # Explosion class (True or False). A value of true means it will be displayed in front of other objects.
+            # The second element is a number – either the objects why position, or zero if obj is &#x27;None&#x27;
+            return (isinstance(obj, Explosion), obj.y if obj else 0)
+
+        # Sort list using the above function to determine order
+        all_objs.sort(key=sort_key)
+
+        # Draw the flying enemy on top of everything else
+        all_objs.append(self.flying_enemy)
+
+        # Draw the objects
+        for obj in all_objs:
+            if obj:
+                obj.draw()
+
+    def play_sound(self, name, count=1):
+        # Some sounds have multiple varieties. If count &gt; 1, we&#x27;ll randomly choose one from those
+        # We don&#x27;t play any sounds if there is no player (e.g. if we&#x27;re on the menu)
+        if self.player:
+            try:
+                # Pygame Zero allows you to write things like &#x27;sounds.explosion.play()&#x27;
+                # This automatically loads and plays a file named &#x27;explosion.wav&#x27; (or .ogg) from the sounds folder (if
+                # such a file exists)
+                # But what if you have files named &#x27;explosion0.ogg&#x27; to &#x27;explosion5.ogg&#x27; and want to randomly choose
+                # one of them to play? You can generate a string such as &#x27;explosion3&#x27;, but to use such a string
+                # to access an attribute of Pygame Zero&#x27;s sounds object, we must use Python&#x27;s built-in function getattr
+                sound = getattr(sounds, name + str(randint(0, count - 1)))
+                sound.play()
+            except Exception as e:
+                # If no such sound file exists, print the name
+                print(e)
+
+# Is the space bar currently being pressed down?
+space_down = False
+
+# Has the space bar just been pressed? i.e. gone from not being pressed, to being pressed
+def space_pressed():
+    global space_down
+    if keyboard.space:
+        if space_down:
+            # Space was down previous frame, and is still down
+            return False
+        else:
+            # Space wasn&#x27;t down previous frame, but now is
+            space_down = True
+            return True
+    else:
+        space_down = False
+        return False
+
+
+# Pygame Zero calls the update and draw functions each frame
+
+class State(Enum):
+    MENU = 1
+    PLAY = 2
+    GAME_OVER = 3
+
+def update():
+    global state, game
+
+    if state == State.MENU:
+        if space_pressed():
+            state = State.PLAY
+            game = Game(Player((240, 768)))  # Create new Game object, with a Player object
+
+        game.update()
+
+    elif state == State.PLAY:
+        if game.player.lives == 0 and game.player.timer == 100:
+            sounds.gameover.play()
+            state = State.GAME_OVER
+        else:
+            game.update()
+
+    elif state == State.GAME_OVER:
+        if space_pressed():
+            # Switch to menu state, and create a new game object without a player
+            state = State.MENU
+            game = Game()
+
+def draw():
+    # Draw the game, which covers both the game during gameplay but also the game displaying in the background
+    # during the main menu and game over screens
+    game.draw()
+
+    if state == State.MENU:
+        # Display logo
+        screen.blit(&quot;title&quot;, (0, 0))
+
+        # 14 frames of animation for &quot;Press space to start&quot;, updating every 4 frames
+        screen.blit(&quot;space&quot; + str((game.time // 4) % 14), (0, 420))
+
+    elif state == State.PLAY:
+        # Display number of lives
+        for i in range(game.player.lives):
+            screen.blit(&quot;life&quot;, (i*40+8, 4))
+
+        # Display score
+        score = str(game.score)
+        for i in range(1, len(score)+1):
+            # In Python, a negative index into a list (or in this case, into a string) gives you items in reverse order,
+            # e.g. &#x27;hello&#x27;[-1] gives &#x27;o&#x27;, &#x27;hello&#x27;[-2] gives &#x27;l&#x27;, etc.
+            digit = score[-i]
+            screen.blit(&quot;digit&quot;+digit, (468-i*24, 5))
+
+    elif state == State.GAME_OVER:
+        # Display &quot;Game Over&quot; image
+        screen.blit(&quot;over&quot;, (0, 0))
+
+# Set up music on game start
+try:
+    pygame.mixer.quit()
+    pygame.mixer.init(44100, -16, 2, 1024)
+
+    music.play(&quot;theme&quot;)
+    music.set_volume(0.4)
+except:
+    # If an error occurs, just ignore it
+    pass
+
+# Set the initial game state
+state = State.MENU
+
+# Create a new Game object, without a Player object
+game = Game()
+
+pgzrun.go()
+</code></pre>
+</main>
+
+<script>
+WIDTH = 480;
+HEIGHT = 800;
+TITLE = "Myriapod";
+
+const DEBUG_TEST_RANDOM_POSITIONS = false;
+
+const NUM_GRID_ROWS = 25;
+const NUM_GRID_COLS = 14;
+
+/*
+ * Return the result of the modulo operation dividend modulo divisor.
+ *
+ * The remainder operator (%) in JavaScript always takes the sign of the dividend.
+ * This trips you up when you come from Python and expect it to be a
+ * modulo operator for a negative dividend.
+ * This function correctly returns the non-negative remainder like Python.
+ */
+function modulo(dividend, divisor) {
+  return (((dividend % divisor) + divisor) % divisor);
+}
+
+/*
+ * Return a random integer N such that min <= N < max.
+ */
+function getRandomInteger(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor((Math.random() * (max - min)) + min);
+}
+
+/*
+ * Convert a position in pixel units to a position in grid units. In this game, a grid square is 32 pixels.
+ */
+function pos2cell(x, y) {
+  return [Math.floor((Math.trunc(x) - 16) / 32), Math.floor(Math.trunc(y) / 32)];
+}
+
+/*
+ * Convert grid cell position to pixel coordinates, with a given offset
+ */
+function cell2pos(cell_x, cell_y, x_offset = 0, y_offset = 0) {
+  // If the requested offset is zero, returns the centre of the requested cell, hence the +16. In the case of the
+  // X axis, there's a 16 pixel border at the left and right of the screen, hence +16 becomes +32.
+  return [(cell_x * 32) + 32 + x_offset, (cell_y * 32) + 16 + y_offset];
+}
+
+class Explosion extends Actor {
+  constructor(pos, type) {
+    super("blank");
+    this.pos = pos;
+
+    this.type = type;
+    this.timer = 0;
+  }
+
+  update() {
+    this.timer += 1;
+
+    // Set sprite based on explosion type and timer - update to a new image
+    // every four frames
+    this.name = `exp${ this.type }${ Math.floor(this.timer / 4) }`;
+  }
+}
+
+class Player extends Actor {
+  static INVULNERABILITY_TIME = 100;
+  static RESPAWN_TIME = 100;
+  static RELOAD_TIME = 10;
+
+  constructor(pos) {
+    super("blank");
+    this.pos = pos;
+
+    // These determine which frame of animation the player sprite will use
+    this.direction = 0;
+    this.frame = 0;
+
+    this.lives = 3;
+    this.alive = true;
+
+    // timer is used for animation, respawning and for ensuring the player is
+    // invulnerable immediately after respawning
+    this.timer = 0;
+
+    // When the player shoots, this is set to RELOAD_TIME - it then counts
+    // down - when it reaches zero the player can shoot again
+    this.fire_timer = 0;
+  }
+
+  move(dx, dy, speed) {
+    // dx and dy will each be either 0, -1 or 1. speed is an integer indicating
+    // how many pixels we should move in the specified direction.
+    for (let i = 0; i < speed; i++) {
+      // For each pixel we want to move, we must first check if it's a valid place to move to
+      if (game.allow_movement(this.posx + dx, this.posy + dy)) {
+        this.posx += dx;
+        this.posy += dy;
+      }
+    }
+  }
+
+  update() {
+    this.timer += 1;
+
+    if (this.alive) {
+      // Get keyboard input. dx and dy represent the direction the player is facing on each axis
+      let dx = 0, dy = 0,
+          directions, dir, difference, rotation_table, rotation, all_enemies;
+      if (keyboard[keys.LEFT]) {
+        dx = -1;
+      }
+      else if (keyboard[keys.RIGHT]) {
+        dx = 1;
+      }
+
+      if (keyboard[keys.UP]) {
+        dy = -1;
+      }
+      else if (keyboard[keys.DOWN]) {
+        dy = 1;
+      }
+
+      // Move in the relevant directions by the specified number of pixels. The purpose of 3 - abs(dy) is to
+      // generate vectors which look either like (3,0) (which is 3 units long) or (2, 2) (which is sqrt(8) long)
+      // so we move roughly the same distance regardless of whether we're travelling straight along the x or y axis.
+      // or at 45 degrees. Without this, we would move noticeably faster when travelling diagonally.
+      this.move(dx, 0, 3 - Math.abs(dy));
+      this.move(0, dy, 3 - Math.abs(dx));
+
+      // When the player presses a key to start handing in a new direction, we don't want the sprite to just
+      // instantly change to facing in that new direction. That would look wrong, since in the real world vehicles
+      // can't just suddenly change direction in the blink of an eye.
+      // Instead, we want the vehicle to turn to face the new direction over several frames. If the vehicle is
+      // currently facing down, and the player presses the left arrow key, the vehicle should first turn to face
+      // diagonally down and to the left, and then turn to face left.
+
+      // Each number in the following list corresponds to a direction - 0 is up, 1 is up and to the right, and
+      // so on in clockwise order. -1 means no direction.
+      // Think of it as a grid, as follows:
+      // 7  0  1
+      // 6 -1  2
+      // 5  4  3
+      directions = [7, 0, 1, 6, -1, 2, 5, 4, 3];
+
+      // But! If you look at the values that self.direction actually takes on during the game, you only see
+      // numbers from 0 to 3. This is because although there are eight possible directions of travel, there are
+      // only four orientations of the player vehicle. The same sprite, for example, is used if the player is
+      // travelling either left or right. This is why the direction is ultimately clamped to a range of 0 to 4.
+      // 0 = facing up or down
+      // 1 = facing top right or bottom left
+      // 2 = facing left or right
+      // 3 = facing bottom right or top left
+
+      // # It can be useful to think of the vehicle as being able to drive both forwards and backwards.
+
+      // Choose the relevant direction from the above list, based on dx and dy
+      dir = directions[dx+(3*dy)+4];
+
+      // Every other frame, if the player is pressing a key to move in a particular direction, update the current
+      // direction to rotate towards facing the new direction
+      if (((this.timer % 2) === 0) && (dir >= 0)) {
+
+        // We first calculate the difference between the desired direction and the current direction.
+        difference = (dir - this.direction);
+
+        // We use the following list to decide how much to rotate by each frame, based on difference.
+        // It's easiest to think about this by just considering the first four direction values – 0 to 3,
+        // corresponding to facing up, to fit into the bottom right. However, because of the symmetry of the
+        // player sprites as described above, these calculations work for all possible directions.
+        // If there is no difference, no rotation is required.
+        // If the difference is 1, we rotate by 1 (clockwise)
+        // If the difference is 2, then the target direction is at right angles to the current direction,
+        // so we have a free choice as to whether to turn clockwise or anti-clockwise to align with the
+        // target direction. We choose clockwise.
+        // If the difference is three, the symmetry of the player sprites means that we can reach the desired
+        // animation frame by rotating one unit anti-clockwise.
+        rotation_table = [0, 1, 1, -1];
+
+        rotation = rotation_table[modulo(difference, 4)];
+        this.direction = modulo(this.direction + rotation, 4);
+      }
+
+
+      this.fire_timer -= 1;
+
+      // Fire cannon (or allow firing animation to finish)
+      if ((this.fire_timer < 0) && ((this.frame > 0) || keyboard[keys.SPACE])) {
+        if (this.frame === 0) {
+          // Create a bullet
+          game.play_sound("laser");
+          game.bullets.push(new Bullet([this.posx, this.posy - 8]));
+        }
+        this.frame = (this.frame + 1) % 3;
+        this.fire_timer = Player.RELOAD_TIME;
+      }
+
+      // Check to see if any enemy segments collide with the player, as well as the flying enemy.
+      // We create a list consisting of all enemy segments, and append another list containing only the
+      // flying enemy.
+      all_enemies = game.segments.slice();
+      all_enemies.push(game.flying_enemy);
+      for (let enemy of all_enemies) {
+        // The flying enemy might not exist, in which case its value
+        // will be None. We cannot call a method or access any attributes
+        // of a 'None' object, so we must first check for that case.
+        // "if object:" is shorthand for "if object != None".
+        if ((enemy != null) && enemy.collidepoint(this.pos)) {
+          // Collision has occurred, check to see whether player is invulnerable
+          if (this.timer > Player.INVULNERABILITY_TIME) {
+            game.play_sound("player_explode");
+            game.explosions.push(new Explosion(this.pos, 1));
+            this.alive = false;
+            this.timer = 0;
+            this.lives -= 1;
+          }
+        }
+      }
+    }
+    else {
+      // Not alive
+      // Wait a while before respawning
+      if (this.timer > Player.RESPAWN_TIME) {
+        // Respawn
+        this.alive = true;
+        this.timer = 0;
+        this.pos = [240, 768];
+        game.clear_rocks_for_respawn(...this.pos);     // Ensure there are no rocks at the player's respawn position
+      }
+    }
+
+    // Display the player sprite if alive - BUT, if player is currently invulnerable, due to having just respawned,
+    // switch between showing and not showing the player sprite on alternate frames
+    if (this.alive && ((this.timer > Player.INVULNERABILITY_TIME) || ((this.timer % 2) === 0))) {
+      this.name = `player${ this.direction }${ this.frame }`;
+    }
+    else {
+      this.name = "blank";
+    }
+  }
+}
+
+class FlyingEnemy extends Actor {
+  constructor(player_x) {
+    // Choose which side of the screen we start from. Don't start right next to the player as that would be
+    // unfair - if not near player, start on a random side
+    super("blank");
+
+    let side;
+    if (player_x < 160) {
+      side = 1;
+    }
+    else {
+      if (player_x > 320) {
+        side = 0;
+      }
+      else {
+        side = getRandomInteger(0, 2);
+      }
+    }
+    this.pos = [(550 * side) - 35, 688];
+
+    // Always moves in the same X direction, but randomly pauses to just fly straight up or down
+    this.moving_x = 1;         // 0 if we're currently moving only vertically, 1 if moving along x axis (as well as y axis)
+    this.dx = 1 - (2 * side);  // Move left or right depending on which side of the screen we're on
+    this.dy = [-1, 1][getRandomInteger(0, 2)];   // Start moving either up or down
+    this.type = getRandomInteger(0, 3);   // 3 different colours
+
+    this.health = 1;
+
+    this.timer = 0;
+  }
+
+  update() {
+    this.timer += 1;
+
+    // Move
+    this.posx += this.dx * this.moving_x * (3 - Math.abs(this.dy));
+    this.posy += this.dy * (3 - Math.abs(this.dx * this.moving_x));
+
+    if ((this.posy < 592) || (this.posy > 784)) {
+      // Gone too high or low - reverse y direction
+      this.moving_x = getRandomInteger(0, 2);
+      this.dy = -this.dy;
+    }
+
+    let anim_frame = ['0', '2', '1', '2'][Math.floor(this.timer / 4)%4];
+    this.name = "meanie" + this.type + anim_frame;
+  }
+}
+
+class Rock extends Actor {
+  constructor(x, y, totem = false) {
+    super("blank");
+    // Use a custom anchor point for totem rocks, which are taller than other rocks
+    if (totem) {
+      this.anchor = [24, 60];
+    }
+    else {
+      this.anchor = 'center';
+    }
+    this.pos = cell2pos(x, y);
+
+    this.type = getRandomInteger(0, 4);
+
+    if (totem) {
+      // Totem rocks take five hits and give bonus points
+      game.play_sound("totem_create");
+      this.health = 5;
+      this.show_health = 5;
+    }
+    else {
+      // Non-totem rocks are initially displayed as if they have one health, and animate until they
+      // show the actualy sprite for their health level - resulting in a 'growing' animation.
+      this.health = getRandomInteger(3, 5);
+      this.show_health = 1;
+    }
+
+    this.timer = 1;
+  }
+
+  damage(amount, damaged_by_bullet = false) {
+    // Damage can occur by being hit by bullets, or by being destroyed by a segment, or by being cleared from the
+    // player's respawn location. Points can be earned by hitting special "totem" rocks, which have 5 health, but
+    // this should only happen when they are hit by a bullet.
+    if (damaged_by_bullet && (this.health === 5)) {
+      game.play_sound("totem_destroy");
+      game.score += 100;
+    }
+    else {
+      if (amount > (this.health - 1)) {
+        game.play_sound("rock_destroy");
+      }
+      else {
+        game.play_sound("hit", 4);
+      }
+    }
+
+    let explosion;
+    if (this.health === 5) {
+      explosion = new Explosion(this.pos, 2);
+    }
+    else {
+      explosion = new Explosion(this.pos, 0);
+    }
+
+    game.explosions.push(explosion);
+    this.health -= amount;
+    this.show_health = this.health;
+
+    this.anchor = 'center';
+    this.pos = this.pos;
+
+    // Return False if we've lost all our health, otherwise True
+    return (this.health < 1);
+  }
+
+  update() {
+    this.timer += 1;
+
+    // Every other frame, update the growing animation
+    if (((this.timer % 2) === 1) && (this.show_health < this.health)) {
+      this.show_health += 1;
+    }
+
+    if ((this.health === 5) && (this.timer > 200)) {
+      // Totem rocks turn into normal rocks if not shot within 200 frames
+      this.damage(1);
+    }
+
+    let colour = Math.max(game.wave, 0) % 3,
+        health = Math.max(this.show_health - 1, 0);
+    this.name = `rock${ colour }${ this.type }${ health }`;
+  }
+}
+
+class Bullet extends Actor {
+  constructor(pos) {
+    super("bullet");
+    this.pos = pos;
+
+    this.done = false;
+  }
+
+  update() {
+    // Move up the screen, 24 pixels per frame
+    this.posy -= 24;
+
+    if (this.posy < 0) {
+      /*
+       * Destroy self if Bullet is offscreen.
+       * This is needed because Bullet is not filtered out until after
+       * this update() call.
+       * Letting it proceed causes a negative y index to be passed to
+       * game.damage() and JavaScript does not handle negative indices.
+       */
+      this.done = true;
+      return;
+    }
+
+    // game.damage checks to see if there is a rock at the given position – if so, it damages
+    // the rock and returns True
+    // An asterisk before a list or tuple will unpack the contents into separate values
+    let grid_cell = pos2cell(...this.pos);
+    if (game.damage(grid_cell[0], grid_cell[1], 1, true)) {
+      // Hit a rock – destroy self
+      this.done = true;
+    }
+    else {
+      // Didn't hit a rock
+      // Check each myriapod segment, and the flying enemy, to see if this bullet collides with them
+      let all_enemies = game.segments.slice();
+      all_enemies.push(game.flying_enemy);
+      for (let obj of all_enemies) {
+        // Is this a valid object reference, and if so, does this bullet's location overlap with the
+        // object's rectangle? (collidepoint is a method from Pygame's Rect class)
+        if ((obj != null) && obj.collidepoint(this.pos)) {
+          // Create explosion
+          game.explosions.push(new Explosion(obj.pos, 2));
+
+          obj.health -= 1;
+
+          // Is the object an instance of the Segment class?
+          if (obj instanceof Segment) {
+            // Should we create a new rock in the segment's place? Health must be zero, there must be no
+            // rock there already, and the player sprite must not overlap with the location
+            if ((obj.health === 0) && (game.grid[obj.cell_y][obj.cell_x] == null) && game.allow_movement(game.player.posx, game.player.posy, obj.cell_x, obj.cell_y)) {
+              // Create new rock - 20% chance of being a totem
+              game.grid[obj.cell_y][obj.cell_x] = new Rock(obj.cell_x, obj.cell_y, Math.random() < 0.2);
+            }
+
+            game.play_sound("segment_explode");
+            game.score += 10;
+          }
+          else {
+            // If it's not a segment, it must be the flying enemy
+            game.play_sound("meanie_explode");
+            game.score += 20;
+          }
+
+          this.done = true;    // Destroy self
+
+          // Don't continue the for loop, this bullet has hit something so shouldn't hit anything else
+          return;
+        }
+      }
+    }
+  }
+}
+
+
+// SEGMENT MOVEMENT
+// The code below creates several constants used in the Segment class in relation to movement and directions
+
+// Each myriapod segment moves in relation to its current grid cell.
+// A segment enters a cell from a particular edge (stored in 'in_edge' in the Segment class)
+// After five frames it decides which edge it's going leave that cell through (stored in out_edge).
+// For example, it might carry straight on and leave through the opposite edge from the one it started at.
+// Or it might turn 90 degrees and leave through an edge to its left or right.
+// In this case it initially turn 45 degrees and continues along that path for 8 frames. It then turns another
+// 45 degrees, at which point they are heading directly towards the next grid cell.
+// A segment spends a total of 16 frames in each cell. Within the update method, the variable 'phase' refers to
+// where it is in that cycle - 0 meaning it's just entered a grid cell, and 15 meaning it's about to leave it.
+
+// Let's imagine the case where a segment enters from the left edge of a cell and then turns to leave from the
+// bottom edge. The segment will initially move along the horizontal (X) axis, and will end up moving along the
+// vertical (Y) axis. In this case we'll call the X axis the primary axis, and the Y axis the secondary axis.
+// The lists SECONDARY_AXIS_SPEED and SECONDARY_AXIS_POSITIONS are used to determine the movement of the segment.
+// This is explained in more detail in the Segment.update method.
+
+
+// In Python, multiplying a list by a number creates a list where the contents
+// are repeated the specified number of times. So the code below is equivalent to:
+// SECONDARY_AXIS_SPEED = [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 , 1, 2, 2, 2, 2]
+// This list represents how much the segment moves along the secondary axis, in situations where it makes two 45° turns
+// as described above. For the first four frames it doesn't move at all along the secondary axis. For the next eight
+// frames it moves at one pixel per frame, then for the last four frames it moves at two pixels per frame.
+const SECONDARY_AXIS_SPEED = [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2];
+
+
+// The code below creates a list of 16 elements, where each element is the sum of all the equivalent elements in the
+// SECONDARY_AXIS_SPEED list up to that point.
+// It is equivalent to writing:
+// SECONDARY_AXIS_POSITIONS = [0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14]
+// This list stores the total secondary axis movement that will have occurred at each phase in the segment's movement
+// through the current grid cell (if the segment is turning)
+const SECONDARY_AXIS_POSITIONS = [0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14];
+
+
+// Constants representing directions
+const DIRECTION_UP = 0;
+const DIRECTION_RIGHT = 1;
+const DIRECTION_DOWN = 2;
+const DIRECTION_LEFT = 3;
+
+// X and Y directions indexed into by in_edge and out_edge in Segment
+// The indices correspond to the direction numbers above, i.e. 0 = up, 1 = right, 2 = down, 3 = left
+const DX = [0, 1, 0, -1];
+const DY = [-1, 0, 1, 0];
+
+function inverse_direction(dir) {
+  if (dir === DIRECTION_UP) {
+    return DIRECTION_DOWN;
+  }
+  else if (dir === DIRECTION_RIGHT) {
+    return DIRECTION_LEFT;
+  }
+  else if (dir === DIRECTION_DOWN) {
+    return DIRECTION_UP;
+  }
+  else if (dir === DIRECTION_LEFT) {
+    return DIRECTION_RIGHT;
+  }
+}
+
+function is_horizontal(dir) {
+  return ((dir === DIRECTION_LEFT) || (dir === DIRECTION_RIGHT));
+}
+
+
+class Segment extends Actor {
+  constructor(cx, cy, health, fast, head) {
+    super("blank");
+
+    // Grid cell positions
+    this.cell_x = cx;
+    this.cell_y = cy;
+
+    this.health = health;
+
+    // Determines whether the 'fast' version of the sprite is used. Note that the actual speed of the myriapod is
+    // determined by how much time is included in the State.update method
+    this.fast = fast;
+
+    this.head = head;        // Should this segment use the head sprite?
+
+    // Each myriapod segment moves in a defined pattern within its current cell, before moving to the next one.
+    // It will start at one of the edges - represented by a number, where 0=down,1=right,2=up,3=left
+    // self.in_edge stores the edge through which it entered the cell.
+    // Several frames after entering a cell, it chooses which edge to leave through - stored in out_edge
+    // The path it follows is explained in the update and rank methods
+    this.in_edge = DIRECTION_LEFT;
+    this.out_edge = DIRECTION_RIGHT;
+
+    this.disallow_direction = DIRECTION_UP;      // Prevents segment from moving in a particular direction
+    this.previous_x_direction = 1;               // Used to create winding/snaking motion
+  }
+
+  update() {
+    // Segments take either 16 or 8 frames to pass through each grid cell, depending on the amount by which
+    // game.time is updated each frame. phase will be a number between 0 and 15 indicating where we're at
+    // in that cycle.
+    let phase = game.time % 16,
+        bottom = 0;
+    if (game.player != null) {
+      bottom = 18;
+    }
+
+    if (phase === 0) {
+      // At this point, the segment is entering a new grid cell. We first update our current grid cell coordinates.
+      this.cell_x += DX[this.out_edge];
+      this.cell_y += DY[this.out_edge];
+
+      // We then need to update in_edge. If, for example, we left the previous cell via its right edge, that means
+      // we're entering the new cell via its left edge.
+      this.in_edge = inverse_direction(this.out_edge);
+
+      // During normal gameplay, once a segment reaches the bottom of the screen, it starts moving up again.
+      // Once it reaches row 18, it starts moving down again, so that it remains a threat to the player.
+      // During the title screen, we allow segments to go all the way back up to the top of the screen.
+      if (this.cell_y === bottom) {
+        this.disallow_direction = DIRECTION_UP;
+      }
+      if (this.cell_y === (NUM_GRID_ROWS - 1)) {
+        this.disallow_direction = DIRECTION_DOWN;
+      }
+    }
+
+    else if (phase === 4) {
+      // At this point we decide which new cell we're going to go into (and therefore, which edge of the current
+      // cell we will leave via - to be stored in out_edge)
+      // range(4) generates all the numbers from 0 to 3 (corresponding to DIRECTION_UP etc)
+      // Python's built-in 'min' function usually chooses the lowest number, so would usually return 0 as the result.
+      // But if the optional 'key' argument is specified, this changes how the function determines the result.
+      // The rank function (see above) returns a function (named 'inner' in rank), which min calls to decide
+      // how the items should be ordered. The argument to inner represents a possible direction to move in.
+      // The 'inner' function returns a tuple of boolean values - for example: (True,False,False,True,etc..)
+      // When Python compares two such tuples, it considers values of False to be less than values of True,
+      // and values that come earlier in the sequence are more significant than later values. So (False,True)
+      // would be considered less than (True,False).
+      const cell_x = this.cell_x,
+            cell_y = this.cell_y,
+            in_edge = this.in_edge,
+            disallow_direction = this.disallow_direction,
+            previous_x_direction = this.previous_x_direction;
+
+      let rankedDirections = [0, 1, 2, 3];
+      rankedDirections = rankedDirections.map(function (proposed_out_edge) {
+        // proposed_out_edge is a number between 0 and 3, representing a possible direction to move - see DIRECTION_UP etc and DX/DY above
+        // This function returns a tuple consisting of a series of factors determining which grid cell the segment should try to move into next.
+        // These are not absolute rules - rather they are used to rank the four directions in order of preference,
+        // i.e. which direction is the best (or at least, least bad) to move in. The factors are boolean (True or False)
+        // values. A value of False is preferable to a value of True.
+        // The order of the factors in the returned tuple determines their importance in deciding which way to go,
+        // with the most important factor coming first.
+        let new_cell_x = cell_x + DX[proposed_out_edge],
+            new_cell_y = cell_y + DY[proposed_out_edge],
+
+        // Does this direction take us to a cell which is outside the grid?
+        // Note: when the segments start, they are all outside the grid so this would be True, except for the case of
+        // walking onto the top-left cell of the grid. But the end result of this and the following factors is that
+        // it will still be allowed to continue walking forwards onto the screen.
+            out = ((new_cell_x < 0) || (new_cell_x > (NUM_GRID_COLS - 1)) || (new_cell_y < 0) || (new_cell_y > (NUM_GRID_ROWS - 1))),
+
+        // We don't want it to to turn back on itself..
+            turning_back_on_self = (proposed_out_edge === in_edge),
+
+        // ..or go in a direction that's disallowed (see comments in update method)
+            direction_disallowed = (proposed_out_edge === disallow_direction),
+            factors = [],
+            rock, rock_present, occupied_by_segment, horizontal_blocked, same_as_previous_x_direction;
+
+        // Check to see if there's a rock at the proposed new grid cell.
+        // rock will either be the Rock object at the new grid cell, or None.
+        // It will be set to None if there is no Rock object is at the new location, or if the new location is
+        // outside the grid. We also have to account for the special case where the segment is off the left-hand
+        // side of the screen on the first row, where it is initially created. We mustn't try to access that grid
+        // cell (unlike most languages, in Python trying to access a list index with negative value won't necessarily
+        // result in a crash, but it's still not a good idea)
+        if (out || ((new_cell_y === 0) && (new_cell_x < 0))) {
+          rock = null;
+        }
+        else {
+          rock = game.grid[new_cell_y][new_cell_x];
+        }
+
+        rock_present = (rock != null);
+
+        // Is new cell already occupied by another segment, or is another segment trying to enter my cell from
+        // the opposite direction?
+        occupied_by_segment = (game.occupied.has([new_cell_x, new_cell_y].join('x')) ||
+                               game.occupied.has([cell_x, cell_y, proposed_out_edge].join('x')));
+
+        // Prefer to move horizontally, unless there's a rock in the way.
+        // If there are rocks both horizontally and vertically, prefer to move vertically
+        if (rock_present) {
+          horizontal_blocked = is_horizontal(proposed_out_edge);
+        }
+        else {
+          horizontal_blocked = !is_horizontal(proposed_out_edge);
+        }
+
+        // Prefer not to go in the previous horizontal direction after we move up/down
+        same_as_previous_x_direction = (proposed_out_edge === previous_x_direction);
+
+        // Finally we create and return a tuple of factors determining which cell segment should try to move into next.
+        // Most important first - e.g. we shouldn't enter a new cell if if's outside the grid
+
+        /*
+         * Build a bit string (e.g. "0101000") out of the factors.
+         * These strings compare the same way the tuples do in Python.
+         */
+        for (let value of [out, turning_back_on_self, direction_disallowed, occupied_by_segment, rock_present, horizontal_blocked, same_as_previous_x_direction]) {
+          if (value) {
+            factors.push(1);
+          }
+          else {
+            factors.push(0);
+          }
+        }
+        factors.push(proposed_out_edge);
+        return factors.join('');
+      });
+      /*
+       * Sort the bit strings encoding the factors.
+       * Parse the proposed_out_edge encoded in the last character of the bit string.
+       */
+      rankedDirections.sort();
+      this.out_edge = parseInt(rankedDirections[0].substring(rankedDirections[0].length - 1), 10);
+
+      if (is_horizontal(this.out_edge)) {
+        this.previous_x_direction = this.out_edge;
+      }
+
+      let new_cell_x = this.cell_x + DX[this.out_edge],
+          new_cell_y = this.cell_y + DY[this.out_edge];
+
+      // Destroy any rock that might be in the new cell
+      if ((new_cell_x >= 0) && (new_cell_x < NUM_GRID_COLS)) {
+        game.damage(new_cell_x, new_cell_y, 5);
+      }
+
+      // Set new cell as occupied. It's a case of whichever segment is processed first, gets first dibs on a cell
+      // The second line deals with the case where two segments are moving towards each other and are in
+      // neighbouring cells. It allows a segment to tell if another segment trying to enter its cell from
+      // the opposite direction
+      game.occupied.add([new_cell_x, new_cell_y].join('x'));
+      game.occupied.add([new_cell_x, new_cell_y, inverse_direction(this.out_edge)].join('x'));
+    }
+
+    // turn_idx tells us whether the segment is going to be making a 90 degree turn in the current cell, or moving
+    // in a straight line. 1 = anti-clockwise turn, 2 = straight ahead, 3 = clockwise turn, 0 = leaving through same
+    // edge from which we entered (unlikely to ever happen in practice)
+    let turn_idx = modulo(this.out_edge - this.in_edge, 4),
+
+    // Calculate segment offset in the cell, measured from the cell's centre
+    // We start off assuming that the segment is starting from the top of the cell - i.e. self.in_edge being DIRECTION_UP,
+    // corresponding to zero. The primary and secondary axes, as described under "SEGMENT MOVEMENT" above, are Y and X.
+    // We then apply a calculation to rotate these X and Y offsets, based on the actual direction the segment is coming from.
+    // Let's take as an example the case where the segment is moving in a straight line from top to bottom.
+    // We calculate offset_x by multiplying SECONDARY_AXIS_POSITIONS[phase] by 2-turn_idx. In this case, turn_idx
+    // will be 2.  So 2 - turn_idx will be zero. Multiplying anything by zero gives zero, so we end up with no
+    // movement on the X axis - which is what we want in this case.
+    // The starting point for the offset_y calculation is that the segment starts at an offset of -16 and must cover
+    // 32 pixels over the 16 phases - therefore we must multiply phase by 2. We then subtract the result of the
+    // previous line, in which stolen_y_movement was calculated by multiplying SECONDARY_AXIS_POSITIONS[phase] by
+    // turn_idx % 2.  mod 2 gives either zero (if turn_idx is 0 or 2), or 1 if it's 1 or 3. In the case we're looking
+    // at, turn_idx is 2, so stolen_y_movement is zero.
+    // The end result of all this is that in the case where the segment is moving in a straight line through a cell,
+    // it just moves at 2 pixels per frame along the primary axis. If it's turning, it starts out moving at 2px
+    // per frame on the primary axis, but then starts moving along the secondary axis based on the values in
+    // SECONDARY_AXIS_POSITIONS. In this case we don't want it to continue moving along the primary axis - it should
+    // initially slow to moving at 1px per phase, and then stop moving completely. Effectively, the secondary axis
+    // is stealing movement from the primary axis - hence the name 'stolen_y_movement'
+        offset_x = SECONDARY_AXIS_POSITIONS[phase] * (2 - turn_idx),
+        stolen_y_movement = (turn_idx % 2) * SECONDARY_AXIS_POSITIONS[phase],
+        offset_y = -16 + (phase * 2) - stolen_y_movement,
+
+    // A rotation matrix is a set of numbers which, when multiplied by a set of coordinates, result in those
+    // coordinates being rotated. Recall that the code above  makes the assumption that segment is starting from the
+    // top edge of the cell and moving down. The code below chooses the appropriate rotation matrix based on the
+    // actual edge the segment started from, and then modifies offset_x and offset_y based on this rotation matrix.
+        rotation_matrix = [[1, 0, 0, 1], [0, -1, 1, 0], [-1, 0, 0, -1], [0, 1, -1, 0]][this.in_edge],
+        rotated_offset_x = (offset_x * rotation_matrix[0]) + (offset_y * rotation_matrix[1]),
+        rotated_offset_y = (offset_x * rotation_matrix[2]) + (offset_y * rotation_matrix[3]);
+
+    // Finally, we can calculate the segment's position on the screen. See cell2pos function above.
+    this.pos = cell2pos(this.cell_x, this.cell_y, rotated_offset_x, rotated_offset_y);
+
+    // We now need to decide which image the segment should use as its sprite.
+    // Images for segment sprites follow the format 'segABCDE' where A is 0 or 1 depending on whether this is a
+    // fast-moving segment, B is 0 or 1 depending on whether we currently have 1 or 2 health, C is whether this
+    // is the head segment of a myriapod, D represents the direction we're facing (0 = up, 1 = top right,
+    // up to 7 = top left) and E is how far we are through the walking animation (0 to 3)
+
+    // Three variables go into the calculation of the direction. turn_idx tells us if we're making a turn in this
+    // cell - and if so, whether we're turning clockwise or anti-clockwise. self.in_edge tells us which side of the
+    // grid cell we entered from. And we can use SECONDARY_AXIS_SPEED[phase] to find out whether we should be facing
+    // along the primary axis, secondary axis or diagonally between them.
+    // (turn_idx - 2) gives 0 if straight, -1 if turning anti-clockwise, 1 if turning clockwise
+    // Multiplying this by SECONDARY_AXIS_SPEED[phase] gives 0 if we're not doing a turn in this cell, or if
+    // we are going to be turning but have not yet begun to turn. If we are doing a turn in this cell, and we're
+    // at a phase where we should be showing a sprite with a new rotation, the result will be -1 or 1 if we're
+    // currently in the first (45°) part of a turn, or -2 or 2 if we have turned 90°.
+    // The next part of the calculation multiplies in_edge by 2 and then adds the result to the result of the previous
+    // part. in_edge will be a number from 0 to 3, representing all possible directions in 90° increments.
+    // It must be multiplied by two because the direction value we're calculating will be a number between 0 and 7,
+    // representing all possible directions in 45° increments.
+    // In the sprite filenames, the penultimate number represents the direction the sprite is facing, where a value
+    // of zero means it's facing up. But in this code, if, for example, in_edge were zero, this means the segment is
+    // coming from the top edge of its cell, and therefore should be facing down. So we add 4 to account for this.
+    // After all this, we may have ended up with a number outside the desired range of 0 to 7. So the final step
+    // is to MOD by 8.
+    let direction = modulo((SECONDARY_AXIS_SPEED[phase] * (turn_idx - 2)) + (this.in_edge * 2) + 4, 8),
+
+        leg_frame = Math.floor(phase / 4),  // 16 phase cycle, 4 frames of animation
+
+    // Converting a boolean value to an integer gives 0 for False and 1 for True. We then need to convert the
+    // result to a string, as an integer can't be appended to a string.
+        fast = 0,
+        health = 0,
+        head = 0;
+    if (this.fast) {
+      fast = 1;
+    }
+    if (this.health === 2) {
+      health = 1;
+    }
+    if (this.head) {
+      head = 1;
+    }
+
+    this.name = `seg${ fast }${ health }${ head }${ direction }${ leg_frame }`;
+  }
+}
+
+class Game {
+  constructor(player) {
+    this.wave = -1;
+    this.time = 0;
+
+    this.player = player;
+
+    // Create empty grid of 14 columns, 25 rows, each element intially just containing the value 'None'
+    // Rocks will be added to the grid later
+    this.grid = [];
+    for (let y = 0; y < NUM_GRID_ROWS; y++) {
+      this.grid.push((new Array(NUM_GRID_COLS)).fill(null));
+    }
+
+    this.bullets = [];
+    this.explosions = [];
+    this.segments = [];
+
+    this.flying_enemy = null;
+
+    this.score = 0;
+  }
+
+  damage(cell_x, cell_y, amount, from_bullet = false) {
+    // Find the rock at this grid cell (or None if no rock here)
+    let rock = this.grid[cell_y][cell_x];
+
+    if (rock != null) {
+      // rock.damage returns False if the rock has lost all its health – in this case, the grid cell will be set
+      // to None, overwriting the rock object reference
+      if (rock.damage(amount, from_bullet)) {
+        this.grid[cell_y][cell_x] = null;
+      }
+    }
+
+    // Return whether or not there was a rock at this position
+    return rock != null;
+  }
+
+  allow_movement(x, y, ax = -1, ay = -1) {
+    // ax/ay are only supplied when a segment is being destroyed, and we check to see if we should create a new
+    // rock in the segment's place. They indicate a grid cell location where we're planning to create the new rock,
+    // we need to ensure the new rock would not overlap with the player sprite
+
+    // Don't go off edge of screen or above the player zone
+    if ((x < 40) || (x > 440) || (y < 592) || (y > 784)) {
+      return false;
+    }
+
+    // Get coordinates of corners of player sprite's collision rectangle
+    let [x0=0, y0=0] = pos2cell(x - 18, y - 10),
+        [x1=0, y1=0] = pos2cell(x + 18, y + 10);
+
+    // Check each corner against grid
+    for (let yi = y0; yi < (y1 + 1); yi++) {
+      for (let xi = x0; xi < (x1 + 1); xi++) {
+        if ((this.grid[yi][xi] != null) || ((xi === ax) && (yi === ay))) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
+  clear_rocks_for_respawn(x, y) {
+    // Destroy any rocks that might be overlapping with the player when they respawn
+    // Could be more than one rock, hence the loop
+    let [x0=0, y0=0] = pos2cell(x - 18, y - 10),
+        [x1=0, y1=0] = pos2cell(x + 18, y + 10);
+
+    for (let yi = y0; yi < (y1 + 1); yi++) {
+      for (let xi = x0; xi < (x1 + 1); xi++) {
+        this.damage(xi, yi, 5);
+      }
+    }
+  }
+
+  update() {
+    // Increment time - used by segments. Time moves twice as fast every fourth wave.
+    this.time += (modulo(this.wave, 4) === 3) ? 2 : 1;
+
+    // At the start of each frame, we reset occupied to be an empty set. As each individual myriapod segment is
+    // updated, it will create entries in the occupied set to indicate that other segments should not attempt to
+    // enter its current grid cell. There are two types of entries that are created in the occupied set. One is a
+    // tuple consisting of a pair of numbers, representing grid cell coordinates. The other is a tuple consisting of
+    // three numbers – the first two being grid cell coordinates, the third representing an edge through which a
+    // segment is trying to enter a cell.
+    // It is only used for myriapod segments - not rocks. Those are stored in self.grid.
+    this.occupied = new Set();
+
+    // Call update method on all objects. grid is a list of lists, equivalent to a 2-dimensional array,
+    // so sum can be used to produce a single list containing all grid objects plus the contents of the other
+    // Actor lists. The player and flying enemy, which are object references rather than lists, are appended as single-item lists.
+    let all_lists = this.grid.slice();
+    all_lists.push(this.bullets, this.segments, this.explosions, [this.player], [this.flying_enemy]);
+    for (let obj_list of all_lists) {
+      for (let obj of obj_list) {
+        if (obj != null) {
+          obj.update();
+        }
+      }
+    }
+
+    // Recreate the bullets list, which will contain all existing bullets except those which have gone off the screen or have hit something
+    this.bullets = this.bullets.filter(b => ((b.posy > 0) && (!b.done)));
+
+    // Recreate the explosions list, which will contain all existing explosions except those which have completed their animations
+    this.explosions = this.explosions.filter(e => (!(e.timer === 31)));
+
+    // Recreate the segments list, which will contain all existing segments except those whose health is zero
+    this.segments = this.segments.filter(s => (s.health > 0));
+
+    if (this.flying_enemy != null) {
+      // Destroy flying enemy if it goes off the left or right sides of the screen, or health is zero
+      if ((this.flying_enemy.health <= 0) || (this.flying_enemy.posx < -35) || (this.flying_enemy.posx > 515)) {
+        this.flying_enemy = null;
+      }
+    }
+    else if (Math.random() < 0.01) {    // If there is no flying enemy, small chance of creating one each frame
+      this.flying_enemy = new FlyingEnemy((this.player != null) ? this.player.posx : 240);
+    }
+
+    if (this.segments.length <= 0) {
+      // No myriapod segments – start a new wave
+      // First, ensure there are enough rocks. Count the number of rocks in the grid and if there aren't enough,
+      // create one per frame. Initially there should be 30 rocks – each wave, this goes up by one.
+      let num_rocks = 0;
+      for (let row of this.grid) {
+        for (let element of row) {
+          if (element != null) {
+            num_rocks += 1;
+          }
+        }
+      }
+      if (num_rocks < (31 + this.wave)) {
+        while (true) {
+          let x = getRandomInteger(0, NUM_GRID_COLS - 1),
+              y = getRandomInteger(1, NUM_GRID_ROWS - 3);     // Leave last 2 rows rock-free
+          if (this.grid[y][x] == null) {
+            this.grid[y][x] = new Rock(x, y);
+            break;
+          }
+        }
+      }
+      else {
+        // New wave and enough rocks - create a new myriapod
+        game.play_sound("wave");
+        this.wave += 1;
+        this.time = 0;
+        this.segments = [];
+        let num_segments = 8 + (Math.floor(this.wave / 4) * 2),   // On the first four waves there are 8 segments - then 10, and so on
+            cell_x, cell_y, health, fast, head;
+        for (let i = 0; i < num_segments; i++) {
+          if (DEBUG_TEST_RANDOM_POSITIONS) {
+            cell_x = getRandomInteger(1, 8);
+            cell_y = getRandomInteger(1, 8);
+          }
+          else {
+            cell_x = -1 - i;
+            cell_y = 0;
+          }
+          // Determines whether segments take one or two hits to kill, based on the wave number.
+          // e.g. on wave 0 all segments take one hit; on wave 1 they alternate between one and two hits
+          health = [[1, 1], [1, 2], [2, 2], [1, 1]][modulo(this.wave, 4)][i%2];
+          fast = (modulo(this.wave, 4) === 3);   // Every fourth myriapod moves faster than usual
+          head = (i === 0);           // The first segment of each myriapod is the head
+          this.segments.push(new Segment(cell_x, cell_y, health, fast, head));
+        }
+      }
+    }
+
+    return this;
+  }
+
+  draw() {
+    screen.blit("bg" + (Math.max(this.wave, 0) % 3), [0, 0]);
+
+    // Create a list of all grid locations and other objects which need to be drawn
+    // (Most grid locations will be set to None as they are unoccupied, hence the check "if obj:" further down)
+    let all_lists = this.grid.slice(),
+        all_objs = [],
+        explosions = [];
+    all_lists.push(this.bullets, this.segments, this.explosions, [this.player]);
+    for (let obj_list of all_lists) {
+      for (let obj of obj_list) {
+        if (obj != null) {
+          if (obj instanceof Explosion) {
+            explosions.push(obj);
+          }
+          else {
+            all_objs.push(obj);
+          }
+        }
+      }
+    }
+
+    // We want to draw objects in order based on their Y position. Objects further down the screen should be drawn
+    // after (and therefore in front of) objects higher up the screen. We can use Python's built-in sort function
+    // to put the items in the desired order, before we draw them. The following function specifies the criteria
+    // used to decide how the objects are sorted.
+    // Sort list using the above function to determine order
+    explosions.sort((a, b) => (a.posy - b.posy));
+    all_objs.sort((a, b) => (a.posy - b.posy));
+    all_objs = all_objs.concat(explosions);
+
+    // Draw the flying enemy on top of everything else
+    if (this.flying_enemy != null) {
+      all_objs.push(this.flying_enemy);
+    }
+
+    // Draw the objects
+    for (let obj of all_objs) {
+      obj.draw();
+    }
+  }
+
+  play_sound(name, count = 1) {
+    // Some sounds have multiple varieties. If count > 1, we'll randomly choose one from those
+    // We don't play any sounds if there is no player (e.g. if we're on the menu)
+    if (this.player != null) {
+      // Pygame Zero allows you to write things like 'sounds.explosion.play()'
+      // This automatically loads and plays a file named 'explosion.wav' (or .ogg) from the sounds folder (if
+      // such a file exists)
+      // But what if you have files named 'explosion0.ogg' to 'explosion5.ogg' and want to randomly choose
+      // one of them to play? You can generate a string such as 'explosion3', but to use such a string
+      // to access an attribute of Pygame Zero's sounds object, we must use Python's built-in function getattr
+      sounds[name+getRandomInteger(0, count)].play();
+    }
+  }
+}
+
+var space_down, state, game;
+
+// Has the space bar just been pressed? i.e. gone from not being pressed, to being pressed
+function space_pressed() {
+  if (keyboard[keys.SPACE]) {
+    if (space_down) {
+      // Space was down previous frame, and is still down
+      return false;
+    }
+    else {
+      // Space wasn't down previous frame, but now is
+      space_down = true;
+      return true;
+    }
+  }
+  else {
+    space_down = false;
+    return false;
+  }
+}
+
+// Pygame Zero calls the update and draw functions each frame
+
+const State = Object.freeze({
+  MENU: 1,
+  PLAY: 2,
+  GAME_OVER: 3
+});
+
+function reset() {
+  // Is the space bar currently being pressed down?
+  space_down = false;
+
+  // Set up music on game start
+  music.play("theme");
+  music.set_volume(0.4);
+
+  // Set the initial game state
+  state = State.MENU;
+
+  // Create a new Game object, without a Player object
+  game = new Game();
+}
+
+function update() {
+  if (state === State.MENU) {
+    if (space_pressed()) {
+      state = State.PLAY;
+      game = new Game(new Player([240, 768]));  // Create new Game object, with a Player object
+    }
+
+    game.update();
+  }
+
+  else if (state === State.PLAY) {
+    if ((game.player.lives === 0) && (game.player.timer === 100)) {
+      sounds.gameover.play();
+      state = State.GAME_OVER;
+    }
+    else {
+      game.update();
+    }
+  }
+
+  else if (state === State.GAME_OVER) {
+    if (space_pressed()) {
+      // Switch to menu state, and create a new game object without a player
+      state = State.MENU;
+      game = new Game();
+    }
+  }
+}
+
+function draw() {
+  // Draw the game, which covers both the game during gameplay but also the game displaying in the background
+  // during the main menu and game over screens
+  game.draw();
+
+  if (state === State.MENU) {
+    // Display logo
+    screen.blit("title", [0, 0]);
+
+    // 14 frames of animation for "Press space to start", updating every 4 frames
+    screen.blit("space" + (Math.floor(game.time / 4) % 14), [0, 420]);
+  }
+
+  else if (state === State.PLAY) {
+    // Display number of lives
+    for (let i = 0; i < game.player.lives; i++) {
+      screen.blit("life", [(i * 40) + 8, 4]);
+    }
+
+    // Display score
+    let score = game.score.toFixed(0);
+    for (let i = 1; i < (score.length + 1); i++) {
+      // In Python, a negative index into a list (or in this case, into a string) gives you items in reverse order,
+      // e.g. 'hello'[-1] gives 'o', 'hello'[-2] gives 'l', etc.
+      let index = score.length - i,
+          digit = score.substring(index, index + 1);
+      screen.blit("digit" + digit, [468 - (i * 24), 5]);
+    }
+  }
+
+  else if (state === State.GAME_OVER) {
+    // Display "Game Over" image
+    screen.blit("over", [0, 0]);
+  }
+}
+
+window.addEventListener('load', (event) => {
+  images.LOAD('#imageLoader img');
+  sounds.LOAD('#soundLoader audio');
+  music.LOAD('#musicLoader audio');
+  reset();
+  screen.set_mode('#screen', '#reset', '#pause');
+});
+</script>
+</body>
+
+</html>

@@ -1118,6 +1118,18 @@ const ROW_HEIGHT = 40;
 const DEBUG_SHOW_ROW_BOUNDARIES = false;
 
 /*
+ * Return the result of the modulo operation dividend modulo divisor.
+ *
+ * The remainder operator (%) in JavaScript always takes the sign of the dividend.
+ * This trips you up when you come from Python and expect it to be a
+ * modulo operator for a negative dividend.
+ * This function correctly returns the non-negative remainder like Python.
+ */
+function modulo(dividend, divisor) {
+  return (((dividend % divisor) + divisor) % divisor);
+}
+
+/*
  * Return a random integer N such that min <= N < max.
  */
 function getRandomInteger(min, max) {
@@ -2267,8 +2279,7 @@ function draw() {
 
   if (state === State.MENU) {
     screen.blit("title", [0, 0]);
-    // Math.abs() because the remainder operator (%) in JavaScript is signed
-    screen.blit("start" + [0, 1, 2, 1][Math.floor(Math.abs(game.scroll_pos) / 6) % 4], [Math.floor((WIDTH - 270) / 2), HEIGHT - 240]);
+    screen.blit("start" + [0, 1, 2, 1][modulo(Math.floor(game.scroll_pos / 6), 4)], [Math.floor((WIDTH - 270) / 2), HEIGHT - 240]);
   }
 
   else if (state === State.PLAY) {
