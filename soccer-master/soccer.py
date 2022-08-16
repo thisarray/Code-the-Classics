@@ -420,9 +420,9 @@ def allow_movement(x, y):
 # This is called when a computer-controlled player with the ball is working out which direction to run in, or whether
 # to pass the ball to another player, or kick it into the goal.
 # Several things make up the final score:
-# - the distance to our own goal – further away is better
-# - the proximity of players on the other team – we want to get the ball away from them as much as possible
-# - a quadratic equation (don’t panic too much!) causing the player to favour the centre of the pitch and their opponents goal
+# - the distance to our own goal - further away is better
+# - the proximity of players on the other team - we want to get the ball away from them as much as possible
+# - a quadratic equation (don't panic too much!) causing the player to favour the centre of the pitch and their opponents goal
 # - an optional handicap value which can bias the result towards or away from a particular position
 def cost(pos, team, handicap=0):
     # Get pos of our own goal. We do it this way rather than getting the pos of the actual goal object
@@ -571,7 +571,7 @@ class Player(MyActor):
                     target.x = max(AI_MIN_X, min(AI_MAX_X, target.x))
                     target.y = max(AI_MIN_Y, min(AI_MAX_Y, target.y))
 
-                    other_team = 1 if self.team == 0 else 1
+                    other_team = 1 if self.team == 0 else 0
                     speed = LEAD_PLAYER_BASE_SPEED
                     if game.teams[other_team].human():
                         speed += game.difficulty.speed_boost
@@ -603,7 +603,7 @@ class Player(MyActor):
         else:
             # No-one has the ball
 
-            # If we’re pre-kickoff and I’m the kickoff player, OR if we’re not pre-kickoff and I’m active
+            # If we're pre-kickoff and I'm the kickoff player, OR if we're not pre-kickoff and I'm active
             if (pre_kickoff and i_am_kickoff_player) or (not pre_kickoff and self.active()):
                 # Try to intercept the ball
                 # Deciding where to go to achieve this is harder than you might think. You can't target the ball's
@@ -708,7 +708,8 @@ class Game:
                 # No players - we must be on the menu. Play title music.
                 music.play("theme")
                 sounds.crowd.stop()
-        except:
+        except Exception:
+            # Ignore sound errors
             pass
 
         self.score_timer = 0
@@ -748,7 +749,7 @@ class Game:
         # If team 1 just scored (or if it's the start of the game), team 0 will kick off
         other_team = 1 if self.scoring_team == 0 else 0
 
-        # Players are stored in the players list in an alternating fashion – the first player being on team 0, the
+        # Players are stored in the players list in an alternating fashion - the first player being on team 0, the
         # second on team 1, the third on team 0 etc. The player that kicks off will always be the first player of
         # the relevant team.
         self.kickoff_player = self.players[other_team]
@@ -793,7 +794,7 @@ class Game:
             o = self.ball.owner
             pos, team = o.vpos, o.team
             owners_target_goal = game.goals[team]
-            other_team = 1 if team == 0 else 1
+            other_team = 1 if team == 0 else 0
 
             if self.difficulty.goalie_enabled:
                 # Find the nearest opposing team player to the goal, and make them mark the goal
@@ -945,6 +946,7 @@ class Game:
             try:
                 getattr(sounds, name+str(random.randint(0, c-1))).play()
             except:
+                # Ignore sound errors
                 pass
 
 
@@ -1039,7 +1041,11 @@ def update():
             elif key_just_pressed(keys.UP):
                 selection_change = -1
             if selection_change != 0:
-                sounds.move.play()
+                try:
+                    sounds.move.play()
+                except Exception:
+                    # Ignore sound errors
+                    pass
                 if menu_state == MenuState.NUM_PLAYERS:
                     menu_num_players = 2 if menu_num_players == 1 else 1
                 else:
@@ -1098,11 +1104,12 @@ def draw():
             img = "l" + str(i) + str(game.teams[i].score)
             screen.blit(img, (HALF_WINDOW_W + 25 - 125 * i, 144))
 
-# Set up sound
+# Set up sound system
 try:
     pygame.mixer.quit()
     pygame.mixer.init(44100, -16, 2, 1024)
-except:
+except Exception:
+    # Ignore sound errors
     pass
 
 # Set the initial game state
