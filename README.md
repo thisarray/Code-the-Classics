@@ -1,7 +1,7 @@
 # Code-the-Classics
 Assets from the book, Code the Classics
 
-https://wireframe.raspberrypi.org/books/code-the-classics1
+https://wireframe.raspberrypi.com/books/code-the-classics1
 
 - [Play Boing! in your browser.](https://thisarray.github.io/Code-the-Classics/boing-master/boing.html) Pong clone
 - [Play Cavern in your browser.](https://thisarray.github.io/Code-the-Classics/cavern-master/cavern.html) Bubble Bubble clone

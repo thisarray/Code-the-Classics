@@ -243,7 +243,7 @@ The game screen appears here if your browser supports the Canvas API.
 
 <h2>Attribution</h2>
 
-<p><a href="https://wireframe.raspberrypi.org/books/code-the-classics1">Code the Classics – Volume 1, Chapter 2 Action Platformer, page 061</a>.</p>
+<p><a href="https://wireframe.raspberrypi.com/books/code-the-classics1">Code the Classics – Volume 1, Chapter 2 Action Platformer, page 061</a>.</p>
 
 <p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported</a>.</p>
 
@@ -753,7 +753,7 @@ class Game:
         return 0.001 + (0.0001 * min(100, self.level))
 
     def max_enemies(self):
-        # Maximum number of enemies on-screen at once – increases as you progress through the levels
+        # Maximum number of enemies on-screen at once - increases as you progress through the levels
         return min((self.level + 6) // 2, 8)
 
     def next_level(self):
@@ -1663,7 +1663,7 @@ class Game {
   }
 
   max_enemies() {
-    // Maximum number of enemies on-screen at once – increases as you progress through the levels
+    // Maximum number of enemies on-screen at once - increases as you progress through the levels
     return Math.min(Math.floor((this.level + 6) / 2), 8);
   }
 
@@ -1996,11 +1996,7 @@ function draw() {
 }
 
 window.addEventListener('load', (event) => {
-  images.LOAD('#imageLoader img');
-  sounds.LOAD('#soundLoader audio');
-  music.LOAD('#musicLoader audio');
-  reset();
-  screen.set_mode('#screen', '#reset', '#pause');
+  screen.init();
 });
 </script>
 </body>

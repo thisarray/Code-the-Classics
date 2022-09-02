@@ -110,7 +110,7 @@ The game screen appears here if your browser supports the Canvas API.
 
 <h2>Attribution</h2>
 
-<p><a href="https://wireframe.raspberrypi.org/books/code-the-classics1">Code the Classics – Volume 1, Chapter 1 Tennis, page 033</a>.</p>
+<p><a href="https://wireframe.raspberrypi.com/books/code-the-classics1">Code the Classics – Volume 1, Chapter 1 Tennis, page 033</a>.</p>
 
 <p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported</a>.</p>
 
@@ -469,10 +469,12 @@ class Game:
                 image = &quot;digit&quot; + colour + str(score[i])
                 screen.blit(image, (255 + (160 * p) + (i * 55), 46))
 
-    def play_sound(self, name, count=1):
+    def play_sound(self, name, count=1, menu_sound=False):
         # Some sounds have multiple varieties. If count &gt; 1, we&#x27;ll randomly choose one from those
         # We don&#x27;t play any in-game sound effects if player 0 is an AI player - as this means we&#x27;re on the menu
-        if self.bats[0].move_func != self.bats[0].ai:
+        # Updated Jan 2022 - some Pygame installations have issues playing ogg sound files. play_sound can skip sound
+        # errors without stopping the game, but it previously couldn&#x27;t be used for menu-only sounds
+        if self.bats[0].move_func != self.bats[0].ai or menu_sound:
             # Pygame Zero allows you to write things like &#x27;sounds.explosion.play()&#x27;
             # This automatically loads and plays a file named &#x27;explosion.wav&#x27; (or .ogg) from the sounds folder (if
             # such a file exists)
@@ -481,7 +483,7 @@ class Game:
             # to access an attribute of Pygame Zero&#x27;s sounds object, we must use Python&#x27;s built-in function getattr
             try:
                 getattr(sounds, name + str(random.randint(0, count - 1))).play()
-            except:
+            except Exception as e:
                 pass
 
 def p1_controls():
@@ -535,10 +537,10 @@ def update():
         else:
             # Detect up/down keys
             if num_players == 2 and keyboard.up:
-                sounds.up.play()
+                game.play_sound(&quot;up&quot;, menu_sound=True)
                 num_players = 1
             elif num_players == 1 and keyboard.down:
-                sounds.down.play()
+                game.play_sound(&quot;down&quot;, menu_sound=True)
                 num_players = 2
 
             # Update the &#x27;attract mode&#x27; game in the background (two AIs playing each other)
@@ -578,7 +580,7 @@ try:
 
     music.play(&quot;theme&quot;)
     music.set_volume(0.3)
-except:
+except Exception:
     # If an error occurs (e.g. no sound device), just ignore it
     pass
 
@@ -994,10 +996,12 @@ class Game {
     }
   }
 
-  play_sound(name, count = 1) {
+  play_sound(name, count = 1, menu_sound = false) {
     // Some sounds have multiple varieties. If count > 1, we'll randomly choose one from those
     // We don't play any in-game sound effects if player 0 is an AI player - as this means we're on the menu
-    if (this.bats[0].move_func !== this.bats[0].ai) {
+    // Updated Jan 2022 - some Pygame installations have issues playing ogg sound files. play_sound can skip sound
+    // errors without stopping the game, but it previously couldn't be used for menu-only sounds
+    if ((this.bats[0].move_func !== this.bats[0].ai) || menu_sound) {
       // Pygame Zero allows you to write things like 'sounds.explosion.play()'
       // This automatically loads and plays a file named 'explosion.wav' (or .ogg) from the sounds folder (if
       // such a file exists)
@@ -1005,7 +1009,9 @@ class Game {
       // one of them to play? You can generate a string such as 'explosion3', but to use such a string
       // to access an attribute of Pygame Zero's sounds object, we must use Python's built-in function getattr
       name = name + getRandomInteger(0, count);
-      sounds[name].play();
+      if (name in sounds) {
+        sounds[name].play();
+      }
     }
   }
 }
@@ -1084,11 +1090,11 @@ function update() {
     else {
       // Detect up/down keys
       if ((num_players === 2) && keyboard[keys.UP]) {
-        sounds.up.play();
+        game.play_sound("up", 1, true);
         num_players = 1;
       }
       else if ((num_players === 1) && keyboard[keys.DOWN]) {
-        sounds.down.play();
+        game.play_sound("down", 1, true);
         num_players = 2;
       }
 
@@ -1132,11 +1138,7 @@ function draw() {
 }
 
 window.addEventListener('load', (event) => {
-  images.LOAD('#imageLoader img');
-  sounds.LOAD('#soundLoader audio');
-  music.LOAD('#musicLoader audio');
-  reset();
-  screen.set_mode('#screen', '#reset', '#pause');
+  screen.init();
 });
 </script>
 </body>
