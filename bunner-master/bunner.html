@@ -2229,6 +2229,9 @@ function reset() {
     // If opening the file fails (likely because it hasn't yet been created), set high score to 0
     high_score = 0;
   }
+  else {
+    high_score = parseInt(high_score, 10);
+  }
 
   // Set the initial game state
   state = State.MENU;
