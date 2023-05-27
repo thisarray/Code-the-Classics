@@ -49,10 +49,10 @@ PITCH_RECT = pygame.rect.Rect(PITCH_BOUNDS_X[0], PITCH_BOUNDS_Y[0], HALF_PITCH_W
 GOAL_0_RECT = pygame.rect.Rect(GOAL_BOUNDS_X[0], GOAL_BOUNDS_Y[0], GOAL_WIDTH, GOAL_DEPTH)
 GOAL_1_RECT = pygame.rect.Rect(GOAL_BOUNDS_X[0], GOAL_BOUNDS_Y[1] - GOAL_DEPTH, GOAL_WIDTH, GOAL_DEPTH)
 
-AI_MIN_X = 78
-AI_MAX_X = LEVEL_W - 78
-AI_MIN_Y = 98
-AI_MAX_Y = LEVEL_H - 98
+AI_MIN_X = HALF_LEVEL_W - HALF_PITCH_W + GOAL_DEPTH
+AI_MAX_X = LEVEL_W - AI_MIN_X
+AI_MIN_Y = HALF_LEVEL_H - HALF_PITCH_H + GOAL_DEPTH
+AI_MAX_Y = LEVEL_H - AI_MIN_Y
 
 PLAYER_START_POS = [(350, 550), (650, 450), (200, 850), (500, 750), (800, 950), (350, 1250), (650, 1150)]
 
@@ -428,7 +428,7 @@ def cost(pos, team, handicap=0):
     # Get pos of our own goal. We do it this way rather than getting the pos of the actual goal object
     # because this way gives us the pos of the goal's entrance, whereas the actual goal sprites are not anchored based
     # on the entrances.
-    own_goal_pos = Vector2(HALF_LEVEL_W, 78 if team == 1 else LEVEL_H - 78)
+    own_goal_pos = Vector2(HALF_LEVEL_W, (AI_MIN_Y - GOAL_DEPTH) if team == 1 else (AI_MAX_Y + GOAL_DEPTH))
     inverse_own_goal_distance = 3500 / (pos - own_goal_pos).length()
 
     result = inverse_own_goal_distance \
