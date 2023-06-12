@@ -1,0 +1,3116 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ice Hockey</title>
+  <script src="../../jsgame0.js"></script>
+  <style type="text/css" media="screen">
+body {
+  background-color: white;
+  color: black;
+}
+.hidden {
+  display: none;
+}
+#original {
+  margin-left: 1em;
+}
+  </style>
+</head>
+
+<body>
+<section id="imageLoader" class="hidden">
+  <img class="hidden" src="images/arrow0.png" alt="arrow0" data-name="arrow0">
+  <img class="hidden" src="images/arrow1.png" alt="arrow1" data-name="arrow1">
+  <img class="hidden" src="images/balls.png" alt="balls" data-name="balls">
+  <img class="hidden" src="images/bar.png" alt="bar" data-name="bar">
+  <img class="hidden" src="images/blank.png" alt="blank" data-name="blank">
+  <img class="hidden" src="images/goal.png" alt="goal" data-name="goal">
+  <img class="hidden" src="images/ice_hockey_goal0.png" alt="ice_hockey_goal0" data-name="ice_hockey_goal0">
+  <img class="hidden" src="images/ice_hockey_goal1.png" alt="ice_hockey_goal1" data-name="ice_hockey_goal1">
+  <img class="hidden" src="images/ice_hockey_puck.png" alt="ice_hockey_puck" data-name="ice_hockey_puck">
+  <img class="hidden" src="images/ice_hockey_rink.png" alt="ice_hockey_rink" data-name="ice_hockey_rink">
+  <img class="hidden" src="images/l00.png" alt="l00" data-name="l00">
+  <img class="hidden" src="images/l01.png" alt="l01" data-name="l01">
+  <img class="hidden" src="images/l02.png" alt="l02" data-name="l02">
+  <img class="hidden" src="images/l03.png" alt="l03" data-name="l03">
+  <img class="hidden" src="images/l04.png" alt="l04" data-name="l04">
+  <img class="hidden" src="images/l05.png" alt="l05" data-name="l05">
+  <img class="hidden" src="images/l06.png" alt="l06" data-name="l06">
+  <img class="hidden" src="images/l07.png" alt="l07" data-name="l07">
+  <img class="hidden" src="images/l08.png" alt="l08" data-name="l08">
+  <img class="hidden" src="images/l09.png" alt="l09" data-name="l09">
+  <img class="hidden" src="images/l10.png" alt="l10" data-name="l10">
+  <img class="hidden" src="images/l11.png" alt="l11" data-name="l11">
+  <img class="hidden" src="images/l12.png" alt="l12" data-name="l12">
+  <img class="hidden" src="images/l13.png" alt="l13" data-name="l13">
+  <img class="hidden" src="images/l14.png" alt="l14" data-name="l14">
+  <img class="hidden" src="images/l15.png" alt="l15" data-name="l15">
+  <img class="hidden" src="images/l16.png" alt="l16" data-name="l16">
+  <img class="hidden" src="images/l17.png" alt="l17" data-name="l17">
+  <img class="hidden" src="images/l18.png" alt="l18" data-name="l18">
+  <img class="hidden" src="images/l19.png" alt="l19" data-name="l19">
+  <img class="hidden" src="images/menu01.png" alt="menu01" data-name="menu01">
+  <img class="hidden" src="images/menu02.png" alt="menu02" data-name="menu02">
+  <img class="hidden" src="images/menu10.png" alt="menu10" data-name="menu10">
+  <img class="hidden" src="images/menu11.png" alt="menu11" data-name="menu11">
+  <img class="hidden" src="images/menu12.png" alt="menu12" data-name="menu12">
+  <img class="hidden" src="images/over0.png" alt="over0" data-name="over0">
+  <img class="hidden" src="images/over1.png" alt="over1" data-name="over1">
+  <img class="hidden" src="images/player000.png" alt="player000" data-name="player000">
+  <img class="hidden" src="images/player001.png" alt="player001" data-name="player001">
+  <img class="hidden" src="images/player002.png" alt="player002" data-name="player002">
+  <img class="hidden" src="images/player003.png" alt="player003" data-name="player003">
+  <img class="hidden" src="images/player004.png" alt="player004" data-name="player004">
+  <img class="hidden" src="images/player010.png" alt="player010" data-name="player010">
+  <img class="hidden" src="images/player011.png" alt="player011" data-name="player011">
+  <img class="hidden" src="images/player012.png" alt="player012" data-name="player012">
+  <img class="hidden" src="images/player013.png" alt="player013" data-name="player013">
+  <img class="hidden" src="images/player014.png" alt="player014" data-name="player014">
+  <img class="hidden" src="images/player020.png" alt="player020" data-name="player020">
+  <img class="hidden" src="images/player021.png" alt="player021" data-name="player021">
+  <img class="hidden" src="images/player022.png" alt="player022" data-name="player022">
+  <img class="hidden" src="images/player023.png" alt="player023" data-name="player023">
+  <img class="hidden" src="images/player024.png" alt="player024" data-name="player024">
+  <img class="hidden" src="images/player030.png" alt="player030" data-name="player030">
+  <img class="hidden" src="images/player031.png" alt="player031" data-name="player031">
+  <img class="hidden" src="images/player032.png" alt="player032" data-name="player032">
+  <img class="hidden" src="images/player033.png" alt="player033" data-name="player033">
+  <img class="hidden" src="images/player034.png" alt="player034" data-name="player034">
+  <img class="hidden" src="images/player040.png" alt="player040" data-name="player040">
+  <img class="hidden" src="images/player041.png" alt="player041" data-name="player041">
+  <img class="hidden" src="images/player042.png" alt="player042" data-name="player042">
+  <img class="hidden" src="images/player043.png" alt="player043" data-name="player043">
+  <img class="hidden" src="images/player044.png" alt="player044" data-name="player044">
+  <img class="hidden" src="images/player050.png" alt="player050" data-name="player050">
+  <img class="hidden" src="images/player051.png" alt="player051" data-name="player051">
+  <img class="hidden" src="images/player052.png" alt="player052" data-name="player052">
+  <img class="hidden" src="images/player053.png" alt="player053" data-name="player053">
+  <img class="hidden" src="images/player054.png" alt="player054" data-name="player054">
+  <img class="hidden" src="images/player060.png" alt="player060" data-name="player060">
+  <img class="hidden" src="images/player061.png" alt="player061" data-name="player061">
+  <img class="hidden" src="images/player062.png" alt="player062" data-name="player062">
+  <img class="hidden" src="images/player063.png" alt="player063" data-name="player063">
+  <img class="hidden" src="images/player064.png" alt="player064" data-name="player064">
+  <img class="hidden" src="images/player070.png" alt="player070" data-name="player070">
+  <img class="hidden" src="images/player071.png" alt="player071" data-name="player071">
+  <img class="hidden" src="images/player072.png" alt="player072" data-name="player072">
+  <img class="hidden" src="images/player073.png" alt="player073" data-name="player073">
+  <img class="hidden" src="images/player074.png" alt="player074" data-name="player074">
+  <img class="hidden" src="images/player100.png" alt="player100" data-name="player100">
+  <img class="hidden" src="images/player101.png" alt="player101" data-name="player101">
+  <img class="hidden" src="images/player102.png" alt="player102" data-name="player102">
+  <img class="hidden" src="images/player103.png" alt="player103" data-name="player103">
+  <img class="hidden" src="images/player104.png" alt="player104" data-name="player104">
+  <img class="hidden" src="images/player110.png" alt="player110" data-name="player110">
+  <img class="hidden" src="images/player111.png" alt="player111" data-name="player111">
+  <img class="hidden" src="images/player112.png" alt="player112" data-name="player112">
+  <img class="hidden" src="images/player113.png" alt="player113" data-name="player113">
+  <img class="hidden" src="images/player114.png" alt="player114" data-name="player114">
+  <img class="hidden" src="images/player120.png" alt="player120" data-name="player120">
+  <img class="hidden" src="images/player121.png" alt="player121" data-name="player121">
+  <img class="hidden" src="images/player122.png" alt="player122" data-name="player122">
+  <img class="hidden" src="images/player123.png" alt="player123" data-name="player123">
+  <img class="hidden" src="images/player124.png" alt="player124" data-name="player124">
+  <img class="hidden" src="images/player130.png" alt="player130" data-name="player130">
+  <img class="hidden" src="images/player131.png" alt="player131" data-name="player131">
+  <img class="hidden" src="images/player132.png" alt="player132" data-name="player132">
+  <img class="hidden" src="images/player133.png" alt="player133" data-name="player133">
+  <img class="hidden" src="images/player134.png" alt="player134" data-name="player134">
+  <img class="hidden" src="images/player140.png" alt="player140" data-name="player140">
+  <img class="hidden" src="images/player141.png" alt="player141" data-name="player141">
+  <img class="hidden" src="images/player142.png" alt="player142" data-name="player142">
+  <img class="hidden" src="images/player143.png" alt="player143" data-name="player143">
+  <img class="hidden" src="images/player144.png" alt="player144" data-name="player144">
+  <img class="hidden" src="images/player150.png" alt="player150" data-name="player150">
+  <img class="hidden" src="images/player151.png" alt="player151" data-name="player151">
+  <img class="hidden" src="images/player152.png" alt="player152" data-name="player152">
+  <img class="hidden" src="images/player153.png" alt="player153" data-name="player153">
+  <img class="hidden" src="images/player154.png" alt="player154" data-name="player154">
+  <img class="hidden" src="images/player160.png" alt="player160" data-name="player160">
+  <img class="hidden" src="images/player161.png" alt="player161" data-name="player161">
+  <img class="hidden" src="images/player162.png" alt="player162" data-name="player162">
+  <img class="hidden" src="images/player163.png" alt="player163" data-name="player163">
+  <img class="hidden" src="images/player164.png" alt="player164" data-name="player164">
+  <img class="hidden" src="images/player170.png" alt="player170" data-name="player170">
+  <img class="hidden" src="images/player171.png" alt="player171" data-name="player171">
+  <img class="hidden" src="images/player172.png" alt="player172" data-name="player172">
+  <img class="hidden" src="images/player173.png" alt="player173" data-name="player173">
+  <img class="hidden" src="images/player174.png" alt="player174" data-name="player174">
+  <img class="hidden" src="images/players00.png" alt="players00" data-name="players00">
+  <img class="hidden" src="images/players01.png" alt="players01" data-name="players01">
+  <img class="hidden" src="images/players02.png" alt="players02" data-name="players02">
+  <img class="hidden" src="images/players03.png" alt="players03" data-name="players03">
+  <img class="hidden" src="images/players04.png" alt="players04" data-name="players04">
+  <img class="hidden" src="images/players10.png" alt="players10" data-name="players10">
+  <img class="hidden" src="images/players11.png" alt="players11" data-name="players11">
+  <img class="hidden" src="images/players12.png" alt="players12" data-name="players12">
+  <img class="hidden" src="images/players13.png" alt="players13" data-name="players13">
+  <img class="hidden" src="images/players14.png" alt="players14" data-name="players14">
+  <img class="hidden" src="images/players20.png" alt="players20" data-name="players20">
+  <img class="hidden" src="images/players21.png" alt="players21" data-name="players21">
+  <img class="hidden" src="images/players22.png" alt="players22" data-name="players22">
+  <img class="hidden" src="images/players23.png" alt="players23" data-name="players23">
+  <img class="hidden" src="images/players24.png" alt="players24" data-name="players24">
+  <img class="hidden" src="images/players30.png" alt="players30" data-name="players30">
+  <img class="hidden" src="images/players31.png" alt="players31" data-name="players31">
+  <img class="hidden" src="images/players32.png" alt="players32" data-name="players32">
+  <img class="hidden" src="images/players33.png" alt="players33" data-name="players33">
+  <img class="hidden" src="images/players34.png" alt="players34" data-name="players34">
+  <img class="hidden" src="images/players40.png" alt="players40" data-name="players40">
+  <img class="hidden" src="images/players41.png" alt="players41" data-name="players41">
+  <img class="hidden" src="images/players42.png" alt="players42" data-name="players42">
+  <img class="hidden" src="images/players43.png" alt="players43" data-name="players43">
+  <img class="hidden" src="images/players44.png" alt="players44" data-name="players44">
+  <img class="hidden" src="images/players50.png" alt="players50" data-name="players50">
+  <img class="hidden" src="images/players51.png" alt="players51" data-name="players51">
+  <img class="hidden" src="images/players52.png" alt="players52" data-name="players52">
+  <img class="hidden" src="images/players53.png" alt="players53" data-name="players53">
+  <img class="hidden" src="images/players54.png" alt="players54" data-name="players54">
+  <img class="hidden" src="images/players60.png" alt="players60" data-name="players60">
+  <img class="hidden" src="images/players61.png" alt="players61" data-name="players61">
+  <img class="hidden" src="images/players62.png" alt="players62" data-name="players62">
+  <img class="hidden" src="images/players63.png" alt="players63" data-name="players63">
+  <img class="hidden" src="images/players64.png" alt="players64" data-name="players64">
+  <img class="hidden" src="images/players70.png" alt="players70" data-name="players70">
+  <img class="hidden" src="images/players71.png" alt="players71" data-name="players71">
+  <img class="hidden" src="images/players72.png" alt="players72" data-name="players72">
+  <img class="hidden" src="images/players73.png" alt="players73" data-name="players73">
+  <img class="hidden" src="images/players74.png" alt="players74" data-name="players74">
+  <img class="hidden" src="images/s0.png" alt="s0" data-name="s0">
+  <img class="hidden" src="images/s1.png" alt="s1" data-name="s1">
+  <img class="hidden" src="images/s2.png" alt="s2" data-name="s2">
+  <img class="hidden" src="images/s3.png" alt="s3" data-name="s3">
+  <img class="hidden" src="images/s4.png" alt="s4" data-name="s4">
+  <img class="hidden" src="images/s5.png" alt="s5" data-name="s5">
+  <img class="hidden" src="images/s6.png" alt="s6" data-name="s6">
+  <img class="hidden" src="images/s7.png" alt="s7" data-name="s7">
+  <img class="hidden" src="images/s8.png" alt="s8" data-name="s8">
+  <img class="hidden" src="images/s9.png" alt="s9" data-name="s9">
+</section>
+<section id="soundLoader" class="hidden">
+  <audio class="hidden" controls preload="auto" src="sounds/crowd.ogg" data-name="crowd">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/goal0.ogg" data-name="goal0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/goal1.ogg" data-name="goal1">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/kick0.ogg" data-name="kick0">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/kick1.ogg" data-name="kick1">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/kick2.ogg" data-name="kick2">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/kick3.ogg" data-name="kick3">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/move.ogg" data-name="move">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/start.ogg" data-name="start">Your browser does not support the audio element.</audio>
+</section>
+<section id="musicLoader" class="hidden">
+  <audio class="hidden" controls preload="auto" src="music/theme.ogg" data-name="theme">Your browser does not support the audio element.</audio>
+</section>
+
+<main>
+<h1>Ice Hockey</h1>
+
+<canvas id="screen">
+The game screen appears here if your browser supports the Canvas API.
+</canvas>
+<section id="controls">
+  <button type="button" id="reset">Reset</button>
+  <button type="button" id="pause">Pause</button>
+</section>
+
+<h2>Original Python code</h2>
+
+<pre id="original"><code>
+import pgzero, pgzrun, pygame
+import math, sys, random
+from enum import Enum
+from pygame.math import Vector2
+
+# Check Python version number. sys.version_info gives version as a tuple, e.g. if (3,7,2,&#x27;final&#x27;,0) for version 3.7.2.
+# Unlike many languages, Python can compare two tuples in the same way that you can compare numbers.
+if sys.version_info &lt; (3,5):
+    print(&quot;This game requires at least version 3.5 of Python. Please download it from www.python.org&quot;)
+    sys.exit()
+
+# Check Pygame Zero version. This is a bit trickier because Pygame Zero only lets us get its version number as a string.
+# So we have to split the string into a list, using &#x27;.&#x27; as the character to split on. We convert each element of the
+# version number into an integer - but only if the string contains numbers and nothing else, because it&#x27;s possible for
+# a component of the version to contain letters as well as numbers (e.g. &#x27;2.0.dev0&#x27;)
+# We&#x27;re using a Python feature called list comprehension - this is explained in the Bubble Bobble/Cavern chapter.
+pgzero_version = [int(s) if s.isnumeric() else s for s in pgzero.__version__.split(&#x27;.&#x27;)]
+if pgzero_version &lt; [1,2]:
+    print(&quot;This game requires at least version 1.2 of Pygame Zero. You have version {0}. Please upgrade using the command &#x27;pip3 install --upgrade pgzero&#x27;&quot;.format(pgzero.__version__))
+    sys.exit()
+
+WIDTH = 800
+HEIGHT = 480
+TITLE = &quot;Ice Hockey&quot;
+
+HALF_WINDOW_W = WIDTH / 2
+
+# Size of level, including both the pitch and the boundary surrounding it
+LEVEL_W = 1000
+LEVEL_H = 1400
+HALF_LEVEL_W = LEVEL_W // 2
+HALF_LEVEL_H = LEVEL_H // 2
+
+HALF_PITCH_W = 280
+HALF_PITCH_H = 622
+
+GOAL_WIDTH = 50
+GOAL_DEPTH = 20
+HALF_GOAL_W = GOAL_WIDTH // 2
+
+PITCH_BOUNDS_X = (HALF_LEVEL_W - HALF_PITCH_W, HALF_LEVEL_W + HALF_PITCH_W)
+PITCH_BOUNDS_Y = (HALF_LEVEL_H - HALF_PITCH_H, HALF_LEVEL_H + HALF_PITCH_H)
+
+GOAL_BOUNDS_X = (HALF_LEVEL_W - HALF_GOAL_W, HALF_LEVEL_W + HALF_GOAL_W)
+GOAL_BOUNDS_Y = (HALF_LEVEL_H - 520 - GOAL_DEPTH,
+                 HALF_LEVEL_H + 520 + GOAL_DEPTH)
+
+PITCH_RECT = pygame.rect.Rect(PITCH_BOUNDS_X[0], PITCH_BOUNDS_Y[0], HALF_PITCH_W * 2, HALF_PITCH_H * 2)
+GOAL_0_RECT = pygame.rect.Rect(GOAL_BOUNDS_X[0], GOAL_BOUNDS_Y[0], GOAL_WIDTH, GOAL_DEPTH)
+GOAL_1_RECT = pygame.rect.Rect(GOAL_BOUNDS_X[0], GOAL_BOUNDS_Y[1] - GOAL_DEPTH, GOAL_WIDTH, GOAL_DEPTH)
+
+AI_MIN_X = HALF_LEVEL_W - HALF_PITCH_W + GOAL_DEPTH
+AI_MAX_X = LEVEL_W - AI_MIN_X
+AI_MIN_Y = HALF_LEVEL_H - HALF_PITCH_H + GOAL_DEPTH
+AI_MAX_Y = LEVEL_H - AI_MIN_Y
+
+PLAYER_START_POS = [(350, 550), (650, 450), (250, 850), (500, 750), (750, 950), (350, 1250), (650, 1150)]
+
+LEAD_DISTANCE_1 = 10
+LEAD_DISTANCE_2 = 50
+
+DRIBBLE_DIST_X, DRIBBLE_DIST_Y = 18, 16
+
+# Speeds for players in various situations. Speeds including &#x27;BASE&#x27; can be boosted by the speed_boost difficulty
+# setting (only for players on a computer-controlled team)
+PLAYER_DEFAULT_SPEED = 2
+CPU_PLAYER_WITH_BALL_BASE_SPEED = 2.6
+PLAYER_INTERCEPT_BALL_SPEED = 2.75
+LEAD_PLAYER_BASE_SPEED = 2.9
+HUMAN_PLAYER_WITH_BALL_SPEED = 3
+HUMAN_PLAYER_WITHOUT_BALL_SPEED = 3.3
+
+DEBUG_SHOW_LEADS = False
+DEBUG_SHOW_TARGETS = False
+DEBUG_SHOW_PEERS = False
+DEBUG_SHOW_SHOOT_TARGET = False
+DEBUG_SHOW_COSTS = False
+
+class Difficulty:
+    def __init__(self, goalie_enabled, second_lead_enabled, speed_boost, holdoff_timer):
+        self.goalie_enabled = goalie_enabled
+
+        # When a player has the ball, either one or two players will be chosen from the other team to try to intercept
+        # the ball owner. Those players will have their &#x27;lead&#x27; attributes set to a number indicating how far ahead of the
+        # ball they should try to run. (If they tried to go to where the ball is currently, they&#x27;d always trail behind)
+        # This attribute determines whether there should be one or two lead players
+        self.second_lead_enabled = second_lead_enabled
+
+        # Speed boost to apply to CPU-team players in certain circumstances
+        self.speed_boost = speed_boost
+
+        # Hold-off timer limits rate at which computer-controlled players can pass the ball
+        self.holdoff_timer = holdoff_timer
+
+DIFFICULTY = [Difficulty(False, False, 0, 120), Difficulty(False, True, 0.1, 90), Difficulty(True, True, 0.2, 60)]
+
+# Custom sine/cosine functions for angles of 0 to 7, where 0 is up,
+# 1 is up+right, 2 is right, etc.
+def sin(x):
+    return math.sin(x*math.pi/4)
+
+def cos(x):
+    return sin(x+2)
+
+# Convert a vector to an angle in the range 0 to 7
+def vec_to_angle(vec):
+    # todo explain a bit
+    # https://gamedev.stackexchange.com/questions/14602/what-are-atan-and-atan2-used-for-in-games
+    return int(4 * math.atan2(vec.x, -vec.y) / math.pi + 8.5) % 8
+
+# Convert an angle  in the range 0 to 7 to a direction vector. We use -cos rather than cos as increasing angles move
+# in a clockwise rather than the usual anti-clockwise direction.
+def angle_to_vec(angle):
+    return Vector2(sin(angle), -cos(angle))
+
+# Used when calling functions such as sorted and min.
+# todo explain more
+# p.vpos - pos results in a Vector2 which we can get the length of, giving us
+# the distance between pos and p.vpos
+def dist_key(pos):
+    return lambda p: (p.vpos - pos).length()
+
+# Turn a vector into a unit vector - i.e. a vector with length 1
+# We also return the original length, before normalisation.
+# We check for zero length, as trying to normalise a zero-length vector results in an error
+def safe_normalise(vec):
+    length = vec.length()
+    if length == 0:
+        return Vector2(0,0), 0
+    else:
+        return vec.normalize(), length
+
+# The MyActor class extends Pygame Zero&#x27;s Actor class by providing the attribute &#x27;vpos&#x27;, which stores the object&#x27;s
+# current position using Pygame&#x27;s Vector2 class. All code should change or read the position via vpos, as opposed to
+# Actor&#x27;s x/y or pos attributes. When the object is drawn, we set self.pos (equivalent to setting both self.x and
+# self.y) based on vpos, but taking scrolling into account.
+class MyActor(Actor):
+    def __init__(self, img, x=0, y=0, anchor=None):
+        super().__init__(img, (0, 0), anchor=anchor)
+        self.vpos = Vector2(x, y)
+
+    # We draw with the supplied offset to enable scrolling
+    def draw(self, offset_x, offset_y):
+        # Set Actor&#x27;s screen pos
+        self.pos = (self.vpos.x - offset_x, self.vpos.y - offset_y)
+        super().draw()
+
+# Ball physics model parameters
+KICK_STRENGTH = 11.5
+DRAG = 0.98
+
+# ball physics for one axis
+def ball_physics(pos, vel, bounds):
+    # Add velocity to position
+    pos += vel
+
+    # Check if ball is out of bounds, and bounce if so
+    if pos &lt; bounds[0] or pos &gt; bounds[1]:
+        pos, vel = pos - vel, -vel
+
+    # Return new position and velocity, applying drag
+    return pos, vel * DRAG
+
+# Work out number of physics steps for ball to travel given distance
+def steps(distance):
+    # Initialize step count and initial velocity
+    steps, vel = 0, KICK_STRENGTH
+
+    # Run physics until distance reached or ball is nearly stopped
+    while distance &gt; 0 and vel &gt; 0.25:
+        distance, steps, vel = distance - vel, steps + 1, vel * DRAG
+
+    return steps
+
+class Goal(MyActor):
+    def __init__(self, team):
+        x = HALF_LEVEL_W
+        y = GOAL_0_RECT.bottom if team == 0 else GOAL_1_RECT.top
+        anchor = &#x27;bottom&#x27; if team == 0 else &#x27;top&#x27;
+        super().__init__(&quot;ice_hockey_goal&quot; + str(team), x, y, (&#x27;center&#x27;, anchor))
+
+        self.team = team
+
+    def active(self):
+        # Is ball within 500 pixels on the Y axis?
+        return abs(game.ball.vpos.y - self.vpos.y) &lt; 500
+
+# Calculate if player &#x27;target&#x27; is a good target for a pass from player &#x27;source&#x27;
+# target can also be a goal
+def targetable(target, source):
+    # Find normalised (unit) vector v0 and distance d0 from source to target
+    v0, d0 = safe_normalise(target.vpos - source.vpos)
+
+    # If source player is on a computer-controlled team, avoid passes which are likely to be intercepted
+    # (If source is player-controlled, that&#x27;s the player&#x27;s job)
+    if not game.teams[source.team].human():
+        # For each player p
+        for p in game.players:
+            # Find normalised vector v1 and distance d1 from source to p
+            v1, d1 = safe_normalise(p.vpos - source.vpos)
+
+            # If p is on the other team, and between source and target, and at a similiar
+            # angular position, target is not a good target
+            # Multiplying two vectors together invokes an operation known as dot product. It is calculated by
+            # multiplying the X components of each vector, then multiplying the Y components, then adding the two
+            # resulting numbers. When each of the input vectors is a unit vector (i.e. with a length of 1, as returned
+            # from the safe_normalise function), the result of which is a number between -1 and 1. In this case we use
+            # the result to determine whether player &#x27;p&#x27; (vector v1) is in roughly the same direction as player &#x27;target&#x27;
+            # (vector v0), from the point of view of player &#x27;source&#x27;.
+            if p.team != target.team and d1 &gt; 0 and d1 &lt; d0 and v0*v1 &gt; 0.8:
+                return False
+
+    # If target is on the same team, and ahead of source, and not too far away, and source is facing
+    # approximately towards target (another dot product operation), then target is a good target.
+    # The dot product operation (multiplying two unit vectors) is used to determine whether (and to what extent) the
+    # source player is facing towards the target player. A value of 1 means target is directly ahead of source; -1
+    # means they are directly behind; 0 means they are directly to the left or right.
+    # See above for more explanation of dot product
+    return target.team == source.team and d0 &gt; 0 and d0 &lt; 300 and v0 * angle_to_vec(source.dir) &gt; 0.8
+
+# Get average of two numbers; if the difference between the two is less than 1,
+# snap to the second number. Used in Ball.update()
+def avg(a, b):
+    return b if abs(b-a) &lt; 1 else (a+b)/2
+
+def on_pitch(x, y):
+    # Only used when dribbling
+    return PITCH_RECT.collidepoint(x,y) \
+           or GOAL_0_RECT.collidepoint(x,y) \
+           or GOAL_1_RECT.collidepoint(x,y)
+
+class Ball(MyActor):
+    def __init__(self):
+        super().__init__(&quot;ice_hockey_puck&quot;, HALF_LEVEL_W, HALF_LEVEL_H)
+
+        # Velocity
+        self.vel = Vector2(0, 0)
+
+        self.owner = None
+        self.timer = 0
+
+        self.shadow = MyActor(&quot;balls&quot;)
+
+    # Check for collision with player p
+    def collide(self, p):
+        # The ball collides with p if p&#x27;s hold-off timer has expired
+        # and it is DRIBBLE_DIST_X or fewer pixels away
+        return p.timer &lt; 0 and (p.vpos - self.vpos).length() &lt;= DRIBBLE_DIST_X
+
+    def is_in_goal(self):
+        &quot;&quot;&quot;Return True if this ball instance is in 1 of the 2 goals.&quot;&quot;&quot;
+        return (GOAL_0_RECT.collidepoint(self.vpos.x, self.vpos.y) or
+                GOAL_1_RECT.collidepoint(self.vpos.x, self.vpos.y))
+
+    def update(self):
+        self.timer -= 1
+
+        # If the ball has an owner, it&#x27;s being dribbled, so its position is
+        # based on its owner&#x27;s position
+        if self.owner:
+            # Calculate new ball position for dribbling
+            # Our target position will be a point just ahead of our owner. However, we don&#x27;t want to just snap to that
+            # position straight away. We want to transition to it over several frames, so we take the average of our
+            # current position and the target position. We also use slightly different offsets for the X and Y axes,
+            # to reflect that that the game&#x27;s perspective is not completely top-down - so the positions the ball can
+            # take in relation to the player should form an ellipse instead of a circle.
+            # todo explain maths
+            new_x = avg(self.vpos.x, self.owner.vpos.x + DRIBBLE_DIST_X * sin(self.owner.dir))
+            new_y = avg(self.vpos.y, self.owner.vpos.y - DRIBBLE_DIST_Y * cos(self.owner.dir))
+
+            if on_pitch(new_x, new_y):
+                # New position is on the pitch, so update
+                self.vpos = Vector2(new_x, new_y)
+            else:
+                # New position is off the pitch, so player loses the ball
+                # Set hold-off timer so player can&#x27;t immediately reacquire the ball
+                self.owner.timer = 60
+
+                # Give ball small velocity in player&#x27;s direction of travel
+                self.vel = angle_to_vec(self.owner.dir) * 3
+
+                # Un-set owner
+                self.owner = None
+        else:
+            # Run physics, one axis at a time
+
+            # If ball is vertically inside the goal, it can only go as far as the
+            # sides of the goal - otherwise it can go all the way to the sides of
+            # the pitch
+
+            # If ball is horizontally inside the goal, it can go all the way to
+            # the back of the net - otherwise it can only go up to the end of
+            # the pitch
+            if self.is_in_goal():
+                bounds_x = GOAL_BOUNDS_X
+                bounds_y = GOAL_BOUNDS_Y
+            else:
+                bounds_x = PITCH_BOUNDS_X
+                bounds_y = PITCH_BOUNDS_Y
+
+            self.vpos.x, self.vel.x = ball_physics(self.vpos.x, self.vel.x, bounds_x)
+            self.vpos.y, self.vel.y = ball_physics(self.vpos.y, self.vel.y, bounds_y)
+
+        # Update shadow position to track ball
+        self.shadow.vpos = Vector2(self.vpos)
+
+        # Search for a player that can acquire the ball
+        for target in game.players:
+            # A player can acquire the ball if the ball has no owner, or the player is on the other team
+            # from the owner, and collides with the ball
+            if (not self.owner or self.owner.team != target.team) and self.collide(target):
+                if self.owner:
+                    # New player is taking the ball from previous owner
+                    # Set hold-off timer so previous owner can&#x27;t immediately reacquire the ball
+                    self.owner.timer = 60
+
+                # Set hold-off timer (dependent on difficulty) to limit rate at which
+                # computer-controlled players can pass the ball
+                self.timer = game.difficulty.holdoff_timer
+
+                # Update owner, and controllable player for player&#x27;s team, to player
+                game.teams[target.team].active_control_player = self.owner = target
+
+        # If the ball has an owner, it&#x27;s time to decide whether to kick it
+        if self.owner:
+            team = game.teams[self.owner.team]
+
+            # Find the closest targetable player or goal (could be None)
+            # First we create a list of all players/goals which can be targeted
+            targetable_players = [p for p in game.players + game.goals if p.team == self.owner.team and targetable(p, self.owner)]
+
+            if len(targetable_players) &gt; 0:
+                # Choose the nearest one
+                # dist_key returns a function which gets the distance of the ball owner from whichever player or goal (p)
+                # the sorted function is currently assessing
+                target = min(targetable_players, key=dist_key(self.owner.vpos))
+                game.debug_shoot_target = target.vpos
+            else:
+                target = None
+
+            if team.human():
+                # If the owner is player-controlled, we kick if the player hits their kick key
+                do_shoot = team.controls.shoot()
+            else:
+                # If the owner is computer-controlled, we kick if the ball&#x27;s hold-off timer has expired
+                # and there is a targetable player or goal, and the targetable player or goal is in a more
+                # favourable location (according to cost()) than the owner&#x27;s location
+                do_shoot = self.timer &lt;= 0 and target and cost(target.vpos, self.owner.team) &lt; cost(self.owner.vpos, self.owner.team)
+
+            if do_shoot:
+                # play a random kick effect
+                game.play_sound(&quot;kick&quot;, 4)
+
+                if target:
+                    # If there is a targetable player or goal, kick towards it
+
+                    # If the owner is player-controlled, we assume the player will continue to hold the same direction
+                    # keys down after the pass, so the target  will start moving in the same direction as the
+                    # current owner; on this assumption, we will kick the ball slightly ahead of the target player&#x27;s
+                    # current position,  through a process of iterative refinement
+
+                    # If the owner is computer-controlled, or the target is a goal, we only execute the loop once and
+                    # so do not apply lead, as there are no keys being held down and goals don&#x27;t move.
+
+                    r = 0
+
+                    # Decide how many times we&#x27;re going to go through the loop - the more times, the more accurate
+                    iterations = 8 if team.human() and isinstance(target, Player) else 1
+
+                    for i in range(iterations):
+                        # In the first loop, t will simply be the position of the targeted player or goal.
+                        # In subsequent loops (if there are any), it will represent a position which is at the
+                        # target&#x27;s feet plus a bit further in whichever direction the player is currently pressing.
+                        t = target.vpos + angle_to_vec(self.owner.dir) * r
+
+                        # Get direction vector and distance between target pos and us
+                        vec, length = safe_normalise(t - self.vpos)
+
+                        # The steps function works out the number of physics steps the ball will take to travel
+                        # the given distance
+                        # todo r
+                        r = HUMAN_PLAYER_WITHOUT_BALL_SPEED * steps(length)
+                else:
+                    # We&#x27;re not targeting a player or goal, so just kick the ball straight ahead
+
+                    # Get direction vector
+                    vec = angle_to_vec(self.owner.dir)
+
+                    # Make a rough guess at which player the ball might end up closest to so, we can set them as the new
+                    # active player. Pick a point 250 pixels ahead and find the nearest player to that.
+                    target = min([p for p in game.players if p.team == self.owner.team],
+                                 key=dist_key(self.vpos + (vec * 250)))
+
+                if isinstance(target, Player):
+                    # If we just kicked the ball towards a player, make that player the new active player for this team
+                    game.teams[self.owner.team].active_control_player = target
+
+                self.owner.timer = 10  # Owner can&#x27;t regain the ball for at least 10 frames
+
+                # Set velocity
+                self.vel = vec * KICK_STRENGTH
+
+                # We no longer have an owner
+                self.owner = None
+
+# Return True if the given position is inside the level area, otherwise False
+# Takes the goals into account so you can&#x27;t run through them
+def allow_movement(x, y):
+    if abs(x - HALF_LEVEL_W) &gt; HALF_LEVEL_W:
+        # Trying to walk off the left or right side of the level
+        return False
+
+    else:
+        # Player is outside the bounds of the goals on the X axis, so they can walk off the pitch and to the edge
+        # of the level
+        return abs(y - HALF_LEVEL_H) &lt; HALF_LEVEL_H
+
+# Generate a score for a given position, where lower numbers are considered to be better.
+# This is called when a computer-controlled player with the ball is working out which direction to run in, or whether
+# to pass the ball to another player, or kick it into the goal.
+# Several things make up the final score:
+# - the distance to our own goal - further away is better
+# - the proximity of players on the other team - we want to get the ball away from them as much as possible
+# - a quadratic equation (don&#x27;t panic too much!) causing the player to favour the centre of the pitch and their opponents goal
+# - an optional handicap value which can bias the result towards or away from a particular position
+def cost(pos, team, handicap=0):
+    # Get pos of our own goal. We do it this way rather than getting the pos of the actual goal object
+    # because this way gives us the pos of the goal&#x27;s entrance, whereas the actual goal sprites are not anchored based
+    # on the entrances.
+    own_goal_pos = Vector2(HALF_LEVEL_W, (AI_MIN_Y - GOAL_DEPTH) if team == 1 else (AI_MAX_Y + GOAL_DEPTH))
+    inverse_own_goal_distance = 3500 / (pos - own_goal_pos).length()
+
+    result = inverse_own_goal_distance \
+            + sum([4000 / max(24, (p.vpos - pos).length()) for p in game.players if p.team != team]) \
+            + ((pos.x - HALF_LEVEL_W)**2 / 200 \
+            - pos.y * (4 * team - 2)) \
+            + handicap
+
+    return result, pos
+
+class Player(MyActor):
+    ANCHOR = (25,37)
+
+    def __init__(self, x, y, team):
+        # Player objects are recreated each time there is a kickoff
+        # Team will be 0 or 1
+        # The x and y values supplied represent our &#x27;home&#x27; position - the place we&#x27;ll return to by default when not near
+        # the ball. However, on creation, we want players to be in their kickoff positions, which means all players from
+        # team 0 will be below the halfway line, and players from team 1 above. The player chosen to actually do the
+        # kickoff is moved to be alongside the centre spot after the player objects have been created.
+
+        # Calculate our initial position for kickoff by halving y, adding 550 and then subtracting either 400 for
+        # team 1, or nothing for team 0
+        kickoff_y = (y / 2) + 550 - (team * 400)
+
+        # Call the constructor of the parent class (MyActor)
+        super().__init__(&quot;blank&quot;, x, kickoff_y, Player.ANCHOR)
+
+        # Remember home position, where we&#x27;ll stand by default if we&#x27;re not active (i.e. far from the ball)
+        self.home = Vector2(x, y)
+
+        # Store team
+        self.team = team
+
+        # Facing direction: 0 = up, 1 = top right, up to 7 = top left
+        self.dir = 0
+
+        # Animation frame
+        self.anim_frame = -1
+
+        self.timer = 0
+
+        self.shadow = MyActor(&quot;blank&quot;, 0, 0, Player.ANCHOR)
+
+        # Used when DEBUG_SHOW_TARGETS is on
+        self.debug_target = Vector2(0, 0)
+
+    def active(self):
+        # Is ball within 400 pixels on the Y axis? If so I&#x27;ll be considered active, meaning I&#x27;m currently doing
+        # something useful in the game like trying to get the ball. If I&#x27;m not active, I&#x27;ll either mark another player,
+        # or just stay at my home position
+        return abs(game.ball.vpos.y - self.home.y) &lt; 400
+
+    def update(self):
+        # decrement holdoff timer
+        self.timer -= 1
+
+        # One of the main jobs of this method is to decide where the player will run to, and at what speed.
+        # The default is to run slowly towards home position, but target and speed may be overwritten in the code below
+        target = Vector2(self.home)       # Take a copy of home position
+        speed = PLAYER_DEFAULT_SPEED
+
+        # Some shorthand variables to make the code below a bit easier to follow
+        my_team = game.teams[self.team]
+        pre_kickoff = game.kickoff_player != None
+        i_am_kickoff_player = self == game.kickoff_player
+        ball = game.ball
+
+        if self == game.teams[self.team].active_control_player and my_team.human() and (not pre_kickoff or i_am_kickoff_player):
+            # This player is the currently active player for its team, and is player-controlled, and either we&#x27;re not
+            # currently waiting for kickoff, or this player is the designated kickoff player.
+            # The last part of the condition ensures that in a 2 player game, player 2 can&#x27;t make their active player
+            # run around while waiting for player 1 to do the kickoff (and vice versa)
+
+            # A player with the ball runs slightly more slowly than one without
+            if ball.owner == self:
+                speed = HUMAN_PLAYER_WITH_BALL_SPEED
+            else:
+                speed = HUMAN_PLAYER_WITHOUT_BALL_SPEED
+
+            # Find target by calling the controller for the player&#x27;s team todo comment
+            target = self.vpos + my_team.controls.move(speed)
+
+        elif ball.owner != None:
+            # Someone has the ball - is it me?
+            if ball.owner == self:
+                # We are the owner, and are computer-controlled (otherwise we would have taken the other arm
+                # of the top-level if statement)
+
+                # Evaluate five positions (left 90, left 45, ahead, right 45, right 90)
+                # target is the one with the lowest value of cost()
+                # List comprehension steps through the angles: -2 to 2, where 0 is up, 1 is up &amp; right, etc
+                # For each angle &#x27;d&#x27;, we call the cost function with a position, which is 3 pixels from the
+                # current position, if the player were to move in the direction of d. We also pass cost() our team number.
+                # The last parameter, abs(d), introduces a tendency for the player to continue running forward. Try
+                # multiplying it by 3 or 4 to see what happens!
+
+                # First, create a list of costs for each of the 5 tested positions - a lower number is better. Each
+                # element is a tuple containing the cost and the position that cost relates to.
+                costs = [cost(self.vpos + angle_to_vec(self.dir + d) * 3, self.team, abs(d)) for d in range(-2, 3)]
+
+                # Then choose the element with the lowest cost. We use min() to find the element with the lowest value.
+                # min uses &lt; to compare pairs of elements. Each element of costs is a tuple with two elements (a cost
+                # value and the target position). When comparing a pair of tuples using &lt;, Python first compares the
+                # first element of each tuple. If they&#x27;re different, that&#x27;s what determines which tuple is considered to
+                # have a lower value. If they&#x27;re the same, Python moves on to looking at the next element. However, this
+                # can lead to a crash in this case as the target position is an instance of the Vector2 class, which
+                # does not support comparisons using &lt;. In practice it&#x27;s rare for two positions to have the same cost
+                # value, but it&#x27;s nevertheless prudent to eliminate the risk. The solution we chosen is to use the
+                # optional &#x27;key&#x27; parameter for min, telling the function to only use the first element of each tuple
+                # for the comparisons.
+                # When min finds the tuple with the minimum cost value, we extract the target pos (which is what we
+                # actually care about) and discard the actual cost value - hence the &#x27;_&#x27; dummy variable
+                _, target = min(costs, key=lambda element: element[0])
+
+                # speed depends on difficulty
+                speed = CPU_PLAYER_WITH_BALL_BASE_SPEED + game.difficulty.speed_boost
+
+            elif ball.owner.team == self.team:
+                # Ball is owned by another player on our team
+                if self.active():
+                    # If I&#x27;m near enough to the ball, try to run somewhere useful, and unique to this player - we
+                    # don&#x27;t want all players running to the same place. Target is halfway between home and a point
+                    # 400 pixels ahead of the ball. Team 0 are trying to score in the goal at the top of the
+                    # pitch, team 1 the goal at the bottom
+                    direction = -1 if self.team == 0 else 1
+                    target.x = (ball.vpos.x + target.x) / 2
+                    target.y = (ball.vpos.y + 400 * direction + target.y) / 2
+                # If we&#x27;re not active, we&#x27;ll do the default action of moving towards our home position
+            else:
+                # Ball is owned by a player on the opposite team
+                if self.lead is not None:
+                    # We are one of the players chosen to pursue the owner
+
+                    # Target a position in front of the ball&#x27;s owner, the distance based on the value of lead, while
+                    # making sure we keep just inside the pitch
+                    target = ball.owner.vpos + angle_to_vec(ball.owner.dir) * self.lead
+
+                    # Stay on the pitch
+                    target.x = max(AI_MIN_X, min(AI_MAX_X, target.x))
+                    target.y = max(AI_MIN_Y, min(AI_MAX_Y, target.y))
+
+                    other_team = 1 if self.team == 0 else 0
+                    speed = LEAD_PLAYER_BASE_SPEED
+                    if game.teams[other_team].human():
+                        speed += game.difficulty.speed_boost
+
+                elif self.mark.active():
+                    # The player or goal we&#x27;ve been chosen to mark is active
+
+                    if my_team.human():
+                        # If I&#x27;m on a human team, just run towards the ball.
+                        # We don&#x27;t do the marking behaviour below for human teams for a number of reasons. Try changing
+                        # the code to see how the game feels when marking behaviour applies to both human and computer
+                        # teams.
+                        target = Vector2(ball.vpos)
+                    else:
+                        # Get vector between the ball and whatever we&#x27;re marking
+                        vec, length = safe_normalise(ball.vpos - self.mark.vpos)
+
+                        # Alter length to choose a position in between the ball and whatever we&#x27;re marking
+                        # We don&#x27;t apply this behaviour for human teams - in that case we just run straight at the ball
+                        if isinstance(self.mark, Goal):
+                            # If I&#x27;m currently the goalie, get in between the ball and goal, and don&#x27;t get too far
+                            # from the goal
+                            length = min(150, length)
+                        else:
+                            # Otherwise, just get halfway between the ball and whoever I&#x27;m marking
+                            length /= 2
+
+                        target = self.mark.vpos + vec * length
+        else:
+            # No-one has the ball
+
+            # If we&#x27;re pre-kickoff and I&#x27;m the kickoff player, OR if we&#x27;re not pre-kickoff and I&#x27;m active
+            if (pre_kickoff and i_am_kickoff_player) or (not pre_kickoff and self.active()):
+                # Try to intercept the ball
+                # Deciding where to go to achieve this is harder than you might think. You can&#x27;t target the ball&#x27;s
+                # current location, because (assuming it&#x27;s moving) by the time you get there it&#x27;ll have moved on, so
+                # you&#x27;ll always be trailing behind it. And you can&#x27;t target where it&#x27;s going to end up after rolling to
+                # a halt, because you might end up getting there before it and just be standing around waiting for it to
+                # get there. What we want to do is find a target which allows us to intercept the ball along its path in
+                # the minimum possible time and distance.
+                # The code below simulates the ball&#x27;s movement over a series of frames, working out where it would be
+                # after each frame. We also work out how far the player could have moved at each frame, and whether
+                # that distance would be enough to reach the currently simulated location of the ball.
+                target = Vector2(ball.vpos)     # current simulated location of ball
+                vel = Vector2(ball.vel)         # ball velocity - slows down each frame due to friction
+                frame = 0
+
+                # DRIBBLE_DIST_X is the distance at which a player can gain control of the ball.
+                # vel.length() &gt; 0.5 ensures we don&#x27;t keep simulating frames for longer than necessary - once the ball
+                # is moving that slowly, it&#x27;s not going to move much further, so there&#x27;s no point in simulating dozens
+                # more frames of very tiny movements. If you experience a decreased frame rate when no one has the ball,
+                # try increasing 0.5 to a higher number.
+                while (target - self.vpos).length() &gt; PLAYER_INTERCEPT_BALL_SPEED * frame + DRIBBLE_DIST_X and vel.length() &gt; 0.5:
+                    target += vel
+                    vel *= DRAG
+                    frame += 1
+
+                speed = PLAYER_INTERCEPT_BALL_SPEED
+
+            elif pre_kickoff:
+                # Waiting for kick-off, but we&#x27;re not the kickoff player
+                # Just stay where we are. Without this we&#x27;d run to our home position, but that is different from
+                # our position at kickoff (where all players are on their team&#x27;s side of the pitch)
+                target.y = self.vpos.y
+
+        # Get direction vector and distance beteen current pos and target pos
+        # vec[0] and vec[1] will be the x and y components of the vector
+        vec, distance = safe_normalise(target - self.vpos)
+
+        self.debug_target = Vector2(target)
+
+        # Check to see if we&#x27;re already at the target position
+        if distance &gt; 0:
+            # Limit movement to our max speed
+            distance = min(distance, speed)
+
+            # Set facing direction based on the direction we&#x27;re moving
+            target_dir = vec_to_angle(vec)
+
+            # Update the x and y components of the player&#x27;s position - but don&#x27;t allow them to go off the edge of the
+            # level. Processing the x and y components separately allows the player to slide along the edge when trying
+            # to move diagonally off the edge of the level.
+            if allow_movement(self.vpos.x + vec.x * distance, self.vpos.y):
+                self.vpos.x += vec.x * distance
+            if allow_movement(self.vpos.x, self.vpos.y + vec.y * distance):
+                self.vpos.y += vec.y * distance
+
+            # todo
+            self.anim_frame = (self.anim_frame + max(distance, 1.5)) % 72
+        else:
+            # Already at target position - just turn to face the ball
+            target_dir = vec_to_angle(ball.vpos - self.vpos)
+            self.anim_frame = -1
+
+        # Update facing direction - each frame, move one step towards the target direction
+        # This code essentially says that if the target direction is the same as the current direction, there should
+        # be no change; if target is between 1 and 4 steps clockwise from current, we should rotate one step clockwise,
+        # and if it&#x27;s between 1 and 3 steps anticlockwise (which can also be thought of as 5 to 7 steps clockwise), we
+        # should rotate one step anticlockwise - which is equivalent to stepping 7 steps clockwise
+        dir_diff = (target_dir - self.dir)
+        self.dir = (self.dir + [0, 1, 1, 1, 1, 7, 7, 7][dir_diff % 8]) % 8
+
+        suffix = str(self.dir) + str((int(self.anim_frame) // 18) + 1) # todo
+
+        self.image = &quot;player&quot; + str(self.team) + suffix
+        self.shadow.image = &quot;players&quot; + suffix
+
+        # Update shadow position to track player
+        self.shadow.vpos = Vector2(self.vpos)
+
+
+class Team:
+    def __init__(self, controls):
+        self.controls = controls
+        self.active_control_player = None
+        self.score = 0
+
+    def human(self):
+        return self.controls != None
+
+
+class Game:
+    def __init__(self, p1_controls=None, p2_controls=None, difficulty=2):
+        self.teams = [Team(p1_controls), Team(p2_controls)]
+        self.difficulty = DIFFICULTY[difficulty]
+
+        try:
+            if self.teams[0].human():
+                # Beginning a game with at least 1 human player
+                music.fadeout(1)
+                sounds.crowd.play(-1)
+                sounds.start.play()
+            else:
+                # No players - we must be on the menu. Play title music.
+                music.play(&quot;theme&quot;)
+                sounds.crowd.stop()
+        except Exception:
+            # Ignore sound errors
+            pass
+
+        self.score_timer = 0
+        self.scoring_team = 1   # Which team has just scored - also governs who kicks off next
+
+        self.reset()
+
+    def reset(self):
+        # Called at game start, and after a goal has been scored
+
+        # Set up players list/positions
+        # The lambda function is used to give the player start positions a slight random offset so they&#x27;re not
+        # perfectly aligned to their starting spots
+        self.players = []
+        random_offset = lambda x: x + random.randint(-32, 32)
+        for pos in PLAYER_START_POS:
+            # pos is a pair of coordinates in a tuple
+            # For each entry in pos, create one player for each team - positions are flipped (both horizontally and
+            # vertically) versions of each other
+            self.players.append(Player(random_offset(pos[0]), random_offset(pos[1]), 0))
+            self.players.append(Player(random_offset(LEVEL_W - pos[0]), random_offset(LEVEL_H - pos[1]), 1))
+
+        # Players in the list are stored in an alternating fashion - a team 0 player, then a team 1 player, and so on.
+        # The peer for each player is the opposing team player at the opposite end of the list. As there are 14 players
+        # in total, the peers are 0 and 13, 1 and 12, 2 and 11, and so on.
+        for a, b in zip(self.players, self.players[::-1]):
+            a.peer = b
+
+        # Create two goals
+        self.goals = [Goal(i) for i in range(2)]
+
+        # The current active player under control by each team, indicated by arrows over their heads
+        # Choose first two players to begin with
+        self.teams[0].active_control_player = self.players[0]
+        self.teams[1].active_control_player = self.players[1]
+
+        # If team 1 just scored (or if it&#x27;s the start of the game), team 0 will kick off
+        other_team = 1 if self.scoring_team == 0 else 0
+
+        # Players are stored in the players list in an alternating fashion - the first player being on team 0, the
+        # second on team 1, the third on team 0 etc. The player that kicks off will always be the first player of
+        # the relevant team.
+        self.kickoff_player = self.players[other_team]
+
+        # Set pos of kickoff player. A team 0 player will stand to the left of the ball, team 1 on the right
+        self.kickoff_player.vpos = Vector2(HALF_LEVEL_W - 30 + other_team * 60, HALF_LEVEL_H)
+
+        # Create ball
+        self.ball = Ball()
+
+        # Focus camera on ball - copy ball pos
+        self.camera_focus = Vector2(self.ball.vpos)
+
+        self.debug_shoot_target = None
+
+    def update(self):
+        self.score_timer -= 1
+
+        if self.score_timer == 0:
+            # Reset for new kick-off after goal scored
+            self.reset()
+
+        elif self.score_timer &lt; 0 and self.ball.is_in_goal():
+            game.play_sound(&quot;goal&quot;, 2)
+
+            self.scoring_team = 0 if self.ball.vpos.y &lt; HALF_LEVEL_H else 1
+            self.teams[self.scoring_team].score += 1
+            self.score_timer = 60      # Game goes into &quot;scored a goal&quot; state for 60 frames
+
+        # Each frame, reset mark and lead of each player
+        for b in self.players:
+            b.mark = b.peer
+            b.lead = None
+            b.debug_target = None
+
+        # Reset debug shoot target
+        self.debug_shoot_target = None
+
+        if self.ball.owner:
+            # Ball has an owner (above is equivalent to s.ball.owner != None, or s.ball.owner is not None)
+            # Assign some shorthand variables
+            o = self.ball.owner
+            pos, team = o.vpos, o.team
+            owners_target_goal = game.goals[team]
+            other_team = 1 if team == 0 else 0
+
+            if self.difficulty.goalie_enabled:
+                # Find the nearest opposing team player to the goal, and make them mark the goal
+                nearest = min([p for p in self.players if p.team != team], key = dist_key(owners_target_goal.vpos))
+
+                # Set the ball owner&#x27;s peer to mark whoever the goalie was marking, then set the goalie to mark the goal
+                o.peer.mark = nearest.mark
+                nearest.mark = owners_target_goal
+
+            # Choose one or two lead players to spearhead the attack on the ball owner
+            # Create a list of players who are on the opposite team from the ball owner, are allowed to acquire
+            # the ball (their hold-off timer must not be positive), are not currently being controlled by a human,
+            # and are not currently assigned to be the goalie. The list is sorted based on distance from the ball owner.
+            l = sorted([p for p in self.players
+                        if p.team != team
+                        and p.timer &lt;= 0
+                        and (not self.teams[other_team].human() or p != self.teams[other_team].active_control_player)
+                        and not isinstance(p.mark, Goal)],
+                       key = dist_key(pos))
+
+            # a is a list of players from l who are upfield of the ball owner (i.e. towards our own goal, away from the
+            # direction of the goal the ball owner is trying to score in). b is all the other players. It&#x27;s possible for
+            # one of these to be empty, as there might not be any players in the relevant direction.
+            a = [p for p in l if (p.vpos.y &gt; pos.y if team == 0 else p.vpos.y &lt; pos.y)]
+            b = [p for p in l if p not in a]
+
+            # Zip a and b together in an alternating fashion. Why do we add NONE2 (i.e. [None,None]) to each list?
+            # Because the zip function stops when there are no more items in one of the lists. We want our final list
+            # to contain at least 2 elements. Adding NONE2 (i.e. [None,None] as defined near the top) ensures that each
+            # list has at least 2 items. But we don&#x27;t want any values in the final list to be None, hence the final part
+            # of the list comprehension &#x27;for s in t if s&#x27;, which discards any None values from the final result
+            NONE2 = [None] * 2
+            zipped = [s for t in zip(a+NONE2, b+NONE2) for s in t if s]
+
+            # Either one or two players (depending on difficulty settings) follow the ball owner, one from up-field and
+            # one from down-field of the owner
+            zipped[0].lead = LEAD_DISTANCE_1
+            if self.difficulty.second_lead_enabled:
+                zipped[1].lead = LEAD_DISTANCE_2
+
+            # If the ball has an owner, kick-off must have taken place, so unset the kickoff player
+            # Of course, kick-off might have already taken place a while ago, in which case kick-off_player will already
+            # be None, and will remain None
+            self.kickoff_player = None
+
+        # Update all players and ball
+        for obj in self.players + [self.ball]:
+            obj.update()
+
+        owner = self.ball.owner
+
+        for team_num in range(2):
+            team_obj = self.teams[team_num]
+
+            # Manual player switching when space is pressed
+            if team_obj.human() and team_obj.controls.shoot():
+                # Find nearest player to the ball on our team
+                # If the ball has an owner (who must be on the other team because if not, control would have
+                # automatically switched to the ball owner and we wouldn&#x27;t need to manually switch), we weight the
+                # choice in favour of players who are upfield (towards our goal), since such players may be better
+                # placed to intercept the ball owner.
+                # The function dist_key_weighted is equivalent to the dist_key function earlier in the code, but with
+                # this weighting added. We use this function as the key for the min function, which will choose
+                # the player who results in the lowest value when passed as an argument to dist_key_weighted.
+                def dist_key_weighted(p):
+                    dist_to_ball = (p.vpos - self.ball.vpos).length()
+                    # Thonny gives a warning about the following line, relating to closures (an advanced topic), but
+                    # in this case there is not actually a problem as the closure is only called within the loop
+                    goal_dir = (2 * team_num - 1)
+                    if owner and (p.vpos.y - self.ball.vpos.y) * goal_dir &lt; 0:
+                        return dist_to_ball / 2
+                    else:
+                        return dist_to_ball
+
+                self.teams[team_num].active_control_player = min([p for p in game.players if p.team == team_num],
+                                                                 key = dist_key_weighted)
+
+        # Get vector between current camera pos and ball pos
+        camera_ball_vec, distance = safe_normalise(self.camera_focus - self.ball.vpos)
+        if distance &gt; 0:
+            # Move camera towards ball, at no more than 8 pixels per frame
+            self.camera_focus -= camera_ball_vec * min(distance, 8)
+
+    def draw(self):
+        # For the purpose of scrolling, all objects will be drawn with these offsets
+        offset_x = max(0, min(LEVEL_W - WIDTH, self.camera_focus.x - WIDTH / 2))
+        offset_y = max(0, min(LEVEL_H - HEIGHT, self.camera_focus.y - HEIGHT / 2))
+        offset = Vector2(offset_x, offset_y)
+
+        screen.blit(&quot;ice_hockey_rink&quot;, (-offset_x, -offset_y))
+
+        # Prepare to draw all objects
+        # 1. Create a list of all players and the ball, sorted based on their Y positions
+        # 2. Add object shadows to the list
+        # 3. Add the two goals at each end of the list
+        # (note - technically we&#x27;re not adding items to the list in steps two and three, we&#x27;re creating a new list
+        # which consists of the old list plus the new items)
+        objects = sorted([self.ball] + self.players, key = lambda obj: obj.y)
+        objects = objects + [obj.shadow for obj in objects]
+        objects = [self.goals[0]] + objects + [self.goals[1]]
+
+        # Draw all objects
+        for obj in objects:
+            obj.draw(offset_x, offset_y)
+
+        # Show active players
+        for t in range(2):
+            # Only show arrow for human teams
+            if self.teams[t].human():
+                arrow_pos = self.teams[t].active_control_player.vpos - offset - Vector2(11, 45)
+                screen.blit(&quot;arrow&quot; + str(t), arrow_pos)
+
+        if DEBUG_SHOW_LEADS:
+            for p in self.players:
+                if game.ball.owner and p.lead:
+                    line_start = game.ball.owner.vpos - offset
+                    line_end = p.vpos - offset
+                    pygame.draw.line(screen.surface, (0,0,0), line_start, line_end)
+
+        if DEBUG_SHOW_TARGETS:
+            for p in self.players:
+                line_start = p.debug_target - offset
+                line_end = p.vpos - offset
+                pygame.draw.line(screen.surface, (255,0,0), line_start, line_end)
+
+        if DEBUG_SHOW_PEERS:
+            for p in self.players:
+                line_start = p.peer.vpos - offset
+                line_end = p.vpos - offset
+                pygame.draw.line(screen.surface, (0,0,255), line_start, line_end)
+
+        if DEBUG_SHOW_SHOOT_TARGET:
+            if self.debug_shoot_target and self.ball.owner:
+                line_start = self.ball.owner.vpos - offset
+                line_end = self.debug_shoot_target - offset
+                pygame.draw.line(screen.surface, (255,0,255), line_start, line_end)
+
+        if DEBUG_SHOW_COSTS and self.ball.owner:
+            for x in range(0,LEVEL_W,60):
+                for y in range(0, LEVEL_H, 26):
+                    c = cost(Vector2(x,y), self.ball.owner.team)[0]
+                    screen_pos = Vector2(x,y)-offset
+                    screen_pos = (screen_pos.x,screen_pos.y)    # draw.text can&#x27;t reliably take a Vector2
+                    screen.draw.text(&quot;{0:.0f}&quot;.format(c), center=screen_pos)
+
+    def play_sound(self, name, c):
+        # Only play sounds if we&#x27;re not in the menu state
+        if state != State.MENU:
+            try:
+                getattr(sounds, name+str(random.randint(0, c-1))).play()
+            except:
+                # Ignore sound errors
+                pass
+
+
+# Dictionary to keep track of which keys are currently being held down
+key_status = {}
+
+# Was the given key just pressed? (i.e. is it currently down, but wasn&#x27;t down on the previous frame?)
+def key_just_pressed(key):
+    result = False
+
+    # Get key&#x27;s previous status from the key_status dictionary. The dictionary.get method allows us to check for a given
+    # entry without giving an error if that entry is not present in the dictionary. False is the default value returned
+    # when the key is not present.
+    prev_status = key_status.get(key, False)
+
+    # If the key wasn&#x27;t previously being pressed, but it is now, we&#x27;re going to return True
+    if not prev_status and keyboard[key]:
+        result = True
+
+    # Before we return, we need to update the key&#x27;s entry in the key_status dictionary (or create an entry if there
+    # wasn&#x27;t one already
+    key_status[key] = keyboard[key]
+
+    return result
+
+class Controls:
+    def __init__(self, player_num):
+        if player_num == 0:
+            self.key_up = keys.UP
+            self.key_down = keys.DOWN
+            self.key_left = keys.LEFT
+            self.key_right = keys.RIGHT
+            self.key_shoot = keys.SPACE
+        else:
+            self.key_up = keys.W
+            self.key_down = keys.S
+            self.key_left = keys.A
+            self.key_right = keys.D
+            self.key_shoot = keys.LSHIFT
+
+    def move(self, speed):
+        # Return vector representing amount of movement that should occur
+        dx, dy = 0, 0
+        if keyboard[self.key_left]:
+            dx = -1
+        elif keyboard[self.key_right]:
+            dx = 1
+        if keyboard[self.key_up]:
+            dy = -1
+        elif keyboard[self.key_down]:
+            dy = 1
+        return Vector2(dx, dy) * speed
+
+    def shoot(self):
+        return key_just_pressed(self.key_shoot)
+
+# Pygame Zero calls the update and draw functions each frame
+
+class State(Enum):
+    MENU = 0
+    PLAY = 1
+    GAME_OVER = 2
+
+class MenuState(Enum):
+    NUM_PLAYERS = 0
+    DIFFICULTY = 1
+
+def update():
+    global state, game, menu_state, menu_num_players, menu_difficulty
+
+    if state == State.MENU:
+        if key_just_pressed(keys.SPACE):
+            if menu_state == MenuState.NUM_PLAYERS:
+                # If we&#x27;re doing a 2 player game, skip difficulty selection
+                if menu_num_players == 1:
+                    menu_state = MenuState.DIFFICULTY
+                else:
+                    # Start 2P game
+                    state = State.PLAY
+                    menu_state = None
+                    game = Game(Controls(0), Controls(1))
+            else:
+                # Start 1P game
+                state = State.PLAY
+                menu_state = None
+                game = Game(Controls(0), None, menu_difficulty)
+        else:
+            # Detect + act on up/down arrow keys
+            selection_change = 0
+            if key_just_pressed(keys.DOWN):
+                selection_change = 1
+            elif key_just_pressed(keys.UP):
+                selection_change = -1
+            if selection_change != 0:
+                try:
+                    sounds.move.play()
+                except Exception:
+                    # Ignore sound errors
+                    pass
+                if menu_state == MenuState.NUM_PLAYERS:
+                    menu_num_players = 2 if menu_num_players == 1 else 1
+                else:
+                    menu_difficulty = (menu_difficulty + selection_change) % 3
+
+        game.update()
+
+    elif state == State.PLAY:
+        # First player to 9 wins
+        if max([team.score for team in game.teams]) == 9 and game.score_timer == 1:
+            state = State.GAME_OVER
+        else:
+            game.update()
+
+    elif state == State.GAME_OVER:
+        if key_just_pressed(keys.SPACE):
+            # Switch to menu state, and create a new game object without a player
+            state = State.MENU
+            menu_state = MenuState.NUM_PLAYERS
+            game = Game()
+
+def draw():
+    game.draw()
+
+    if state == State.MENU:
+        # Draw title screen and menu
+        # There are 5 menu images numbered 01, 02, 10, 11 and 12.
+        # 01 and 02 are the images for indicating whether 1 or 2 player mode
+        # is selected; 10, 11 and 12 are for the difficulty selection screen -
+        # easy, medium or hard
+        if menu_state == MenuState.NUM_PLAYERS:
+            image = &quot;menu0&quot; + str(menu_num_players)
+        else:
+            image = &quot;menu1&quot; + str(menu_difficulty)
+        screen.blit(image, (0, 0))
+        screen.draw.line((190, 50), (610, 225), (255,0,0))
+        screen.draw.line((610, 50), (190, 225), (255,0,0))
+        screen.draw.filled_rect(Rect((200, 75), (400, 125)), (255,255,255))
+        screen.draw.text(TITLE, center=(400, 135), color=(0,0,0), fontsize=64)
+
+    elif state == State.PLAY:
+        # Display score bar at top
+        screen.blit(&quot;bar&quot;, (HALF_WINDOW_W - 176, 0))
+
+        # Show score for each team
+        for i in range(2):
+            screen.blit(&quot;s&quot; + str(game.teams[i].score), (HALF_WINDOW_W + 7 - 39 * i, 6))
+
+        # Show GOAL image if a goal has recently been scored
+        if game.score_timer &gt; 0:
+            screen.blit(&quot;goal&quot;, (HALF_WINDOW_W - 300, HEIGHT / 2 - 88))
+
+    elif state == State.GAME_OVER:
+        # Display &quot;Game Over&quot; image
+        img = &quot;over&quot; + str(int(game.teams[1].score &gt; game.teams[0].score))
+        screen.blit(img, (0, 0))
+
+        # Show score for each team
+        for i in range(2):
+            img = &quot;l&quot; + str(i) + str(game.teams[i].score)
+            screen.blit(img, (HALF_WINDOW_W + 25 - 125 * i, 144))
+
+# Set up sound system
+try:
+    pygame.mixer.quit()
+    pygame.mixer.init(44100, -16, 2, 1024)
+except Exception:
+    # Ignore sound errors
+    pass
+
+# Set the initial game state
+state = State.MENU
+
+# Menu state
+menu_state = MenuState.NUM_PLAYERS
+menu_num_players = 1
+menu_difficulty = 0
+
+# Create a new Game object
+game = Game()
+
+pgzrun.go()
+</code></pre>
+</main>
+
+<script>
+WIDTH = 800;
+HEIGHT = 480;
+TITLE = "Ice Hockey";
+
+const HALF_WINDOW_W = WIDTH / 2;
+
+// Size of level, including both the pitch and the boundary surrounding it
+const LEVEL_W = 1000;
+const LEVEL_H = 1400;
+const HALF_LEVEL_W = Math.floor(LEVEL_W / 2);
+const HALF_LEVEL_H = Math.floor(LEVEL_H / 2);
+
+const HALF_PITCH_W = 280;
+const HALF_PITCH_H = 622;
+
+const GOAL_WIDTH = 50;
+const GOAL_DEPTH = 20;
+const HALF_GOAL_W = Math.floor(GOAL_WIDTH / 2);
+
+const PITCH_BOUNDS_X = [HALF_LEVEL_W - HALF_PITCH_W, HALF_LEVEL_W + HALF_PITCH_W];
+const PITCH_BOUNDS_Y = [HALF_LEVEL_H - HALF_PITCH_H, HALF_LEVEL_H + HALF_PITCH_H];
+
+const GOAL_BOUNDS_X = [HALF_LEVEL_W - HALF_GOAL_W, HALF_LEVEL_W + HALF_GOAL_W];
+const GOAL_BOUNDS_Y = [HALF_LEVEL_H - 520 - GOAL_DEPTH,
+                       HALF_LEVEL_H + 520 + GOAL_DEPTH];
+
+const PITCH_RECT = new Rect(PITCH_BOUNDS_X[0], PITCH_BOUNDS_Y[0], HALF_PITCH_W * 2, HALF_PITCH_H * 2);
+const GOAL_0_RECT = new Rect(GOAL_BOUNDS_X[0], GOAL_BOUNDS_Y[0], GOAL_WIDTH, GOAL_DEPTH);
+const GOAL_1_RECT = new Rect(GOAL_BOUNDS_X[0], GOAL_BOUNDS_Y[1] - GOAL_DEPTH, GOAL_WIDTH, GOAL_DEPTH);
+
+const AI_MIN_X = HALF_LEVEL_W - HALF_PITCH_W + GOAL_DEPTH;
+const AI_MAX_X = LEVEL_W - AI_MIN_X;
+const AI_MIN_Y = HALF_LEVEL_H - HALF_PITCH_H + GOAL_DEPTH;
+const AI_MAX_Y = LEVEL_H - AI_MIN_Y;
+
+const PLAYER_START_POS = [[350, 550], [650, 450], [250, 850], [500, 750], [750, 950], [350, 1250], [650, 1150]];
+
+const LEAD_DISTANCE_1 = 10;
+const LEAD_DISTANCE_2 = 50;
+
+const DRIBBLE_DIST_X = 18;
+const DRIBBLE_DIST_Y = 16;
+
+// Speeds for players in various situations. Speeds including 'BASE' can be boosted by the speed_boost difficulty
+// setting (only for players on a computer-controlled team)
+const PLAYER_DEFAULT_SPEED = 2;
+const CPU_PLAYER_WITH_BALL_BASE_SPEED = 2.6;
+const PLAYER_INTERCEPT_BALL_SPEED = 2.75;
+const LEAD_PLAYER_BASE_SPEED = 2.9;
+const HUMAN_PLAYER_WITH_BALL_SPEED = 3;
+const HUMAN_PLAYER_WITHOUT_BALL_SPEED = 3.3;
+
+const DEBUG_SHOW_LEADS = false;
+const DEBUG_SHOW_TARGETS = false;
+const DEBUG_SHOW_PEERS = false;
+const DEBUG_SHOW_SHOOT_TARGET = false;
+const DEBUG_SHOW_COSTS = false;
+
+/*
+ * Return the result of the modulo operation dividend modulo divisor.
+ *
+ * The remainder operator (%) in JavaScript always takes the sign of the dividend.
+ * This trips you up when you come from Python and expect it to be a
+ * modulo operator for a negative dividend.
+ * This function correctly returns the non-negative remainder like Python.
+ */
+function modulo(dividend, divisor) {
+  return (((dividend % divisor) + divisor) % divisor);
+}
+
+/*
+ * Return a random integer N such that min <= N < max.
+ */
+function getRandomInteger(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor((Math.random() * (max - min)) + min);
+}
+
+/*
+ * A JavaScript 2-Dimensional vector based on pygame.math.Vector2.
+ */
+class Vecta {
+  static TAU = Math.PI * 2;
+
+  /*
+   * Return true if the Numbers first and second are equal to places.
+   *
+   * This is necessary because JavaScript Number is a floating point value and is not exact.
+   */
+  static isAlmostEqual(first, second, places = 7) {
+    if (typeof first !== 'number') {
+      return false;
+    }
+    if (typeof second !== 'number') {
+      return false;
+    }
+    return (first.toFixed(places) === second.toFixed(places));
+  }
+
+  constructor() {
+    let x, y;
+    if (arguments.length === 1) {
+      if (typeof arguments[0] === 'number') {
+        x = arguments[0];
+        y = arguments[0];
+      }
+      else if (typeof arguments[0] === 'object') {
+        if (Array.isArray(arguments[0])) {
+          [x=0, y=0] = arguments[0];
+        }
+        else {
+          ({x=0, y=0} = arguments[0]);
+        }
+      }
+      else {
+        throw new Error('Not enough arguments.');
+      }
+    }
+    else {
+      [x=0, y=0] = arguments;
+    }
+
+    this.x = x;
+    this.y = y;
+  }
+
+  /*
+   * Return a new Vecta instance resulting from adding the other vector to this vector.
+   */
+  add() {
+    let v;
+    if (arguments.length <= 0) {
+      throw new Error('Not enough arguments.');
+    }
+    if (arguments[0] instanceof Vecta) {
+      v = arguments[0];
+    }
+    else {
+      v = new Vecta(...arguments);
+    }
+    return new Vecta(this.x + v.x, this.y + v.y);
+  }
+
+  /*
+   * Return a new Vecta instance resulting from subtracting the other vector from this vector.
+   */
+  subtract() {
+    let v;
+    if (arguments.length <= 0) {
+      throw new Error('Not enough arguments.');
+    }
+    if (arguments[0] instanceof Vecta) {
+      v = arguments[0];
+    }
+    else {
+      v = new Vecta(...arguments);
+    }
+    return new Vecta(this.x - v.x, this.y - v.y);
+  }
+
+  /*
+   * Return a new Vecta instance resulting from multiplying this vector by a Number.
+   */
+  multiply() {
+    if (arguments.length <= 0) {
+      throw new Error('Not enough arguments.');
+    }
+    if (typeof arguments[0] === 'number') {
+      return new Vecta(this.x * arguments[0], this.y * arguments[0]);
+    }
+    return this.dot(...arguments);
+  }
+
+  /*
+   * Return a new Vecta instance resulting from dividing this vector by a Number.
+   */
+  divide(divisor) {
+    if (typeof divisor !== 'number') {
+      throw new TypeError('divisor must be a Number.');
+    }
+    return new Vecta(this.x / divisor, this.y / divisor);
+  }
+
+  /*
+   * Return true if this vector is equal to the other vector.
+   */
+  isEqual() {
+    let v;
+    if (arguments.length <= 0) {
+      throw new Error('Not enough arguments.');
+    }
+    if (arguments[0] instanceof Vecta) {
+      v = arguments[0];
+    }
+    else {
+      v = new Vecta(...arguments);
+    }
+    return (Vecta.isAlmostEqual(this.x, v.x) && Vecta.isAlmostEqual(this.y, v.y));
+  }
+
+  /*
+   * Return a new Vecta instance resulting from rotating this vector by the given angle in degrees.
+   */
+  rotate(degrees) {
+    return this.rotate_rad(degrees * Math.PI / 180);
+  }
+
+  /*
+   * Return a new Vecta instance resulting from rotating this vector by the given angle in radians.
+   */
+  rotate_rad(radians) {
+    let v = new Vecta(this.x, this.y);
+    v.rotate_ip_rad(radians);
+    return v;
+  }
+
+  /*
+   * Rotate this vector by the given angle in degrees.
+   */
+  rotate_ip(degrees) {
+    this.rotate_ip_rad(degrees * Math.PI / 180);
+  }
+
+  /*
+   * Rotate this vector by the given angle in radians.
+   */
+  rotate_ip_rad(radians) {
+    // Duplicate the code in modulo() so this class does not depend on the function
+    radians = ((radians % Vecta.TAU) + Vecta.TAU) % Vecta.TAU;
+    if (Vecta.isAlmostEqual(radians, 0)) {
+      return;
+    }
+    let sin = Math.sin(radians),
+        cos = Math.cos(radians),
+        newX = (cos * this.x) - (sin * this.y),
+        newY = (sin * this.x) + (cos * this.y);
+    if (Vecta.isAlmostEqual(radians, Math.PI / 2)) {
+      newX = -this.y;
+      newY = this.x;
+    }
+    else if (Vecta.isAlmostEqual(radians, Math.PI)) {
+      newX = -this.x;
+      newY = -this.y;
+    }
+    else if (Vecta.isAlmostEqual(radians, 3 * Math.PI / 2)) {
+      newX = this.y;
+      newY = -this.x;
+    }
+
+    this.x = newX;
+    this.y = newY;
+  }
+
+  /*
+   * Return a new Vecta instance with the same direction but length 1.
+   */
+  normalize() {
+    let v = new Vecta(this.x, this.y);
+    v.normalize_ip();
+    return v;
+  }
+
+  /*
+   * Scale this vector to have length 1.
+   */
+  normalize_ip() {
+    let length = this.length();
+    if (length <= 0) {
+      throw new RangeError('Cannot normalize Vector of length 0.');
+    }
+    this.x /= length;
+    this.y /= length;
+  }
+
+  /*
+   * Return true if this vector has length 1.
+   */
+  is_normalized() {
+    return Vecta.isAlmostEqual(this.length_squared(), 1);
+  }
+
+  /*
+   * Return the cross product of this vector and the other vector.
+   */
+  cross() {
+    let v;
+    if (arguments.length <= 0) {
+      throw new Error('Not enough arguments.');
+    }
+    if (arguments[0] instanceof Vecta) {
+      v = arguments[0];
+    }
+    else {
+      v = new Vecta(...arguments);
+    }
+    return ((this.x * v.y) - (this.y * v.x));
+  }
+
+  /*
+   * Return the dot product of this vector and the other vector.
+   */
+  dot() {
+    let v;
+    if (arguments.length <= 0) {
+      throw new Error('Not enough arguments.');
+    }
+    if (arguments[0] instanceof Vecta) {
+      v = arguments[0];
+    }
+    else {
+      v = new Vecta(...arguments);
+    }
+    return ((this.x * v.x) + (this.y * v.y));
+  }
+
+  /*
+   * Return the angle to the given vector in degrees.
+   */
+  angle_to() {
+    let v;
+    if (arguments.length <= 0) {
+      throw new Error('Not enough arguments.');
+    }
+    if (arguments[0] instanceof Vecta) {
+      v = arguments[0];
+    }
+    else {
+      v = new Vecta(...arguments);
+    }
+    return ((Math.atan2(v.y, v.x) - Math.atan2(this.y, this.x)) * 180 / Math.PI);
+  }
+
+  /*
+   * Scale this vector to the given length.
+   */
+  scale_to_length(newLength) {
+    let length = this.length(),
+        fraction;
+    if (length <= 0) {
+      throw new RangeError('Cannot scale Vector of length 0.');
+    }
+    fraction = newLength / length;
+    this.x *= fraction;
+    this.y *= fraction;
+  }
+
+  /*
+   * Return the Euclidean length/magnitude of this vector.
+   */
+  length() {
+    return Math.hypot(this.x, this.y);
+  }
+
+  /*
+   * Return the squared Euclidean length/magnitude of this vector.
+   */
+  length_squared() {
+    return ((this.x * this.x) + (this.y * this.y));
+  }
+
+  /*
+   * Return a new Vecta instance of this vector reflected of the given normal.
+   */
+  reflect() {
+    let n;
+    if (arguments.length <= 0) {
+      throw new Error('Not enough arguments.');
+    }
+    if (arguments[0] instanceof Vecta) {
+      n = arguments[0];
+    }
+    else {
+      n = new Vecta(...arguments);
+    }
+
+    let v = new Vecta(this.x, this.y);
+    v.reflect_ip(n);
+    return v;
+  }
+
+  /*
+   * Reflect this vector of the given normal.
+   */
+  reflect_ip() {
+    let v;
+    if (arguments.length <= 0) {
+      throw new Error('Not enough arguments.');
+    }
+    if (arguments[0] instanceof Vecta) {
+      v = arguments[0];
+    }
+    else {
+      v = new Vecta(...arguments);
+    }
+
+    if (Vecta.isAlmostEqual(v.length_squared(), 0)) {
+      throw new RangeError('Normal must not be of length 0.');
+    }
+
+    let n = v.normalize(),
+        dot_product = this.dot(n);
+    this.x -= 2 * n.x * dot_product;
+    this.y -= 2 * n.y * dot_product;
+  }
+
+  /*
+   * Return the Euclidean distance to the given vector.
+   */
+  distance_to() {
+    return Math.sqrt(this.distance_squared_to(...arguments));
+  }
+
+  /*
+   * Return the squared Euclidean distance to the given vector.
+   */
+  distance_squared_to() {
+    let v;
+    if (arguments.length <= 0) {
+      throw new Error('Not enough arguments.');
+    }
+    if (arguments[0] instanceof Vecta) {
+      v = arguments[0];
+    }
+    else {
+      v = new Vecta(...arguments);
+    }
+    return (((v.x - this.x) * (v.x - this.x)) + ((v.y - this.y) * (v.y - this.y)));
+  }
+
+  /*
+   * Set the coordinates of this vector to the new values.
+   */
+  update() {
+    let v;
+    if (arguments.length <= 0) {
+      throw new Error('Not enough arguments.');
+    }
+    if (arguments[0] instanceof Vecta) {
+      v = arguments[0];
+    }
+    else {
+      v = new Vecta(...arguments);
+    }
+    this.x = v.x;
+    this.y = v.y;
+  }
+}
+Vecta.prototype.toString = function () {
+  return `[${ this.x }, ${ this.y }]`;
+}
+
+class Difficulty {
+  constructor(goalie_enabled, second_lead_enabled, speed_boost, holdoff_timer) {
+    this.goalie_enabled = goalie_enabled;
+
+    // When a player has the ball, either one or two players will be chosen from the other team to try to intercept
+    // the ball owner. Those players will have their 'lead' attributes set to a number indicating how far ahead of the
+    // ball they should try to run. (If they tried to go to where the ball is currently, they'd always trail behind)
+    // This attribute determines whether there should be one or two lead players
+    this.second_lead_enabled = second_lead_enabled;
+
+    // Speed boost to apply to CPU-team players in certain circumstances
+    this.speed_boost = speed_boost;
+
+    // Hold-off timer limits rate at which computer-controlled players can pass the ball
+    this.holdoff_timer = holdoff_timer;
+  }
+}
+
+const DIFFICULTY = [new Difficulty(false, false, 0, 120), new Difficulty(false, true, 0.1, 90), new Difficulty(true, true, 0.2, 60)];
+
+// Custom sine/cosine functions for angles of 0 to 7, where 0 is up,
+// 1 is up+right, 2 is right, etc.
+function sin(x) {
+  return Math.sin(x * Math.PI / 4);
+}
+
+function cos(x) {
+  return sin(x + 2);
+}
+
+/*
+ * Convert a vector to an angle in the range 0 to 7
+ */
+function vec_to_angle(vec) {
+  // todo explain a bit
+  // https://gamedev.stackexchange.com/questions/14602/what-are-atan-and-atan2-used-for-in-games
+  return modulo(Math.trunc((4 * Math.atan2(vec.x, -vec.y) / Math.PI) + 8.5), 8);
+}
+
+/*
+ * Convert an angle  in the range 0 to 7 to a direction vector. We use -cos rather than cos as increasing angles move
+ * in a clockwise rather than the usual anti-clockwise direction.
+ */
+function angle_to_vec(angle) {
+  return new Vecta(sin(angle), -cos(angle));
+}
+
+// Used when calling functions such as sorted and min.
+// todo explain more
+// p.vpos - pos results in a Vector2 which we can get the length of, giving us
+// the distance between pos and p.vpos
+function dist_comparison(pos) {
+  function inner(a, b) {
+    return (a.vpos.subtract(pos).length() - b.vpos.subtract(pos).length());
+  }
+  return inner;
+}
+
+// Turn a vector into a unit vector - i.e. a vector with length 1
+// We also return the original length, before normalisation.
+// We check for zero length, as trying to normalise a zero-length vector results in an error
+function safe_normalise(vec) {
+  let length = vec.length();
+  if (length === 0) {
+    return [new Vecta(0, 0), 0];
+  }
+  else {
+    return [vec.normalize(), length];
+  }
+}
+
+// The MyActor class extends Pygame Zero's Actor class by providing the attribute 'vpos', which stores the object's
+// current position using Pygame's Vector2 class. All code should change or read the position via vpos, as opposed to
+// Actor's x/y or pos attributes. When the object is drawn, we set self.pos (equivalent to setting both self.x and
+// self.y) based on vpos, but taking scrolling into account.
+class MyActor extends Actor {
+  constructor(img, x = 0, y = 0, anchor = null) {
+    super(img);
+    if (anchor != null) {
+      this.anchor = anchor;
+    }
+    this.pos = [0, 0];
+    this.vpos = new Vecta(x, y);
+  }
+
+  // We draw with the supplied offset to enable scrolling
+  draw(offset_x, offset_y) {
+    // Set Actor's screen pos
+    this.pos = [this.vpos.x - offset_x, this.vpos.y - offset_y];
+    super.draw();
+  }
+}
+
+// Ball physics model parameters
+const KICK_STRENGTH = 11.5;
+const DRAG = 0.98;
+
+// ball physics for one axis
+function ball_physics(pos, vel, bounds) {
+  // Add velocity to position
+  pos += vel;
+
+  // Check if ball is out of bounds, and bounce if so
+  if ((pos < bounds[0]) || (pos > bounds[1])) {
+    pos = pos - vel;
+    vel = -vel;
+  }
+
+  // Return new position and velocity, applying drag
+  return [pos, vel * DRAG];
+}
+
+// Work out number of physics steps for ball to travel given distance
+function steps(distance) {
+  // Initialize step count and initial velocity
+  let steps = 0,
+      vel = KICK_STRENGTH;
+
+  // Run physics until distance reached or ball is nearly stopped
+  while ((distance > 0) && (vel > 0.25)) {
+    distance = distance - vel;
+    steps = steps + 1;
+    vel = vel * DRAG;
+  }
+
+  return steps;
+}
+
+class Goal extends MyActor {
+  constructor(team) {
+    let x = HALF_LEVEL_W,
+        y = (team === 0) ? GOAL_0_RECT.bottom : GOAL_1_RECT.top,
+        anchor = (team === 0) ? 'bottom' : 'top';
+    super("ice_hockey_goal" + team, x, y, ['center', anchor]);
+
+    this.team = team;
+  }
+
+  active() {
+    // Is ball within 500 pixels on the Y axis?
+    return (Math.abs(game.ball.vpos.y - this.vpos.y) < 500);
+  }
+}
+
+// Calculate if player 'target' is a good target for a pass from player 'source'
+// target can also be a goal
+function targetable(target, source) {
+  // Find normalised (unit) vector v0 and distance d0 from source to target
+  let [v0, d0] = safe_normalise(target.vpos.subtract(source.vpos));
+
+  // If source player is on a computer-controlled team, avoid passes which are likely to be intercepted
+  // (If source is player-controlled, that's the player's job)
+  if (!game.teams[source.team].human()) {
+    // For each player p
+    for (let p of game.players) {
+      // Find normalised vector v1 and distance d1 from source to p
+      let [v1, d1] = safe_normalise(p.vpos.subtract(source.vpos));
+
+      // If p is on the other team, and between source and target, and at a similiar
+      // angular position, target is not a good target
+      // Multiplying two vectors together invokes an operation known as dot product. It is calculated by
+      // multiplying the X components of each vector, then multiplying the Y components, then adding the two
+      // resulting numbers. When each of the input vectors is a unit vector (i.e. with a length of 1, as returned
+      // from the safe_normalise function), the result of which is a number between -1 and 1. In this case we use
+      // the result to determine whether player 'p' (vector v1) is in roughly the same direction as player 'target'
+      // (vector v0), from the point of view of player 'source'.
+      if ((p.team !== target.team) && (d1 > 0) && (d1 < d0) && (v0.multiply(v1) > 0.8)) {
+        return false;
+      }
+    }
+  }
+
+  // If target is on the same team, and ahead of source, and not too far away, and source is facing
+  // approximately towards target (another dot product operation), then target is a good target.
+  // The dot product operation (multiplying two unit vectors) is used to determine whether (and to what extent) the
+  // source player is facing towards the target player. A value of 1 means target is directly ahead of source; -1
+  // means they are directly behind; 0 means they are directly to the left or right.
+  // See above for more explanation of dot product
+  return ((target.team === source.team) && (d0 > 0) && (d0 < 300) && (v0.multiply(angle_to_vec(source.dir)) > 0.8));
+}
+
+// Get average of two numbers; if the difference between the two is less than 1,
+// snap to the second number. Used in Ball.update()
+function avg(a, b) {
+  return ((Math.abs(b - a) < 1) ? b : ((a + b) / 2));
+}
+
+function on_pitch(x, y) {
+  // Only used when dribbling
+  return (PITCH_RECT.collidepoint(x, y) ||
+          GOAL_0_RECT.collidepoint(x, y) ||
+          GOAL_1_RECT.collidepoint(x, y));
+}
+
+class Ball extends MyActor {
+  constructor() {
+    super("ice_hockey_puck", HALF_LEVEL_W, HALF_LEVEL_H);
+
+    // Velocity
+    this.vel = new Vecta(0, 0);
+
+    this.owner = null;
+    this.timer = 0;
+
+    this.shadow = new MyActor("balls");
+  }
+
+  // Check for collision with player p
+  collide(p) {
+    // The ball collides with p if p's hold-off timer has expired
+    // and it is DRIBBLE_DIST_X or fewer pixels away
+    return ((p.timer < 0) && (p.vpos.subtract(this.vpos).length() <= DRIBBLE_DIST_X));
+  }
+
+  // Return true if this ball instance is in 1 of the 2 goals.
+  is_in_goal() {
+    return (GOAL_0_RECT.collidepoint(this.vpos.x, this.vpos.y) ||
+            GOAL_1_RECT.collidepoint(this.vpos.x, this.vpos.y));
+  }
+
+  update() {
+    this.timer -= 1;
+
+    // If the ball has an owner, it's being dribbled, so its position is
+    // based on its owner's position
+    if (this.owner != null) {
+      // Calculate new ball position for dribbling
+      // Our target position will be a point just ahead of our owner. However, we don't want to just snap to that
+      // position straight away. We want to transition to it over several frames, so we take the average of our
+      // current position and the target position. We also use slightly different offsets for the X and Y axes,
+      // to reflect that that the game's perspective is not completely top-down - so the positions the ball can
+      // take in relation to the player should form an ellipse instead of a circle.
+      // todo explain maths
+      let new_x = avg(this.vpos.x, this.owner.vpos.x + (DRIBBLE_DIST_X * sin(this.owner.dir))),
+          new_y = avg(this.vpos.y, this.owner.vpos.y - (DRIBBLE_DIST_Y * cos(this.owner.dir)));
+
+      if (on_pitch(new_x, new_y)) {
+        // New position is on the pitch, so update
+        this.vpos = new Vecta(new_x, new_y);
+      }
+      else {
+        // New position is off the pitch, so player loses the ball
+        // Set hold-off timer so player can't immediately reacquire the ball
+        this.owner.timer = 60;
+
+        // Give ball small velocity in player's direction of travel
+        this.vel = angle_to_vec(this.owner.dir).multiply(3);
+
+        // Un-set owner
+        this.owner = null;
+      }
+    }
+    else {
+      // Run physics, one axis at a time
+      let bounds_x, bounds_y, p, v;
+
+      // If ball is vertically inside the goal, it can only go as far as the
+      // sides of the goal - otherwise it can go all the way to the sides of
+      // the pitch
+
+      // If ball is horizontally inside the goal, it can go all the way to
+      // the back of the net - otherwise it can only go up to the end of
+      // the pitch
+      if (this.is_in_goal()) {
+        bounds_x = GOAL_BOUNDS_X;
+        bounds_y = GOAL_BOUNDS_Y;
+      }
+      else {
+        bounds_x = PITCH_BOUNDS_X;
+        bounds_y = PITCH_BOUNDS_Y;
+      }
+
+      [p, v] = ball_physics(this.vpos.x, this.vel.x, bounds_x);
+      this.vpos.x = p;
+      this.vel.x = v;
+      [p, v] = ball_physics(this.vpos.y, this.vel.y, bounds_y);
+      this.vpos.y = p;
+      this.vel.y = v;
+    }
+
+    // Update shadow position to track ball
+    this.shadow.vpos = new Vecta(this.vpos);
+
+    // Search for a player that can acquire the ball
+    for (let target of game.players) {
+      // A player can acquire the ball if the ball has no owner, or the player is on the other team
+      // from the owner, and collides with the ball
+      if (((this.owner == null) || (this.owner.team !== target.team)) && this.collide(target)) {
+        if (this.owner != null) {
+          // New player is taking the ball from previous owner
+          // Set hold-off timer so previous owner can't immediately reacquire the ball
+          this.owner.timer = 60;
+        }
+
+        // Set hold-off timer (dependent on difficulty) to limit rate at which
+        // computer-controlled players can pass the ball
+        this.timer = game.difficulty.holdoff_timer;
+
+        // Update owner, and controllable player for player's team, to player
+        this.owner = target;
+        game.teams[target.team].active_control_player = target;
+      }
+    }
+
+    // If the ball has an owner, it's time to decide whether to kick it
+    if (this.owner != null) {
+      let team = game.teams[this.owner.team],
+
+      // Find the closest targetable player or goal (could be None)
+      // First we create a list of all players/goals which can be targeted
+          targetable_players = [],
+          target = null,
+          do_shoot = false;
+
+      for (let roster of [game.players, game.goals]) {
+        for (let p of roster) {
+          if ((p.team === this.owner.team) && targetable(p, this.owner)) {
+            targetable_players.push(p);
+          }
+        }
+      }
+
+      if (targetable_players.length > 0) {
+        // Choose the nearest one
+        // dist_key returns a function which gets the distance of the ball owner from whichever player or goal (p)
+        // the sorted function is currently assessing
+        targetable_players.sort(dist_comparison(this.owner.vpos));
+        target = targetable_players[0];
+        game.debug_shoot_target = target.vpos;
+      }
+      else {
+        target = null;
+      }
+
+      if (team.human()) {
+        // If the owner is player-controlled, we kick if the player hits their kick key
+        do_shoot = team.controls.shoot();
+      }
+      else {
+        // If the owner is computer-controlled, we kick if the ball's hold-off timer has expired
+        // and there is a targetable player or goal, and the targetable player or goal is in a more
+        // favourable location (according to cost()) than the owner's location
+        do_shoot = ((this.timer <= 0) && (target != null) && (cost(target.vpos, this.owner.team) < cost(this.owner.vpos, this.owner.team)));
+      }
+
+      if (do_shoot) {
+        // play a random kick effect
+        game.play_sound("kick", 4);
+
+        let vec;
+        if (target != null) {
+          // If there is a targetable player or goal, kick towards it
+
+          // If the owner is player-controlled, we assume the player will continue to hold the same direction
+          // keys down after the pass, so the target  will start moving in the same direction as the
+          // current owner; on this assumption, we will kick the ball slightly ahead of the target player's
+          // current position,  through a process of iterative refinement
+
+          // If the owner is computer-controlled, or the target is a goal, we only execute the loop once and
+          // so do not apply lead, as there are no keys being held down and goals don't move.
+
+          let r = 0,
+
+          // Decide how many times we're going to go through the loop - the more times, the more accurate
+              iterations = (team.human() && (target instanceof Player)) ? 8 : 1,
+              t, length;
+
+          for (let i = 0; i < iterations; i++) {
+            // In the first loop, t will simply be the position of the targeted player or goal.
+            // In subsequent loops (if there are any), it will represent a position which is at the
+            // target's feet plus a bit further in whichever direction the player is currently pressing.
+            t = target.vpos.add(angle_to_vec(this.owner.dir).multiply(r));
+
+            // Get direction vector and distance between target pos and us
+            [vec, length] = safe_normalise(t.subtract(this.vpos));
+
+            // The steps function works out the number of physics steps the ball will take to travel
+            // the given distance
+            // todo r
+            r = HUMAN_PLAYER_WITHOUT_BALL_SPEED * steps(length);
+          }
+        }
+        else {
+          // We're not targeting a player or goal, so just kick the ball straight ahead
+
+          // Get direction vector
+          vec = angle_to_vec(this.owner.dir);
+
+          // Make a rough guess at which player the ball might end up closest to so, we can set them as the new
+          // active player. Pick a point 250 pixels ahead and find the nearest player to that.
+          targetable_players = game.players.filter(p => (p.team === this.owner.team));
+          targetable_players.sort(dist_comparison(this.vpos.add(vec.multiply(250))));
+          target = targetable_players[0];
+        }
+
+        if (target instanceof Player) {
+          // If we just kicked the ball towards a player, make that player the new active player for this team
+          game.teams[this.owner.team].active_control_player = target;
+        }
+
+        this.owner.timer = 10;  // Owner can't regain the ball for at least 10 frames
+
+        // Set velocity
+        this.vel = vec.multiply(KICK_STRENGTH);
+
+        // We no longer have an owner
+        this.owner = null;
+      }
+    }
+  }
+}
+
+/*
+ * Return True if the given position is inside the level area, otherwise False
+ * Takes the goals into account so you can't run through them
+ */
+function allow_movement(x, y) {
+  if (Math.abs(x - HALF_LEVEL_W) > HALF_LEVEL_W) {
+    // Trying to walk off the left or right side of the level
+    return false;
+  }
+
+  else {
+    // Player is outside the bounds of the goals on the X axis, so they can walk off the pitch and to the edge
+    // of the level
+    return (Math.abs(y - HALF_LEVEL_H) < HALF_LEVEL_H);
+  }
+}
+
+/*
+ * Generate a score for a given position, where lower numbers are considered to be better.
+ * This is called when a computer-controlled player with the ball is working out which direction to run in, or whether
+ * to pass the ball to another player, or kick it into the goal.
+ * Several things make up the final score:
+ * - the distance to our own goal - further away is better
+ * - the proximity of players on the other team - we want to get the ball away from them as much as possible
+ * - a quadratic equation (don't panic too much!) causing the player to favour the centre of the pitch and their opponents goal
+ * - an optional handicap value which can bias the result towards or away from a particular position
+ */
+function cost(pos, team, handicap = 0) {
+  // Get pos of our own goal. We do it this way rather than getting the pos of the actual goal object
+  // because this way gives us the pos of the goal's entrance, whereas the actual goal sprites are not anchored based
+  // on the entrances.
+  let own_goal_pos = new Vecta(HALF_LEVEL_W, (team === 1) ? (AI_MIN_Y - GOAL_DEPTH) : (AI_MAX_Y + GOAL_DEPTH)),
+      inverse_own_goal_distance = 3500 / (pos.subtract(own_goal_pos)).length(),
+      result = inverse_own_goal_distance;
+
+  for (let p of game.players.filter(p => (p.team !== team))) {
+    result += 4000 / Math.max(24, (p.vpos.subtract(pos)).length());
+  }
+
+  result += (Math.pow(pos.x - HALF_LEVEL_W, 2) / 200) - (pos.y * ((4 * team) - 2));
+  result += handicap;
+
+  return [result, pos];
+}
+
+class Player extends MyActor {
+  static ANCHOR = [25, 37];
+
+  constructor(x, y, team) {
+    // Player objects are recreated each time there is a kickoff
+    // Team will be 0 or 1
+    // The x and y values supplied represent our 'home' position - the place we'll return to by default when not near
+    // the ball. However, on creation, we want players to be in their kickoff positions, which means all players from
+    // team 0 will be below the halfway line, and players from team 1 above. The player chosen to actually do the
+    // kickoff is moved to be alongside the centre spot after the player objects have been created.
+
+    // Calculate our initial position for kickoff by halving y, adding 550 and then subtracting either 400 for
+    // team 1, or nothing for team 0
+    let kickoff_y = (y / 2) + 550 - (team * 400);
+
+    // Call the constructor of the parent class (MyActor)
+    super("blank", x, kickoff_y, Player.ANCHOR);
+
+    // Remember home position, where we'll stand by default if we're not active (i.e. far from the ball)
+    this.home = new Vecta(x, y);
+
+    // Store team
+    this.team = team;
+
+    // Facing direction: 0 = up, 1 = top right, up to 7 = top left
+    this.dir = 0;
+
+    // Animation frame
+    this.anim_frame = -1;
+
+    this.timer = 0;
+
+    this.shadow = new MyActor("blank", 0, 0, Player.ANCHOR);
+
+    // Used when DEBUG_SHOW_TARGETS is on
+    this.debug_target = new Vecta(0, 0);
+  }
+
+  active() {
+    // Is ball within 400 pixels on the Y axis? If so I'll be considered active, meaning I'm currently doing
+    // something useful in the game like trying to get the ball. If I'm not active, I'll either mark another player,
+    // or just stay at my home position
+    return (Math.abs(game.ball.vpos.y - this.home.y) < 400);
+  }
+
+  update() {
+    // decrement holdoff timer
+    this.timer -= 1;
+
+    // One of the main jobs of this method is to decide where the player will run to, and at what speed.
+    // The default is to run slowly towards home position, but target and speed may be overwritten in the code below
+    let target = new Vecta(this.home),       // Take a copy of home position
+        speed = PLAYER_DEFAULT_SPEED,
+
+    // Some shorthand variables to make the code below a bit easier to follow
+        my_team = game.teams[this.team],
+        pre_kickoff = (game.kickoff_player != null),
+        i_am_kickoff_player = (this === game.kickoff_player),
+        ball = game.ball;
+
+    if ((this === game.teams[this.team].active_control_player) && my_team.human() && ((!pre_kickoff) || i_am_kickoff_player)) {
+      // This player is the currently active player for its team, and is player-controlled, and either we're not
+      // currently waiting for kickoff, or this player is the designated kickoff player.
+      // The last part of the condition ensures that in a 2 player game, player 2 can't make their active player
+      // run around while waiting for player 1 to do the kickoff (and vice versa)
+
+      // A player with the ball runs slightly more slowly than one without
+      if (ball.owner === this) {
+        speed = HUMAN_PLAYER_WITH_BALL_SPEED;
+      }
+      else {
+        speed = HUMAN_PLAYER_WITHOUT_BALL_SPEED;
+      }
+
+      // Find target by calling the controller for the player's team todo comment
+      target = this.vpos.add(my_team.controls.move(speed));
+    }
+
+    else if (ball.owner != null) {
+      // Someone has the ball - is it me?
+      if (ball.owner === this) {
+        // We are the owner, and are computer-controlled (otherwise we would have taken the other arm
+        // of the top-level if statement)
+
+        // Evaluate five positions (left 90, left 45, ahead, right 45, right 90)
+        // target is the one with the lowest value of cost()
+        // List comprehension steps through the angles: -2 to 2, where 0 is up, 1 is up & right, etc
+        // For each angle 'd', we call the cost function with a position, which is 3 pixels from the
+        // current position, if the player were to move in the direction of d. We also pass cost() our team number.
+        // The last parameter, abs(d), introduces a tendency for the player to continue running forward. Try
+        // multiplying it by 3 or 4 to see what happens!
+
+        // First, create a list of costs for each of the 5 tested positions - a lower number is better. Each
+        // element is a tuple containing the cost and the position that cost relates to.
+        let costs = [];
+        for (let d = -2; d < 3; d++) {
+          costs.push(cost(this.vpos.add(angle_to_vec(this.dir + d).multiply(3)), this.team, Math.abs(d)));
+        }
+
+        // Then choose the element with the lowest cost. We use min() to find the element with the lowest value.
+        // min uses < to compare pairs of elements. Each element of costs is a tuple with two elements (a cost
+        // value and the target position). When comparing a pair of tuples using <, Python first compares the
+        // first element of each tuple. If they're different, that's what determines which tuple is considered to
+        // have a lower value. If they're the same, Python moves on to looking at the next element. However, this
+        // can lead to a crash in this case as the target position is an instance of the Vector2 class, which
+        // does not support comparisons using <. In practice it's rare for two positions to have the same cost
+        // value, but it's nevertheless prudent to eliminate the risk. The solution we chosen is to use the
+        // optional 'key' parameter for min, telling the function to only use the first element of each tuple
+        // for the comparisons.
+        // When min finds the tuple with the minimum cost value, we extract the target pos (which is what we
+        // actually care about) and discard the actual cost value - hence the '_' dummy variable
+        costs.sort((a, b) => (a[0] - b[0]));
+        target = costs[0][1];
+
+        // speed depends on difficulty
+        speed = CPU_PLAYER_WITH_BALL_BASE_SPEED + game.difficulty.speed_boost;
+      }
+
+      else if (ball.owner.team === this.team) {
+        // Ball is owned by another player on our team
+        if (this.active()) {
+          // If I'm near enough to the ball, try to run somewhere useful, and unique to this player - we
+          // don't want all players running to the same place. Target is halfway between home and a point
+          // 400 pixels ahead of the ball. Team 0 are trying to score in the goal at the top of the
+          // pitch, team 1 the goal at the bottom
+          let direction = (this.team === 0) ? -1 : 1;
+          target.x = (ball.vpos.x + target.x) / 2;
+          target.y = (ball.vpos.y + (400 * direction) + target.y) / 2;
+        }
+        // If we're not active, we'll do the default action of moving towards our home position
+      }
+      else {
+        // Ball is owned by a player on the opposite team
+        if (this.lead != null) {
+          // We are one of the players chosen to pursue the owner
+
+          // Target a position in front of the ball's owner, the distance based on the value of lead, while
+          // making sure we keep just inside the pitch
+          target = ball.owner.vpos.add(angle_to_vec(ball.owner.dir).multiply(this.lead));
+
+          // Stay on the pitch
+          target.x = Math.max(AI_MIN_X, Math.min(AI_MAX_X, target.x));
+          target.y = Math.max(AI_MIN_Y, Math.min(AI_MAX_Y, target.y));
+
+          let other_team = (this.team === 0) ? 1 : 0;
+          speed = LEAD_PLAYER_BASE_SPEED;
+          if (game.teams[other_team].human()) {
+            speed += game.difficulty.speed_boost;
+          }
+        }
+
+        else if (this.mark.active()) {
+          // The player or goal we've been chosen to mark is active
+
+          if (my_team.human()) {
+            // If I'm on a human team, just run towards the ball.
+            // We don't do the marking behaviour below for human teams for a number of reasons. Try changing
+            // the code to see how the game feels when marking behaviour applies to both human and computer
+            // teams.
+            target = new Vecta(ball.vpos);
+          }
+          else {
+            // Get vector between the ball and whatever we're marking
+            let [vec, length] = safe_normalise(ball.vpos.subtract(this.mark.vpos));
+
+            // Alter length to choose a position in between the ball and whatever we're marking
+            // We don't apply this behaviour for human teams - in that case we just run straight at the ball
+            if (this.mark instanceof Goal) {
+              // If I'm currently the goalie, get in between the ball and goal, and don't get too far
+              // from the goal
+              length = Math.min(150, length);
+            }
+            else {
+              // Otherwise, just get halfway between the ball and whoever I'm marking
+              length /= 2;
+            }
+
+            target = this.mark.vpos.add(vec.multiply(length));
+          }
+        }
+      }
+    }
+    else {
+      // No-one has the ball
+
+      // If we're pre-kickoff and I'm the kickoff player, OR if we're not pre-kickoff and I'm active
+      if ((pre_kickoff && i_am_kickoff_player) || ((!pre_kickoff) && this.active())) {
+        // Try to intercept the ball
+        // Deciding where to go to achieve this is harder than you might think. You can't target the ball's
+        // current location, because (assuming it's moving) by the time you get there it'll have moved on, so
+        // you'll always be trailing behind it. And you can't target where it's going to end up after rolling to
+        // a halt, because you might end up getting there before it and just be standing around waiting for it to
+        // get there. What we want to do is find a target which allows us to intercept the ball along its path in
+        // the minimum possible time and distance.
+        // The code below simulates the ball's movement over a series of frames, working out where it would be
+        // after each frame. We also work out how far the player could have moved at each frame, and whether
+        // that distance would be enough to reach the currently simulated location of the ball.
+        target = new Vecta(ball.vpos);     // current simulated location of ball
+        let vel = new Vecta(ball.vel),         // ball velocity - slows down each frame due to friction
+            frame = 0;
+
+        // DRIBBLE_DIST_X is the distance at which a player can gain control of the ball.
+        // vel.length() > 0.5 ensures we don't keep simulating frames for longer than necessary - once the ball
+        // is moving that slowly, it's not going to move much further, so there's no point in simulating dozens
+        // more frames of very tiny movements. If you experience a decreased frame rate when no one has the ball,
+        // try increasing 0.5 to a higher number.
+        while ((target.subtract(this.vpos).length() > ((PLAYER_INTERCEPT_BALL_SPEED * frame) + DRIBBLE_DIST_X)) && (vel.length() > 0.5)) {
+          target = target.add(vel);
+          vel = vel.multiply(DRAG);
+          frame += 1;
+        }
+
+        speed = PLAYER_INTERCEPT_BALL_SPEED;
+      }
+
+      else if (pre_kickoff) {
+        // Waiting for kick-off, but we're not the kickoff player
+        // Just stay where we are. Without this we'd run to our home position, but that is different from
+        // our position at kickoff (where all players are on their team's side of the pitch)
+        target.y = this.vpos.y;
+      }
+    }
+
+    // Get direction vector and distance beteen current pos and target pos
+    // vec[0] and vec[1] will be the x and y components of the vector
+    let [vec, distance] = safe_normalise(target.subtract(this.vpos)),
+        target_dir;
+
+    this.debug_target = new Vecta(target);
+
+    // Check to see if we're already at the target position
+    if (distance > 0) {
+      // Limit movement to our max speed
+      distance = Math.min(distance, speed);
+
+      // Set facing direction based on the direction we're moving
+      target_dir = vec_to_angle(vec);
+
+      // Update the x and y components of the player's position - but don't allow them to go off the edge of the
+      // level. Processing the x and y components separately allows the player to slide along the edge when trying
+      // to move diagonally off the edge of the level.
+      if (allow_movement(this.vpos.x + (vec.x * distance), this.vpos.y)) {
+        this.vpos.x += vec.x * distance;
+      }
+      if (allow_movement(this.vpos.x, this.vpos.y + (vec.y * distance))) {
+        this.vpos.y += vec.y * distance;
+      }
+
+      // todo
+      this.anim_frame = (this.anim_frame + Math.max(distance, 1.5)) % 72;
+    }
+    else {
+      // Already at target position - just turn to face the ball
+      target_dir = vec_to_angle(ball.vpos.subtract(this.vpos));
+      this.anim_frame = -1;
+    }
+
+    // Update facing direction - each frame, move one step towards the target direction
+    // This code essentially says that if the target direction is the same as the current direction, there should
+    // be no change; if target is between 1 and 4 steps clockwise from current, we should rotate one step clockwise,
+    // and if it's between 1 and 3 steps anticlockwise (which can also be thought of as 5 to 7 steps clockwise), we
+    // should rotate one step anticlockwise - which is equivalent to stepping 7 steps clockwise
+    let dir_diff = (target_dir - this.dir),
+        suffix;
+    this.dir = modulo(this.dir + [0, 1, 1, 1, 1, 7, 7, 7][modulo(dir_diff, 8)], 8);
+
+    suffix = `${ this.dir }${ Math.floor(Math.trunc(this.anim_frame) / 18) + 1 }`; // todo
+
+    this.name = "player" + this.team + suffix;
+    this.shadow.name = "players" + suffix;
+
+    // Update shadow position to track player
+    this.shadow.vpos = new Vecta(this.vpos);
+  }
+}
+
+class Team {
+  constructor(controls) {
+    this.controls = controls;
+    this.active_control_player = null;
+    this.score = 0;
+  }
+
+  human() {
+    return (this.controls != null);
+  }
+}
+
+class Game {
+  constructor(p1_controls = null, p2_controls = null, difficulty = 2) {
+    this.teams = [new Team(p1_controls), new Team(p2_controls)];
+    this.difficulty = DIFFICULTY[difficulty];
+
+    if (this.teams[0].human()) {
+      // Beginning a game with at least 1 human player
+      sounds.crowd.loop = true;
+      sounds.crowd.currentTime = 0;
+      sounds.crowd.play();
+      sounds.start.play();
+    }
+    else {
+      // No players - we must be on the menu. Play title music.
+      music.play("theme");
+      sounds.crowd.loop = false;
+      sounds.crowd.currentTime = sounds.crowd.duration;
+    }
+
+    this.score_timer = 0;
+    this.scoring_team = 1;   // Which team has just scored - also governs who kicks off next
+
+    this.reset();
+  }
+
+  reset() {
+    // Called at game start, and after a goal has been scored
+
+    // Set up players list/positions
+    // The lambda function is used to give the player start positions a slight random offset so they're not
+    // perfectly aligned to their starting spots
+    this.players = [];
+    function random_offset(x) {
+      return (x + getRandomInteger(-32, 33));
+    }
+    for (let pos of PLAYER_START_POS) {
+      // pos is a pair of coordinates in a tuple
+      // For each entry in pos, create one player for each team - positions are flipped (both horizontally and
+      // vertically) versions of each other
+      this.players.push(new Player(random_offset(pos[0]), random_offset(pos[1]), 0));
+      this.players.push(new Player(random_offset(LEVEL_W - pos[0]), random_offset(LEVEL_H - pos[1]), 1));
+    }
+
+    // Players in the list are stored in an alternating fashion - a team 0 player, then a team 1 player, and so on.
+    // The peer for each player is the opposing team player at the opposite end of the list. As there are 14 players
+    // in total, the peers are 0 and 13, 1 and 12, 2 and 11, and so on.
+    for (let i = 0; i < this.players.length; i++) {
+      this.players[i].peer = this.players[this.players.length-1-i];
+    }
+
+    // Create two goals
+    this.goals = [new Goal(0), new Goal(1)];
+
+    // The current active player under control by each team, indicated by arrows over their heads
+    // Choose first two players to begin with
+    this.teams[0].active_control_player = this.players[0];
+    this.teams[1].active_control_player = this.players[1];
+
+    // If team 1 just scored (or if it's the start of the game), team 0 will kick off
+    let other_team = (this.scoring_team === 0) ? 1 : 0;
+
+    // Players are stored in the players list in an alternating fashion - the first player being on team 0, the
+    // second on team 1, the third on team 0 etc. The player that kicks off will always be the first player of
+    // the relevant team.
+    this.kickoff_player = this.players[other_team];
+
+    // Set pos of kickoff player. A team 0 player will stand to the left of the ball, team 1 on the right
+    this.kickoff_player.vpos = new Vecta(HALF_LEVEL_W - 30 + (other_team * 60), HALF_LEVEL_H);
+
+    // Create ball
+    this.ball = new Ball();
+
+    // Focus camera on ball - copy ball pos
+    this.camera_focus = new Vecta(this.ball.vpos);
+
+    this.debug_shoot_target = null;
+  }
+
+  update() {
+    this.score_timer -= 1;
+
+    if (this.score_timer === 0) {
+      // Reset for new kick-off after goal scored
+      this.reset();
+    }
+
+    else if ((this.score_timer < 0) && this.ball.is_in_goal()) {
+      game.play_sound("goal", 2);
+
+      this.scoring_team = (this.ball.vpos.y < HALF_LEVEL_H) ? 0 : 1;
+      this.teams[this.scoring_team].score += 1;
+      this.score_timer = 60;      // Game goes into "scored a goal" state for 60 frames
+    }
+
+    // Each frame, reset mark and lead of each player
+    for (let b of this.players) {
+      b.mark = b.peer;
+      b.lead = null;
+      b.debug_target = null;
+    }
+
+    // Reset debug shoot target
+    this.debug_shoot_target = null;
+
+    if (this.ball.owner != null) {
+      // Ball has an owner (above is equivalent to s.ball.owner != None, or s.ball.owner is not None)
+      // Assign some shorthand variables
+      let o = this.ball.owner,
+          pos = o.vpos,
+          team = o.team,
+          owners_target_goal = game.goals[team],
+          other_team = (team === 0) ? 1 : 0,
+          opponents = this.players.filter(p => (p.team !== team)),
+          nearest,
+          a = [],
+          b = [],
+          zipped = [];
+
+      if (this.difficulty.goalie_enabled) {
+        // Find the nearest opposing team player to the goal, and make them mark the goal
+        opponents.sort(dist_comparison(owners_target_goal.vpos));
+        nearest = opponents[0];
+
+        // Set the ball owner's peer to mark whoever the goalie was marking, then set the goalie to mark the goal
+        o.peer.mark = nearest.mark;
+        nearest.mark = owners_target_goal;
+      }
+
+      // Choose one or two lead players to spearhead the attack on the ball owner
+      // Create a list of players who are on the opposite team from the ball owner, are allowed to acquire
+      // the ball (their hold-off timer must not be positive), are not currently being controlled by a human,
+      // and are not currently assigned to be the goalie. The list is sorted based on distance from the ball owner.
+      opponents = this.players.filter(p => ((p.team !== team) &&
+                                            (p.timer <= 0) &&
+                                            ((!this.teams[other_team].human()) || (p !== this.teams[other_team].active_control_player)) &&
+                                            (!(p.mark instanceof Goal))));
+      opponents.sort(dist_comparison(pos));
+
+      // a is a list of players from l who are upfield of the ball owner (i.e. towards our own goal, away from the
+      // direction of the goal the ball owner is trying to score in). b is all the other players. It's possible for
+      // one of these to be empty, as there might not be any players in the relevant direction.
+      for (let p of opponents) {
+        if (team === 0) {
+          if (p.vpos.y > pos.y) {
+            a.push(p);
+          }
+          else {
+            b.push(p);
+          }
+        }
+        else {
+          if (p.vpos.y < pos.y) {
+            a.push(p);
+          }
+          else {
+            b.push(p);
+          }
+        }
+      }
+
+      // Zip a and b together in an alternating fashion. Why do we add NONE2 (i.e. [None,None]) to each list?
+      // Because the zip function stops when there are no more items in one of the lists. We want our final list
+      // to contain at least 2 elements. Adding NONE2 (i.e. [None,None] as defined near the top) ensures that each
+      // list has at least 2 items. But we don't want any values in the final list to be None, hence the final part
+      // of the list comprehension 'for s in t if s', which discards any None values from the final result
+      while ((a.length + b.length) > 0) {
+        if (a.length > 0) {
+          zipped.push(a.shift());
+        }
+        if (b.length > 0) {
+          zipped.push(b.shift());
+        }
+      }
+
+      // Either one or two players (depending on difficulty settings) follow the ball owner, one from up-field and
+      // one from down-field of the owner
+      zipped[0].lead = LEAD_DISTANCE_1;
+      if (this.difficulty.second_lead_enabled) {
+        zipped[1].lead = LEAD_DISTANCE_2;
+      }
+
+      // If the ball has an owner, kick-off must have taken place, so unset the kickoff player
+      // Of course, kick-off might have already taken place a while ago, in which case kick-off_player will already
+      // be None, and will remain None
+      this.kickoff_player = null;
+    }
+
+    // Update all players and ball
+    for (let obj of this.players) {
+      obj.update();
+    }
+    this.ball.update();
+
+    let owner = this.ball.owner,
+        ballPos = this.ball.vpos,
+        team_obj, players;
+
+    for (let team_num = 0; team_num < 2; team_num++) {
+      team_obj = this.teams[team_num];
+
+      // Manual player switching when space is pressed
+      if (team_obj.human() && team_obj.controls.shoot()) {
+        // Find nearest player to the ball on our team
+        // If the ball has an owner (who must be on the other team because if not, control would have
+        // automatically switched to the ball owner and we wouldn't need to manually switch), we weight the
+        // choice in favour of players who are upfield (towards our goal), since such players may be better
+        // placed to intercept the ball owner.
+        // The function dist_key_weighted is equivalent to the dist_key function earlier in the code, but with
+        // this weighting added. We use this function as the key for the min function, which will choose
+        // the player who results in the lowest value when passed as an argument to dist_key_weighted.
+        function dist_comparison_weighted(a, b) {
+          let a_dist_to_ball = (a.vpos.subtract(ballPos)).length(),
+              b_dist_to_ball = (b.vpos.subtract(ballPos)).length(),
+          // Thonny gives a warning about the following line, relating to closures (an advanced topic), but
+          // in this case there is not actually a problem as the closure is only called within the loop
+              goal_dir = (2 * team_num) - 1;
+          if ((owner != null) && (((a.vpos.y - ballPos.y) * goal_dir) < 0)) {
+            a_dist_to_ball /= 2;
+          }
+          if ((owner != null) && (((b.vpos.y - ballPos.y) * goal_dir) < 0)) {
+            b_dist_to_ball /= 2;
+          }
+
+          return (a_dist_to_ball - b_dist_to_ball);
+        }
+
+        players = game.players.filter(p => (p.team === team_num));
+        players.sort(dist_comparison_weighted);
+        this.teams[team_num].active_control_player = players[0];
+      }
+    }
+
+    // Get vector between current camera pos and ball pos
+    let [camera_ball_vec, distance] = safe_normalise(this.camera_focus.subtract(this.ball.vpos));
+    if (distance > 0) {
+      // Move camera towards ball, at no more than 8 pixels per frame
+      this.camera_focus = this.camera_focus.subtract(camera_ball_vec.multiply(Math.min(distance, 8)));
+    }
+  }
+
+  draw() {
+    // For the purpose of scrolling, all objects will be drawn with these offsets
+    let offset_x = Math.max(0, Math.min(LEVEL_W - WIDTH, this.camera_focus.x - (WIDTH / 2))),
+        offset_y = Math.max(0, Math.min(LEVEL_H - HEIGHT, this.camera_focus.y - (HEIGHT / 2))),
+        offset = new Vecta(offset_x, offset_y),
+        objects = [];
+
+    screen.blit("ice_hockey_rink", [-offset_x, -offset_y]);
+
+    // Prepare to draw all objects
+    // 1. Create a list of all players and the ball, sorted based on their Y positions
+    // 2. Add object shadows to the list
+    // 3. Add the two goals at each end of the list
+    // (note - technically we're not adding items to the list in steps two and three, we're creating a new list
+    // which consists of the old list plus the new items)
+    objects = this.players.slice();
+    objects.push(this.ball);
+    objects.sort((a, b) => (a.posy - b.posy));
+    for (let obj of objects.slice()) {
+      objects.push(obj.shadow);
+    }
+    objects.unshift(this.goals[0]);
+    objects.push(this.goals[1]);
+
+    // Draw all objects
+    for (let obj of objects) {
+      obj.draw(offset_x, offset_y);
+    }
+
+    // Show active players
+    for (let t = 0; t < 2; t++) {
+      // Only show arrow for human teams
+      if (this.teams[t].human()) {
+        let arrow_pos = this.teams[t].active_control_player.vpos.subtract(offset).subtract(new Vecta(11, 45));
+        screen.blit("arrow" + t, [arrow_pos.x, arrow_pos.y]);
+      }
+    }
+
+    if (DEBUG_SHOW_LEADS) {
+      for (let p of this.players) {
+        if ((game.ball.owner != null) && (p.lead != null)) {
+          let line_start = game.ball.owner.vpos.subtract(offset),
+              line_end = p.vpos.subtract(offset);
+          screen.draw.line([line_start.x, line_start.y], [line_end.x, line_end.y], [0, 0, 0]);
+        }
+      }
+    }
+
+    if (DEBUG_SHOW_TARGETS) {
+      for (let p of this.players) {
+        let line_start = p.debug_target.subtract(offset),
+            line_end = p.vpos.subtract(offset);
+        screen.draw.line([line_start.x, line_start.y], [line_end.x, line_end.y], [255, 0, 0]);
+      }
+    }
+
+    if (DEBUG_SHOW_PEERS) {
+      for (let p of this.players) {
+        let line_start = p.peer.vpos.subtract(offset),
+            line_end = p.vpos.subtract(offset);
+        screen.draw.line([line_start.x, line_start.y], [line_end.x, line_end.y], [0, 0, 255]);
+      }
+    }
+
+    if (DEBUG_SHOW_SHOOT_TARGET) {
+      if ((this.debug_shoot_target != null) && (this.ball.owner != null)) {
+        let line_start = this.ball.owner.vpos.subtract(offset),
+            line_end = this.debug_shoot_target.subtract(offset);
+        screen.draw.line([line_start.x, line_start.y], [line_end.x, line_end.y], [255, 0, 255]);
+      }
+    }
+
+    if (DEBUG_SHOW_COSTS && (this.ball.owner != null)) {
+      for (let x = 0; x < LEVEL_W; x += 60) {
+        for (let y = 0; y < LEVEL_H; y += 26) {
+          let c = cost(new Vecta(x, y), this.ball.owner.team)[0],
+              screen_pos = new Vecta(x, y);
+          screen_pos = screen_pos.subtract(offset);
+          // draw.text can't reliably take a Vector2
+          screen.draw.text(c.toFixed(0), {center: [screen_pos.x, screen_pos.y]});
+        }
+      }
+    }
+  }
+
+  play_sound(name, c) {
+    // Only play sounds if we're not in the menu state
+    if (state != State.MENU) {
+      sounds[name+getRandomInteger(0, c)].play();
+    }
+  }
+}
+
+
+// Was the given key just pressed? (i.e. is it currently down, but wasn't down on the previous frame?)
+function key_just_pressed(key) {
+  let result = false,
+
+  // Get key's previous status from the key_status dictionary. The dictionary.get method allows us to check for a given
+  // entry without giving an error if that entry is not present in the dictionary. False is the default value returned
+  // when the key is not present.
+      prev_status = false;
+  if (key_status.has(key)) {
+    prev_status = key_status.get(key);
+  }
+
+  // If the key wasn't previously being pressed, but it is now, we're going to return True
+  if ((!prev_status) && keyboard[key]) {
+    result = true;
+  }
+
+  // Before we return, we need to update the key's entry in the key_status dictionary (or create an entry if there
+  // wasn't one already
+  key_status.set(key, keyboard[key]);
+
+  return result;
+}
+
+class Controls {
+  constructor(player_num) {
+    if (player_num === 0) {
+      this.key_up = keys.UP;
+      this.key_down = keys.DOWN;
+      this.key_left = keys.LEFT;
+      this.key_right = keys.RIGHT;
+      this.key_shoot = keys.SPACE;
+    }
+    else {
+      this.key_up = keys.W;
+      this.key_down = keys.S;
+      this.key_left = keys.A;
+      this.key_right = keys.D;
+      this.key_shoot = keys.LSHIFT;
+    }
+  }
+
+  move(speed) {
+    // Return vector representing amount of movement that should occur
+    let dx = 0,
+        dy = 0;
+    if (keyboard[this.key_left]) {
+      dx = -1;
+    }
+    else if (keyboard[this.key_right]) {
+      dx = 1;
+    }
+    if (keyboard[this.key_up]) {
+      dy = -1;
+    }
+    else if (keyboard[this.key_down]) {
+      dy = 1;
+    }
+
+    return (new Vecta(dx, dy)).multiply(speed);
+  }
+
+  shoot() {
+    return key_just_pressed(this.key_shoot);
+  }
+}
+
+// Pygame Zero calls the update and draw functions each frame
+
+const State = Object.freeze({
+  MENU: 0,
+  PLAY: 1,
+  GAME_OVER: 2
+});
+
+const MenuState = Object.freeze({
+  NUM_PLAYERS: 0,
+  DIFFICULTY: 1
+});
+
+var key_status, state, game, menu_state, menu_num_players, menu_difficulty;
+
+function reset() {
+  // Dictionary to keep track of which keys are currently being held down
+  key_status = new Map();
+
+  // Set the initial game state
+  state = State.MENU;
+
+  // Menu state
+  menu_state = MenuState.NUM_PLAYERS;
+  menu_num_players = 1;
+  menu_difficulty = 0;
+
+  // Create a new Game object
+  game = new Game();
+}
+
+function update() {
+  if (state === State.MENU) {
+    if (key_just_pressed(keys.SPACE)) {
+      if (menu_state === MenuState.NUM_PLAYERS) {
+        // If we're doing a 2 player game, skip difficulty selection
+        if (menu_num_players === 1) {
+          menu_state = MenuState.DIFFICULTY;
+        }
+        else {
+          // Start 2P game
+          state = State.PLAY;
+          menu_state = null;
+          game = new Game(new Controls(0), new Controls(1));
+        }
+      }
+      else {
+        // Start 1P game
+        state = State.PLAY;
+        menu_state = null;
+        game = new Game(new Controls(0), null, menu_difficulty);
+      }
+    }
+    else {
+      // Detect + act on up/down arrow keys
+      let selection_change = 0;
+      if (key_just_pressed(keys.DOWN)) {
+        selection_change = 1;
+      }
+      else if (key_just_pressed(keys.UP)) {
+        selection_change = -1;
+      }
+      if (selection_change !== 0) {
+        sounds.move.play();
+        if (menu_state === MenuState.NUM_PLAYERS) {
+          menu_num_players = (menu_num_players === 1) ? 2 : 1;
+        }
+        else {
+          menu_difficulty = modulo(menu_difficulty + selection_change, 3);
+        }
+      }
+    }
+
+    game.update();
+  }
+
+  else if (state === State.PLAY) {
+    // First player to 9 wins
+    if ((Math.max(...game.teams.map(t => t.score)) === 9) && (game.score_timer === 1)) {
+      state = State.GAME_OVER;
+    }
+    else {
+      game.update();
+    }
+  }
+
+  else if (state === State.GAME_OVER) {
+    if (key_just_pressed(keys.SPACE)) {
+      // Switch to menu state, and create a new game object without a player
+      state = State.MENU;
+      menu_state = MenuState.NUM_PLAYERS;
+      game = new Game();
+    }
+  }
+}
+
+function draw() {
+  game.draw();
+
+  if (state === State.MENU) {
+    // Draw title screen and menu
+    // There are 5 menu images numbered 01, 02, 10, 11 and 12.
+    // 01 and 02 are the images for indicating whether 1 or 2 player mode
+    // is selected; 10, 11 and 12 are for the difficulty selection screen -
+    // easy, medium or hard
+    let image;
+    if (menu_state === MenuState.NUM_PLAYERS) {
+      image = "menu0" + menu_num_players;
+    }
+    else {
+      image = "menu1" + menu_difficulty;
+    }
+    screen.blit(image, [0, 0]);
+    screen.draw.line([190, 50], [610, 225], [255, 0, 0], 4);
+    screen.draw.line([610, 50], [190, 225], [255, 0, 0], 4);
+    screen.draw.filled_rect(new Rect(200, 75, 400, 125), [255, 255, 255]);
+    screen.draw.text(TITLE, {
+      center: [400, 135],
+      color: [0, 0, 0],
+      fontsize: 64
+    });
+  }
+
+  else if (state === State.PLAY) {
+    // Display score bar at top
+    screen.blit("bar", [HALF_WINDOW_W - 176, 0]);
+
+    // Show score for each team
+    for (let i = 0; i < 2; i++) {
+      screen.blit("s" + game.teams[i].score, [HALF_WINDOW_W + 7 - (39 * i), 6]);
+    }
+
+    // Show GOAL image if a goal has recently been scored
+    if (game.score_timer > 0) {
+      screen.blit("goal", [HALF_WINDOW_W - 300, (HEIGHT / 2) - 88]);
+    }
+  }
+
+  else if (state === State.GAME_OVER) {
+    // Display "Game Over" image
+    let img;
+    if (game.teams[1].score > game.teams[0].score) {
+      img = "over1";
+    }
+    else {
+      img = "over0";
+    }
+    screen.blit(img, [0, 0]);
+
+    // Show score for each team
+    for (let i = 0; i < 2; i++) {
+      img = "l" + i + game.teams[i].score.toFixed(0);
+      screen.blit(img, [HALF_WINDOW_W + 25 - (125 * i), 144]);
+    }
+  }
+}
+
+window.addEventListener('load', (event) => {
+  screen.init();
+});
+</script>
+</body>
+
+</html>
