@@ -2876,7 +2876,7 @@ class Game {
 
   play_sound(name, c) {
     // Only play sounds if we're not in the menu state
-    if (state != State.MENU) {
+    if (state !== State.MENU) {
       sounds[name+getRandomInteger(0, c)].play();
     }
   }

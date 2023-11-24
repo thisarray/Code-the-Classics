@@ -1828,7 +1828,7 @@ class Road extends ActiveRow {
             // If the results of these two comparisons are different, the car is moving towards the player.
             // Also, for the zoom sound, the car must be travelling faster than one pixel per frame
             let dx = child_obj.posx - game.bunner.posx;
-            if ((Math.abs(dx) < 100) && ((child_obj.dx < 0) != (dx < 0)) && ((y_offset === 0) || (Math.abs(child_obj.dx) > 1))) {
+            if ((Math.abs(dx) < 100) && ((child_obj.dx < 0) !== (dx < 0)) && ((y_offset === 0) || (Math.abs(child_obj.dx) > 1))) {
               child_obj.play_sound(car_sound_num);
             }
           }
